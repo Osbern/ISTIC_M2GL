@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by bekkers (Inria-Rennes) -->
+<listeProduit>
+	<produit>
+		<P>p1</P>
+		<Nom_p>cassis</Nom_p>
+		<Couleur>rouge</Couleur>
+		<Origine>Dijon</Origine>
+	</produit>
+	<produit>
+		<P>p2</P>
+		<Nom_p>champagne</Nom_p>
+		<Couleur>blanc</Couleur>
+		<Origine>Reims</Origine>
+	</produit>
+	<produit>
+		<P>p3</P>
+		<Nom_p>huitre</Nom_p>
+		<Couleur>vert</Couleur>
+		<Origine>Riec</Origine>
+	</produit>
+	<produit>
+		<P>p4</P>
+		<Nom_p>moutarde</Nom_p>
+		<Couleur>jaune</Couleur>
+		<Origine>Dijon</Origine>
+	</produit>
+	<produit>
+		<P>p5</P>
+		<Nom_p>salade</Nom_p>
+		<Couleur>vert</Couleur>
+		<Origine>Nice</Origine>
+	</produit>
+	<produit>
+		<P>p6</P>
+		<Nom_p>cornichon</Nom_p>
+		<Couleur>vert</Couleur>
+		<Origine>Dijon</Origine>
+	</produit>
+	<produit>
+		<P>p7</P>
+		<Nom_p>muscadet</Nom_p>
+		<Couleur>blanc</Couleur>
+		<Origine>Nantes</Origine>
+	</produit>
+</listeProduit>

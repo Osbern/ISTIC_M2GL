@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<result>
+	<origine ville="Dijon">
+		<produit>
+			<nom>cassis</nom>
+			<fournisseur>Barnibus</fournisseur>
+		</produit>
+		<produit>
+			<nom>moutarde</nom>
+			<fournisseur>Barnibus</fournisseur>
+			<fournisseur>Mercier</fournisseur>
+			<fournisseur>Colbert</fournisseur>
+			<fournisseur>Bossuet</fournisseur>
+		</produit>
+		<produit>
+			<nom>cornichon</nom>
+			<fournisseur>Barnibus</fournisseur>
+			<fournisseur>Bossuet</fournisseur>
+		</produit>
+	</origine>
+	<origine ville="Reims">
+		<produit>
+			<nom>champagne</nom>
+			<fournisseur>Mercier</fournisseur>
+			<fournisseur>Colbert</fournisseur>
+		</produit>
+	</origine>
+	<origine ville="Riec">
+		<produit>
+			<nom>huitre</nom>
+			<fournisseur>Bossuet</fournisseur>
+			<fournisseur>Tanguy</fournisseur>
+		</produit>
+	</origine>
+	<origine ville="Nice">
+		<produit>
+			<nom>salade</nom>
+			<fournisseur>Barnibus</fournisseur>
+			<fournisseur>Bossuet</fournisseur>
+		</produit>
+	</origine>
+	<origine ville="Nantes">
+		<produit>
+			<nom>muscadet</nom>
+		</produit>
+	</origine>
+</result>

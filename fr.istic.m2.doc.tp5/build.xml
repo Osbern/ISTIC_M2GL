@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="exec TP xquery" default="saxonXquery" basedir=".">
+	<!-- paramètres d'environnement -->
+	<property environment="env"/>
+	<property name="prefixe" value="q10"/>
+	<property name="saxon" value="/share/general/xml-tools"/>
+	<!-- java  net.sf.saxon.Query   [options]   query   [ params...]-->
+	<target name="saxonXquery" description="Transformation XQuery">
+		<echo>Saxon XQuery processor</echo>
+		<java classname="net.sf.saxon.Query" fork="true">
+			<arg line="-o"/>
+			<arg path="${prefixe}.xml"/>
+			<arg line="-s"/>
+			<arg path="epicerie.xml"/>
+			<arg path="${prefixe}.xqy"/>
+			<classpath>
+				<pathelement path="${saxon}/saxon9he.jar"/>
+			</classpath>
+		</java>
+	</target>
+</project>
