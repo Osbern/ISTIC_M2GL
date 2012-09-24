@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<listeFournisseur>
+	<fournisseur>
+		<F>f1</F>
+		<Nom>Barnibus</Nom>
+		<Remise>0,05</Remise>
+		<Ville>Paris</Ville>
+	</fournisseur>
+	<fournisseur>
+		<F>f2</F>
+		<Nom>Mercier</Nom>
+		<Remise>0,07</Remise>
+		<Ville>Paris</Ville>
+	</fournisseur>
+	<fournisseur>
+		<F>f3</F>
+		<Nom>Colbert</Nom>
+		<Remise>0,03</Remise>
+		<Ville>Reims</Ville>
+	</fournisseur>
+	<fournisseur>
+		<F>f4</F>
+		<Nom>Bossuet</Nom>
+		<Remise>0,06</Remise>
+		<Ville>Dijon</Ville>
+	</fournisseur>
+	<fournisseur>
+		<F>f5</F>
+		<Nom>Tanguy</Nom>
+		<Remise>0,1</Remise>
+		<Ville>Riec</Ville>
+	</fournisseur>
+	<fournisseur>
+		<F>f6</F>
+		<Nom>Dupont</Nom>
+		<Remise>0</Remise>
+		<Ville>Paris</Ville>
+	</fournisseur>
+	<fournisseur>
+		<F>f8</F>
+		<Nom>bridoux</Nom>
+		<Remise>0,045</Remise>
+		<Ville>Vannes</Ville>
+	</fournisseur>
+</listeFournisseur>

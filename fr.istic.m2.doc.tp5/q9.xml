@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<result>
+	<produit nom="cassis">
+		<Nom>Barnibus</Nom>
+	</produit>
+	<produit nom="champagne">
+		<Nom>Mercier</Nom>
+		<Nom>Colbert</Nom>
+	</produit>
+	<produit nom="huitre">
+		<Nom>Bossuet</Nom>
+		<Nom>Tanguy</Nom>
+	</produit>
+	<produit nom="moutarde">
+		<Nom>Barnibus</Nom>
+		<Nom>Mercier</Nom>
+		<Nom>Colbert</Nom>
+		<Nom>Bossuet</Nom>
+	</produit>
+	<produit nom="salade">
+		<Nom>Barnibus</Nom>
+		<Nom>Bossuet</Nom>
+	</produit>
+	<produit nom="cornichon">
+		<Nom>Barnibus</Nom>
+		<Nom>Bossuet</Nom>
+	</produit>
+	<produit nom="muscadet" />
+</result>
