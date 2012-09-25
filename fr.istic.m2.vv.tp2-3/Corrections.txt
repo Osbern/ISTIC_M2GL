@@ -1,0 +1,14 @@
+Ajout initialisation dans constructeur de Account.
+
+AuctionFactpry bizarre !
+
+BulletinBoard est une interface vide !
+
+L'interface User ne remplit pas son role !
+
+
+
+
+
+
+// TODO : Commentaires dans les tests
