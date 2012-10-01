@@ -1,0 +1,76 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>fr.istic.m2.taa</groupId>
+	<artifactId>classcounter-maven-plugin</artifactId>
+	<packaging>maven-plugin</packaging>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>classcounter-maven-plugin Maven Mojo</name>
+	<url>http://maven.apache.org</url>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.maven</groupId>
+			<artifactId>maven-plugin-api</artifactId>
+			<version>2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.10</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jfrog.maven.annomojo</groupId>
+			<artifactId>maven-plugin-anno</artifactId>
+			<version>1.4.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.clapper</groupId>
+			<artifactId>classutil_2.9.2</artifactId>
+			<version>0.4.6</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-plugin-plugin</artifactId>
+				<version>2.6</version>
+				<dependencies>
+					<dependency>
+						<groupId>org.jfrog.maven.annomojo</groupId>
+						<artifactId>maven-plugin-tools-anno</artifactId>
+						<version>1.4.0</version>
+						<scope>runtime</scope>
+					</dependency>
+				</dependencies>
+			</plugin>
+		</plugins>
+	</build>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>jfrog-plugins</id>
+			<name>jfrog-plugins-dist</name>
+			<url>http://repo.jfrog.org/artifactory/plugins-releases-local</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<repositories>
+		<repository>
+			<id>jfrog-plugins</id>
+			<name>jfrog-plugins-dist</name>
+			<url>http://repo.jfrog.org/artifactory/plugins-releases</url>
+			<layout>default</layout>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+		</repository>
+	</repositories>
+
+</project>
