@@ -1,0 +1,14 @@
+Ajout initialisation dans constructeur de Account.
+
+AuctionFactpry bizarre !
+
+BulletinBoard est une interface vide !
+
+L'interface User ne remplit pas son role !
+
+Auction impl --> on peut donner une valeur négative à la date... (utilisation d'un 'int' alors qu'un type 'Date' existe)
+
+
+
+
+// TODO : Commentaires dans les tests
