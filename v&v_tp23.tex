@@ -1,0 +1,48 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{tabularx}
+
+\title{V \& V
+\\
+--
+\\
+Test d'intégration}
+\author{Marceau Lacroix \& Thibaud Destouches}
+\date{2012 - 2013}
+
+\begin{document}
+
+\begin{titlepage}
+\maketitle
+\end{titlepage}
+
+\newpage
+\section*{Introduction}
+
+\newpage
+\section{Stratégie de test}
+
+\subsection{Person}
+Nous avons choisit de tester d'abord les classes \textbf{User} et \textbf{Moderator}, implémentant toute deux la classe abstraite \textit{Person}, ces trois classes ne contiennent en effet que des getters et des setteurs, leurs tests se limitent donc à la vérification de leur initialisation et au renvoie des bons objets en fonctions de celles-ci.
+
+Nous avons ensuite mocker la classe \textbf{Message} pour pouvoir tester la classe \textbf{BulletinBoard}.
+
+\subsection{BulletinBoard}
+\textbf{BulletinBoard} a été la première classe implémentant des opérations a tester. Nous avons commencé par la méthode \textit{delMessage} qui permet a un \textbf{Moderator} de supprimer un \textbf{Message} a condition que le numéro du message fasse partie de la liste des \textbf{Message}s du \textbf{BulletinBoard}.
+
+Grâce au mock de \textbf{Message} et aux tests effectuer sur \textbf{User} et \textbf{Moderator}, nous avons pus constater le bon fonctionnement de cette méthode.
+
+\subsection{Auction}
+Après le test de \textbf{ReserveAuction} (une autre classe ne contenant que des getters et des setters), nous sommes attaqués aux tests de \textbf{Auction}. Nous avons commencé par mocker \textbf{Bid}, puis nous avons testé les opérations les plus intéressante (\textit{minimumAmount()}), et nous avons mis en évidence l'absence de condition sur les setters, il est ainsi possible de fournir une date négative via la méthode \textit{setStartDate(int startDate)} et ceci paraît totalement autorisé par l'application.
+
+\newpage
+\section*{Conclusion}
+Au final, nous avons pus effectuer nos tests en suivant notre stratégie d'intégration grâce à l'utilisation de mock fournit par la librairie \textit{EasyMock}. Malheureusement ne possédant aucune spécification sur l'application, ni de commentaires dans le code et sans la possibilité d'exécuter ce logiciel, il nous était impossible de vérifier le bon fonctionnement de cette application.
+
+Nous avons pus constater un certain manque de test lors du settage de certaines variables, ainsi que certaines opérations plutôt obscures (par exemple dans la méthode  \textit{AuctionImpl.minimumAmount()}il y a un return renvoyant un montant multiplier par 10 puis diviser par 11, il n'est expliqué nulle part pourquoi une telle opération est censé être nécessaire), mais sans savoir ce à quoi elle devait servir, ni comment elles avaient été pensé, nous n'avons pus les corriger.
+
+
+\end{document}
