@@ -1,0 +1,3 @@
+Séparer en 2 packages IHM & Moteur
+
+Slider : Bornes, tooltip valeurs

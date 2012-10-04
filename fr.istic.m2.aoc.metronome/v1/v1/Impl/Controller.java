@@ -8,13 +8,29 @@ import v1.Interface.Subject;
  */
 
 public class Controller implements Observer {
+	
 	private IHM ihm;
-	private Moteur moteur;
+	private Moteur mot;
+	
+	public Controller() {
+	
+	}
+	
+	public void setMoteur(Moteur mot) {
+		this.mot = mot;
+	}
+	
+	public void tocMesure() {
+		System.out.print(" ");
+	}
+	
+	public void tocTemps() {
+		System.out.print("|");
+	}
 
 	@Override
 	public void update(Subject s) {
-		// TODO Auto-generated method stub
-
+		
 	}
 
 }

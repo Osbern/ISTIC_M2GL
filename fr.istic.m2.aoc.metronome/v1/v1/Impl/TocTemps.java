@@ -8,11 +8,14 @@ import v1.Interface.Command;
 
 public class TocTemps implements Command {
 	private Controller ctl;
+	
+	public TocTemps(Controller ctl) {
+		this.ctl = ctl;
+	}
 
 	@Override
 	public void execute() {
-		// TODO Auto-generated method stub
-
+		ctl.tocTemps();
 	}
 
 }
