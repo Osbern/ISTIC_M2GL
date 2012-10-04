@@ -21,40 +21,40 @@ Test d'intégration}
 
 \newpage
 \section*{Introduction}
-Dans ce TP, nous avons mis en place une stratégie d'intégration, permettant à partir d'un code que nous ne connaissons pas d'effectuer des tests de manière à valider les différentes classes au fur et à mesure. Nous avons donc utilisé des mocks pour simuler le fonctionnement des objets non testé, et ainsi validé le bon fonctionnement des classes dépendant de ces objets. Ainsi à chaque nouvelle classe testé et validé, il nous été possible de tester d'autres classes, pour enfin arriver au final à valider l'application dans sons ensemble.
+Dans ce TP, nous avons mis en place une stratégie d'intégration, permettant à partir d'un code que nous ne connaissons pas d'effectuer des tests de manière à valider les différentes classes au fur et à mesure. Nous avons donc utilisé des mocks pour simuler le fonctionnement des objets non testés, et ainsi valider le bon fonctionnement des classes dépendantes de ces objets. Ainsi à chaque nouvelle classe testée et validée, il nous était possible de tester d'autres classes, pour arriver au final à valider l'application dans son ensemble.
 
-Pour ce faire, nous avons utilisé la librairie JUnit, permettant la création de test unitaire en Java, ainsi que la librairie EasyMock fournissant la possibilité de créer des Mocks, des objets permettant de simuler le fonctionnement de classe non encore testé.
+Pour se faire, nous avons utilisé la librairie JUnit, permettant la création de test unitaire en Java, ainsi que la librairie EasyMock fournissant la possibilité de créer des Mocks, des objets permettant de simuler le fonctionnement de classes non encore testées.
 
 \newpage
 \section{Stratégie de test}
 
 \subsection{Person}
-Nous avons choisit de tester d'abord les classes \textbf{User} et \textbf{Moderator}, implémentant toute deux la classe abstraite \textit{Person}, ces trois classes ne contiennent en effet que des getters et des setteurs, leurs tests se limitent donc à la vérification de leur initialisation et au renvoie des bons objets en fonctions de celles-ci.
+Nous avons choisi de tester d'abord les classes \textbf{User} et \textbf{Moderator}, implémentant toutes deux la classe abstraite \textit{Person}, ces trois classes ne contiennent en effet que des getters et des setters, leurs tests se limitent donc à la vérification de leur initialisation et au renvoi des bons objets en fonction de celle-ci.
 
-Nous avons ensuite mocker la classe \textbf{Message} pour pouvoir tester la classe \textbf{BulletinBoard}.
+Nous avons ensuite "mocké" la classe \textbf{Message} pour pouvoir tester la classe \textbf{BulletinBoard}.
 
 \subsection{BulletinBoard}
-\textbf{BulletinBoard} a été la première classe implémentant des opérations a tester. Nous avons commencé par la méthode \textit{delMessage} qui permet a un \textbf{Moderator} de supprimer un \textbf{Message} a condition que le numéro du message fasse partie de la liste des \textbf{Message}s du \textbf{BulletinBoard}.
+\textbf{BulletinBoard} a été la première classe implémentant des opérations à tester. Nous avons commencé par la méthode \textit{delMessage} qui permet a un \textbf{Moderator} de supprimer un \textbf{Message} à condition que le numéro du message fasse partie de la liste des \textbf{Message}s du \textbf{BulletinBoard}.
 
-Grâce au mock de \textbf{Message} et aux tests effectuer sur \textbf{User} et \textbf{Moderator}, nous avons pus constater le bon fonctionnement de cette méthode.
+Grâce au mock de \textbf{Message} et aux tests effectués sur \textbf{User} et \textbf{Moderator}, nous avons pu constater le bon fonctionnement de cette méthode.
 
 \subsection{Auction}
-Après le test de \textbf{ReserveAuction} (une autre classe ne contenant que des getters et des setters), nous sommes attaqués aux tests de \textbf{Auction}. Nous avons commencé par mocker \textbf{Bid}, puis nous avons testé les opérations les plus intéressante (\textit{minimumAmount()}), et nous avons mis en évidence l'absence de condition sur les setters, il est ainsi possible de fournir une date négative via la méthode \textit{setStartDate(int startDate)} et ceci paraît totalement autorisé par l'application.
+Après le test de \textbf{ReserveAuction} (une autre classe ne contenant que des getters et des setters), nous nous sommes attaqués aux tests de \textbf{Auction}. Nous avons commencé par "mocker" \textbf{Bid}, puis nous avons testé les opérations les plus intéressantes (\textit{minimumAmount()}), et nous avons mis en évidence l'absence de condition sur les setters, il est ainsi possible de fournir une date négative via la méthode \textit{setStartDate(int startDate)} et ceci paraît totalement autorisé par l'application.
 
 \section{Erreurs trouvées}
-Nous parlerons ici d'erreurs, même si sans spécifications il nous ai impossible de déterminer si un morceau de code est erroné où si nous avons été induit en erreur par un fonctionnement obscure.
+Nous parlerons ici d'erreurs, même si sans spécifications il nous est impossible de déterminer si un morceau de code est erroné ou si nous avons été induit en erreur par un fonctionnement obscur.
 \\ ~\\
 NOTE POUR MARCEAU: Il serait intéressant de rajouter dans le paragraphe ci-dessous le nom des tests permettant d'invalidés les méthodes cités ;)
 \\ ~ \\
-Nous avons tout d'abord pus constater que les méthodes \textit{createAuction} et \textit{createReservedAuction} de la classe \textbf{AuctionFactory}, sensé créer de objets, renvoyer toutes les deux \textit{null}. Ensuite, dans la classe \textbf{AuctionImpl}, la méthode \textit{getBidHistory}, la partie permettant d'ajouter le \textbf{Bid} aux résultats de la méthode est commenté, la chaîne de retour ainsi renvoyé sera donc toujours nulle. Enfin, toujours dans la même classe, la méthode \textit{minimumAmount} effectue une multiplication par 11 puis une division par 10, ce qui fausse ainsi le résultat désiré.
+Nous avons tout d'abord pu constater que les méthodes \textit{createAuction} et \textit{createReservedAuction} de la classe \textbf{AuctionFactory}, sensées créer des objets, renvoient toutes les deux \textit{null}. Ensuite, dans la classe \textbf{AuctionImpl}, la méthode \textit{getBidHistory}, la partie permettant d'ajouter le \textbf{Bid} aux résultats de la méthode est commenté, la chaîne de retour ainsi renvoyée sera donc toujours nulle. Enfin, toujours dans la même classe, la méthode \textit{minimumAmount} effectue une multiplication par 11 puis une division par 10, ce qui fausse ainsi le résultat désiré.
 
-Ces erreurs ont bien évidemment fait l'objet de tests mettant en évidence leur non fonctionnement.
+Ces erreurs ont fait l'objet de tests mettant en évidence leur non fonctionnement.
 
 \newpage
 \section*{Conclusion}
-Au final, nous avons pus effectuer nos tests en suivant notre stratégie d'intégration grâce à l'utilisation de mock fournit par la librairie \textit{EasyMock}. Malheureusement ne possédant aucune spécification sur l'application, ni de commentaires dans le code et sans la possibilité d'exécuter ce logiciel, il nous était impossible de vérifier le bon fonctionnement de cette application.
+Au final, nous avons pu effectuer nos tests en suivant notre stratégie d'intégration grâce à l'utilisation de mock fournit par la librairie \textit{EasyMock}. Malheureusement ne possédant aucune spécification sur l'application, ni de commentaires dans le code et sans la possibilité d'exécuter ce logiciel, il nous était impossible de vérifier le bon fonctionnement de cette application.
 
-Nous avons pus constater un certain manque de test lors du settage de certaines variables, ainsi que certaines opérations plutôt obscures (par exemple dans la méthode  \textit{AuctionImpl.minimumAmount()}il y a un return renvoyant un montant multiplier par 10 puis diviser par 11, il n'est expliqué nulle part pourquoi une telle opération est censé être nécessaire), mais sans savoir ce à quoi elle devait servir, ni comment elles avaient été pensé, nous n'avons pus les corriger.
+Nous avons pus constater un certain manque de test lors de l'initialisation de certaines variables, ainsi que certaines opérations plutôt obscures (par exemple dans la méthode  \textit{AuctionImpl.minimumAmount()}il y a un return renvoyant un montant multiplié par 10 puis divisé par 11, il n'est expliqué nulle part pourquoi une telle opération est sensée être nécessaire), mais sans savoir ce à quoi elles doivent servir, ni comment elles avaient été pensées, nous n'avons pu les corriger.
 
 
 \end{document}
