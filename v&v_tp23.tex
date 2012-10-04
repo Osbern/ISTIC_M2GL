@@ -21,6 +21,9 @@ Test d'intégration}
 
 \newpage
 \section*{Introduction}
+Dans ce TP, nous avons mis en place une stratégie d'intégration, permettant à partir d'un code que nous ne connaissons pas d'effectuer des tests de manière à valider les différentes classes au fur et à mesure. Nous avons donc utilisé des mocks pour simuler le fonctionnement des objets non testé, et ainsi validé le bon fonctionnement des classes dépendant de ces objets. Ainsi à chaque nouvelle classe testé et validé, il nous été possible de tester d'autres classes, pour enfin arriver au final à valider l'application dans sons ensemble.
+
+Pour ce faire, nous avons utilisé la librairie JUnit, permettant la création de test unitaire en Java, ainsi que la librairie EasyMock fournissant la possibilité de créer des Mocks, des objets permettant de simuler le fonctionnement de classe non encore testé.
 
 \newpage
 \section{Stratégie de test}
@@ -37,6 +40,15 @@ Grâce au mock de \textbf{Message} et aux tests effectuer sur \textbf{User} et \
 
 \subsection{Auction}
 Après le test de \textbf{ReserveAuction} (une autre classe ne contenant que des getters et des setters), nous sommes attaqués aux tests de \textbf{Auction}. Nous avons commencé par mocker \textbf{Bid}, puis nous avons testé les opérations les plus intéressante (\textit{minimumAmount()}), et nous avons mis en évidence l'absence de condition sur les setters, il est ainsi possible de fournir une date négative via la méthode \textit{setStartDate(int startDate)} et ceci paraît totalement autorisé par l'application.
+
+\section{Erreurs trouvées}
+Nous parlerons ici d'erreurs, même si sans spécifications il nous ai impossible de déterminer si un morceau de code est erroné où si nous avons été induit en erreur par un fonctionnement obscure.
+\\ ~\\
+NOTE POUR MARCEAU: Il serait intéressant de rajouter dans le paragraphe ci-dessous le nom des tests permettant d'invalidés les méthodes cités ;)
+\\ ~ \\
+Nous avons tout d'abord pus constater que les méthodes \textit{createAuction} et \textit{createReservedAuction} de la classe \textbf{AuctionFactory}, sensé créer de objets, renvoyer toutes les deux \textit{null}. Ensuite, dans la classe \textbf{AuctionImpl}, la méthode \textit{getBidHistory}, la partie permettant d'ajouter le \textbf{Bid} aux résultats de la méthode est commenté, la chaîne de retour ainsi renvoyé sera donc toujours nulle. Enfin, toujours dans la même classe, la méthode \textit{minimumAmount} effectue une multiplication par 11 puis une division par 10, ce qui fausse ainsi le résultat désiré.
+
+Ces erreurs ont bien évidemment fait l'objet de tests mettant en évidence leur non fonctionnement.
 
 \newpage
 \section*{Conclusion}
