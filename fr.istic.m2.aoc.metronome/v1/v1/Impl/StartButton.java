@@ -1,5 +1,7 @@
 package v1.Impl;
 
+import javax.swing.JButton;
+
 import v1.Interface.Observer;
 import v1.Interface.Subject;
 
@@ -7,9 +9,13 @@ import v1.Interface.Subject;
  * @(#) StartButton.java
  */
 
-public class StartButton implements Subject {
+public class StartButton extends JButton implements Subject {
 
 	private IHM ihm;
+	
+	public StartButton(){
+		super("Start");
+	}
 
 	@Override
 	public void attach(Observer o) {

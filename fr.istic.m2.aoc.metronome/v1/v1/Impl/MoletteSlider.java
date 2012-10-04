@@ -1,5 +1,8 @@
 package v1.Impl;
 
+import javax.swing.JButton;
+import javax.swing.JSlider;
+
 import v1.Interface.Observer;
 import v1.Interface.Subject;
 
@@ -7,9 +10,14 @@ import v1.Interface.Subject;
  * @(#) MoletteSlider.java
  */
 
-public class MoletteSlider implements Subject {
+public class MoletteSlider extends JSlider implements Subject {
 
 	private IHM ihm;
+	
+	public MoletteSlider(){
+		super();
+		this.setName("Tempo");
+	}
 
 	@Override
 	public void attach(Observer o) {

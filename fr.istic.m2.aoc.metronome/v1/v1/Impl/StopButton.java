@@ -1,5 +1,7 @@
 package v1.Impl;
 
+import javax.swing.JButton;
+
 import v1.Interface.Observer;
 import v1.Interface.Subject;
 
@@ -7,9 +9,12 @@ import v1.Interface.Subject;
  * @(#) StopButton.java
  */
 
-public class StopButton implements Subject {
+public class StopButton extends JButton implements Subject  {
 	private IHM ihm;
 
+	public StopButton(){
+		super("Stop");
+	}
 	@Override
 	public void attach(Observer o) {
 		// TODO Auto-generated method stub

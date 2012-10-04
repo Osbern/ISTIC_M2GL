@@ -1,5 +1,7 @@
 package v1.Impl;
 
+import javax.swing.JButton;
+
 import v1.Interface.Observer;
 import v1.Interface.Subject;
 
@@ -7,10 +9,15 @@ import v1.Interface.Subject;
  * @(#) IncButton.java
  */
 
-public class IncButton implements Subject {
+public class IncButton extends JButton implements Subject {
 
 	private IHM ihm;
 
+	public IncButton(){
+		super("Inc");
+	}
+
+	
 	@Override
 	public void attach(Observer o) {
 		// TODO Auto-generated method stub
