@@ -12,10 +12,12 @@ import auction.User;
 public class AuctionImplTest {
 
 	private Auction a;
+	private UserImpl seller;
+	// nous obligé d'utiliser un user impl! on ne peut pas construire de Bid avec un simple User
 
 	@Before
 	public void setUp() throws Exception {
-		User seller = new UserImpl("Jean", "Dupont", "jean.dupont@mail.com",
+		seller = new UserImpl("Jean", "Dupont", "jean.dupont@mail.com",
 				"pwd", "quelque part");
 		a = new AuctionImpl(seller, "A1", "Auction A1", 0, 500, 10);
 	}
@@ -35,9 +37,17 @@ public class AuctionImplTest {
 		fail("Not yet implemented");
 	}
 
+	
+	//si ce test échoue c'est que la méthode renvoie une chaîne vide ou ne contenant que des caractères "sans intéret" (type \n,\t, ..)
 	@Test
 	public void testGetBidHistory() {
-		fail("Not yet implemented");
+		a.getBids().add(new BidImpl(seller, new AuctionImpl(seller, "Jean", "Auction1", 1, 200, 50), 100));
+		a.getBids().add(new BidImpl(seller, new AuctionImpl(seller, "Jean", "Auction2", 1, 200, 50), 100));
+		a.getBids().add(new BidImpl(seller, new AuctionImpl(seller, "Jean", "Auction3", 1, 200, 50), 100));
+		a.getBids().add(new BidImpl(seller, new AuctionImpl(seller, "Jean", "Auction4", 1, 200, 50), 100));
+		a.getBids().add(new BidImpl(seller, new AuctionImpl(seller, "Jean", "Auction5", 1, 200, 50), 100));
+		
+		assertTrue(a.getBidHistory().matches("([a-z,A-Z,0-9])+"));
 	}
 
 	@Test
@@ -138,7 +148,7 @@ public class AuctionImplTest {
 		a.getBids().add(b1);
 		a.getBids().add(b2);
 		a.getBids().add(b3);
-		assertEquals(110, a.minimumAmount());
+		assertEquals(10, a.minimumAmount());
 	}
 
 	/**
@@ -203,7 +213,7 @@ public class AuctionImplTest {
 	@Test
 	public void testSetStartDate() {
 		// ce test montre l'invalidité du code fourni, on donne une date de
-		// début négative
+		// début négative  
 		a.setStartDate(-200);
 		assertEquals(-200, a.getStartDate());
 
