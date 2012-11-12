@@ -1,36 +1,25 @@
 package v1.Impl;
 
-import javax.swing.JButton;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import v1.Interface.Observer;
-import v1.Interface.Subject;
+import javax.swing.JButton;
 
 /**
  * @(#) StopButton.java
  */
 
-public class StopButton extends JButton implements Subject  {
-	private IHM ihm;
+public class StopButton extends JButton {
 
-	public StopButton(){
+	public StopButton(final IHM ihm){
 		super("Stop");
-	}
-	@Override
-	public void attach(Observer o) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void detach(Observer o) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void notifyObs() {
-		// TODO Auto-generated method stub
-
+		
+		addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ihm.stop();
+			}
+		});
 	}
 
 }

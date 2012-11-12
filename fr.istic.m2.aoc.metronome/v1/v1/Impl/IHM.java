@@ -40,7 +40,7 @@ public class IHM extends JFrame {
 		this.ctl = ctl;
 		h = new HorlogeImpl();
 		bzzr = new Buzzer();
-		stopBtn = new StopButton();
+		stopBtn = new StopButton(this);
 		startBtn = new StartButton(this);
 		decBtn = new DecButton();
 		incBtn = new IncButton();
@@ -95,5 +95,9 @@ public class IHM extends JFrame {
 	
 	public void start() {
 		ctl.start();
+	}
+	
+	public void stop() {
+		ctl.stop();
 	}
 }

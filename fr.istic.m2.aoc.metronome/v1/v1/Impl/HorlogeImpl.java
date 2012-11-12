@@ -31,6 +31,9 @@ public class HorlogeImpl implements Horloge {
 	
 	public void desactiver() {
 		timer.stop();
+		for (ActionListener al : timer.getActionListeners()) {
+			timer.removeActionListener(al);
+		}
 	}
 	
 	private class TimerListener implements ActionListener {

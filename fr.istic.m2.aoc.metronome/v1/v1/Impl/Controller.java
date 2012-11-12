@@ -1,13 +1,11 @@
 package v1.Impl;
 
-import v1.Interface.Observer;
-import v1.Interface.Subject;
 
 /**
  * @(#) Controller.java
  */
 
-public class Controller implements Observer {
+public class Controller {
 	
 	private IHM ihm;
 	private Moteur mot;
@@ -30,15 +28,16 @@ public class Controller implements Observer {
 	public void tocTemps() {
 		ihm.notifyTemps();
 	}
-
-	@Override
-	public void update(Subject s) {
-		
-	}
 	
 	public void start() {
 		if (!mot.getEtatMarche()) {
 			mot.setEnMarche(true);
+		}
+	}
+	
+	public void stop() {
+		if (mot.getEtatMarche()) {
+			mot.setEnMarche(false);
 		}
 	}
 }
