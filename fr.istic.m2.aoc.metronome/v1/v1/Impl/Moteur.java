@@ -56,6 +56,8 @@ public class Moteur {
 		if (enMarche) {
 			int delay = 1000 / (((int) tempo) / 60);
 			timer.activerPeriodiquement(new Toc(this), delay);
+		} else {
+			timer.desactiver();
 		}
 	}
 
@@ -75,5 +77,9 @@ public class Moteur {
 
 	public float getTempo() {
 		return tempo;
+	}
+	
+	public boolean getEtatMarche() {
+		return enMarche;
 	}
 }

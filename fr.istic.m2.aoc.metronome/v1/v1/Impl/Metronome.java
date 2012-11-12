@@ -13,18 +13,20 @@ public class Metronome {
 	public static void main(String[] args) {
 		Controller ctl = new Controller();
 		Moteur mot = new Moteur();
+		
+		IHM ihm = new IHM(ctl);
 		Command tocTemps = new TocTemps(ctl);
 		Command tocMesure = new TocMesure(ctl);
 		
 		ctl.setMoteur(mot);
+		ctl.setIHM(ihm);
+		
 		mot.setController(ctl);
 		mot.setTocTemps(tocTemps);
 		mot.setTocMesure(tocMesure);
-		
 		mot.setTempo(120);
-		mot.setEnMarche(true);
 
-		IHM ihm = new IHM();
+		mot.setEnMarche(false);
 	}
 
 }

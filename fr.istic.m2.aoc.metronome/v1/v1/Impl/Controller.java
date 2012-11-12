@@ -13,24 +13,32 @@ public class Controller implements Observer {
 	private Moteur mot;
 	
 	public Controller() {
-	
 	}
 	
 	public void setMoteur(Moteur mot) {
 		this.mot = mot;
 	}
 	
+	public void setIHM(IHM ihm) {
+		this.ihm = ihm;
+	}
+	
 	public void tocMesure() {
-		System.out.print(" ");
+		ihm.notifyMesure();
 	}
 	
 	public void tocTemps() {
-		System.out.print("|");
+		ihm.notifyTemps();
 	}
 
 	@Override
 	public void update(Subject s) {
 		
 	}
-
+	
+	public void start() {
+		if (!mot.getEtatMarche()) {
+			mot.setEnMarche(true);
+		}
+	}
 }

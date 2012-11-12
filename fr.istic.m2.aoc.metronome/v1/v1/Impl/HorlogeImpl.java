@@ -10,11 +10,9 @@ import v1.Interface.Horloge;
 
 public class HorlogeImpl implements Horloge {
 	
-	private Moteur mot;
 	private Timer timer;
 	
 	public HorlogeImpl() {
-		mot = null;
 		timer = new Timer(0, null);
 		timer.stop();
 	}

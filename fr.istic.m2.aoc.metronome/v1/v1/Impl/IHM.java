@@ -3,27 +3,24 @@ package v1.Impl;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.ComponentOrientation;
-import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
-import java.util.Map;
-import java.util.TreeMap;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
+
+import v1.Interface.Horloge;
 
 /**
  * @(#) IHM.java
  */
 
-public class IHM extends JFrame{
+public class IHM extends JFrame {
 
 	private Controller ctl;
+	private Horloge h;
 	private Buzzer bzzr;
 	
 	private StartButton startBtn;
@@ -39,17 +36,18 @@ public class IHM extends JFrame{
 	private Led ledMesure;
 	private JPanel barreDeBouttons;
 
-	public IHM() {
-		ctl = new Controller();
+	public IHM(Controller ctl) {
+		this.ctl = ctl;
+		h = new HorlogeImpl();
 		bzzr = new Buzzer();
 		stopBtn = new StopButton();
-		startBtn = new StartButton();
+		startBtn = new StartButton(this);
 		decBtn = new DecButton();
 		incBtn = new IncButton();
 		moletteSldr = new MoletteSlider();
 		aff = new Afficheur();
-		ledTemps = new Led(Color.GREEN);
-		ledMesure = new Led(Color.RED);
+		ledTemps = new Led(Color.GREEN, h);
+		ledMesure = new Led(Color.RED, h);
 		
 		
 		this.setPreferredSize(new Dimension(300, 150));
@@ -87,8 +85,15 @@ public class IHM extends JFrame{
 		this.pack();
 	}
 	
-	public static void main(String[] args) {
-		new IHM();
+	public void notifyTemps() {
+		ledTemps.update();
 	}
-
+	
+	public void notifyMesure() {
+		ledMesure.update();
+	}
+	
+	public void start() {
+		ctl.start();
+	}
 }
