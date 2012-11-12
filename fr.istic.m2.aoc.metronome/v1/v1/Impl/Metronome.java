@@ -1,7 +1,5 @@
 package v1.Impl;
 
-import javax.swing.JFrame;
-
 import v1.Interface.Command;
 
 public class Metronome {
@@ -25,6 +23,7 @@ public class Metronome {
 		mot.setTocTemps(tocTemps);
 		mot.setTocMesure(tocMesure);
 		mot.setTempo(120);
+		mot.setMesure(3);
 
 		mot.setEnMarche(false);
 	}

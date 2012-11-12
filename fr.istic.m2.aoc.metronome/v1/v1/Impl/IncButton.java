@@ -1,5 +1,8 @@
 package v1.Impl;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 
 /**
@@ -8,9 +11,14 @@ import javax.swing.JButton;
 
 public class IncButton extends JButton {
 
-	private IHM ihm;
-
-	public IncButton(){
+	public IncButton(final IHM ihm){
 		super("Inc");
+		
+		addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ihm.inc();
+			}
+		});
 	}
 }

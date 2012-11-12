@@ -1,10 +1,15 @@
 package v1.Impl;
 
+import java.awt.Toolkit;
+
 /**
  * @(#) Buzzer.java
  */
 
 public class Buzzer {
-	private IHM ihm;
+	
+	public void update() {
+		Toolkit.getDefaultToolkit().beep();
+	}
 
 }

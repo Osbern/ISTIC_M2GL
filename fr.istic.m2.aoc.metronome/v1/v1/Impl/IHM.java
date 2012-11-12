@@ -20,7 +20,6 @@ import v1.Interface.Horloge;
 public class IHM extends JFrame {
 
 	private Controller ctl;
-	private Horloge h;
 	private Buzzer bzzr;
 	
 	private StartButton startBtn;
@@ -38,17 +37,16 @@ public class IHM extends JFrame {
 
 	public IHM(Controller ctl) {
 		this.ctl = ctl;
-		h = new HorlogeImpl();
 		bzzr = new Buzzer();
 		stopBtn = new StopButton(this);
 		startBtn = new StartButton(this);
-		decBtn = new DecButton();
-		incBtn = new IncButton();
+		decBtn = new DecButton(this);
+		incBtn = new IncButton(this);
 		moletteSldr = new MoletteSlider();
 		aff = new Afficheur();
-		ledTemps = new Led(Color.GREEN, h);
-		ledMesure = new Led(Color.RED, h);
-		
+		ledTemps = new Led(Color.GREEN);
+		ledMesure = new Led(Color.RED);
+	
 		
 		this.setPreferredSize(new Dimension(300, 150));
 		this.setVisible(true);
@@ -87,6 +85,7 @@ public class IHM extends JFrame {
 	
 	public void notifyTemps() {
 		ledTemps.update();
+		bzzr.update();
 	}
 	
 	public void notifyMesure() {
@@ -99,5 +98,13 @@ public class IHM extends JFrame {
 	
 	public void stop() {
 		ctl.stop();
+	}
+	
+	public void inc() {
+		ctl.inc();
+	}
+	
+	public void dec() {
+		ctl.dec();
 	}
 }

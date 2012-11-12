@@ -58,6 +58,7 @@ public class Moteur {
 			timer.activerPeriodiquement(new Toc(this), delay);
 		} else {
 			timer.desactiver();
+			t = 0;
 		}
 	}
 
@@ -77,6 +78,15 @@ public class Moteur {
 
 	public float getTempo() {
 		return tempo;
+	}
+	
+	public void setMesure(int mesure) {
+		if (mesure >= 2 && mesure <= 7)
+			this.mesure = mesure;
+	}
+	
+	public int getMesure() {
+		return mesure;
 	}
 	
 	public boolean getEtatMarche() {

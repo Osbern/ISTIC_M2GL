@@ -40,4 +40,12 @@ public class Controller {
 			mot.setEnMarche(false);
 		}
 	}
+	
+	public void inc() {
+		mot.setMesure(mot.getMesure() + 1);
+	}
+	
+	public void dec() {
+		mot.setMesure(mot.getMesure() - 1);
+	}
 }

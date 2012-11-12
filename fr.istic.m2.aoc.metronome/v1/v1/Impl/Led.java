@@ -2,7 +2,6 @@ package v1.Impl;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
@@ -12,9 +11,9 @@ public class Led extends JPanel {
 	
 	private Horloge h;
 
-	public Led(Color c, Horloge h) {
+	public Led(Color c) {
 		super();
-		this.h = h;
+		h = new HorlogeImpl();
 		Dimension dimension = new Dimension(50, 50);
 		this.setPreferredSize(dimension);
 		this.setSize(dimension);
