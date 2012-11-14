@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.ComponentOrientation;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -37,6 +38,7 @@ public class IHM extends JFrame {
 	private JPanel barreDeBouttons;
 	
 	private int tempo;
+	private JPanel zoneDuCentre;
 
 	public IHM(Controller ctl) {
 		this.ctl = ctl;
@@ -64,16 +66,21 @@ public class IHM extends JFrame {
 		barreDeBouttons.add(stopBtn);
 		barreDeBouttons.add(incBtn);
 		barreDeBouttons.add(decBtn);
-		
 		this.add(barreDeBouttons, BorderLayout.SOUTH);
 		
 		
+		zoneDuCentre = new JPanel();
+		zoneDuCentre.setLayout(new GridLayout(1, 3));
+		zoneDuCentre.add(ledTemps);
+		zoneDuCentre.add(aff);
+		zoneDuCentre.add(ledMesure);
+
+		
+		this.add(zoneDuCentre, BorderLayout.CENTER);
 		this.add(moletteSldr, BorderLayout.NORTH);
 		
-		this.add(ledTemps, BorderLayout.WEST);
-		this.add(ledMesure, BorderLayout.EAST);
 		
-		this.add(aff, BorderLayout.CENTER);
+		
 		
 		this.addWindowListener(new WindowAdapter() {
 			@Override
@@ -82,6 +89,8 @@ public class IHM extends JFrame {
 				System.exit(0);
 			}
 		});
+		
+	
 		
 		this.pack();
 	}
