@@ -14,7 +14,7 @@ public class Moteur {
 	private Command tocTemps, tocMesure;
 	private boolean enMarche;
 	private int mesure, t;
-	private int tempo;
+	private float tempo;
 
 	
 	public Moteur() {
@@ -49,12 +49,16 @@ public class Moteur {
 			t = 0;
 		}
 	}
+	
+	public boolean getEtatMarche() {
+		return enMarche;
+	}
 
 	public void setEnMarche(boolean actif) {
 		enMarche = actif;
 		
 		if (enMarche) {
-			int delay = 1000 / (((int) tempo) / 60);
+			float delay = 1000 / (tempo / 60);
 			timer.activerPeriodiquement(new Toc(this), delay);
 		} else {
 			timer.desactiver();
@@ -73,7 +77,9 @@ public class Moteur {
 	}
 
 	public void setTempo(float tempo) {
-		this.tempo = (int) tempo;
+		this.tempo = tempo;
+		//setEnMarche(false);
+		//setEnMarche(true);
 	}
 
 	public float getTempo() {
@@ -87,9 +93,5 @@ public class Moteur {
 	
 	public int getMesure() {
 		return mesure;
-	}
-	
-	public boolean getEtatMarche() {
-		return enMarche;
 	}
 }

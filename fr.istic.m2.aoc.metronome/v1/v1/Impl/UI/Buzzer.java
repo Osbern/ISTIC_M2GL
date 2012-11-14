@@ -1,4 +1,4 @@
-package v1.Impl.IHM;
+package v1.Impl.UI;
 
 import java.awt.Toolkit;
 

@@ -1,6 +1,6 @@
 package v1.Impl;
 
-import v1.Impl.IHM.IHM;
+import v1.Impl.UI.IHM;
 
 
 /**

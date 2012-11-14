@@ -1,4 +1,4 @@
-package v1.Impl.IHM;
+package v1.Impl.UI;
 
 import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
@@ -18,7 +18,6 @@ public class MoletteSlider extends JSlider {
 		this.setValue(120);
 		
 		this.addChangeListener(new ChangeListener() {
-			
 			@Override
 			public void stateChanged(ChangeEvent e) {
 				ihm.tempoHasChanged(getValue());

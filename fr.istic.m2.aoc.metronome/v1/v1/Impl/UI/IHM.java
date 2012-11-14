@@ -1,4 +1,4 @@
-package v1.Impl;
+package v1.Impl.UI;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -11,6 +11,7 @@ import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import v1.Impl.Controller;
 import v1.Interface.Horloge;
 
 /**
@@ -34,6 +35,8 @@ public class IHM extends JFrame {
 	private Led ledTemps;
 	private Led ledMesure;
 	private JPanel barreDeBouttons;
+	
+	private int tempo;
 
 	public IHM(Controller ctl) {
 		this.ctl = ctl;
@@ -42,16 +45,16 @@ public class IHM extends JFrame {
 		startBtn = new StartButton(this);
 		decBtn = new DecButton(this);
 		incBtn = new IncButton(this);
-		moletteSldr = new MoletteSlider();
-		aff = new Afficheur();
+		moletteSldr = new MoletteSlider(this);
+		aff = new Afficheur(this);
 		ledTemps = new Led(Color.GREEN);
 		ledMesure = new Led(Color.RED);
-	
+		
+		tempoHasChanged(moletteSldr.getValue());
 		
 		this.setPreferredSize(new Dimension(300, 150));
 		this.setVisible(true);
 		this.setLayout(new BorderLayout());
-		
 		
 		
 		barreDeBouttons = new JPanel();
@@ -100,11 +103,21 @@ public class IHM extends JFrame {
 		ctl.stop();
 	}
 	
-	public void inc() {
+	public void incMesure() {
 		ctl.inc();
 	}
 	
-	public void dec() {
+	public void decMesure() {
 		ctl.dec();
+	}
+	
+	public void tempoHasChanged(int newTempo){
+		tempo = newTempo;
+		aff.setText(tempo + " bpm");
+		ctl.setTempo(tempo);
+	}
+
+	public int getTempo() {
+		return tempo;
 	}
 }

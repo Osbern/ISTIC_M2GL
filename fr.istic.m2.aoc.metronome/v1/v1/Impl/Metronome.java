@@ -1,6 +1,6 @@
 package v1.Impl;
 
-import v1.Impl.IHM.IHM;
+import v1.Impl.UI.IHM;
 import v1.Interface.Command;
 
 public class Metronome {
@@ -13,20 +13,20 @@ public class Metronome {
 		Controller ctl = new Controller();
 		Moteur mot = new Moteur();
 		
-		IHM ihm = new IHM(ctl);
+		ctl.setMoteur(mot);
+		
 		Command tocTemps = new TocTemps(ctl);
 		Command tocMesure = new TocMesure(ctl);
-		
-		ctl.setMoteur(mot);
-		ctl.setIHM(ihm);
 		
 		mot.setController(ctl);
 		mot.setTocTemps(tocTemps);
 		mot.setTocMesure(tocMesure);
 		mot.setTempo(120);
-		mot.setMesure(3);
-
+		mot.setMesure(4);
 		mot.setEnMarche(false);
+		
+		IHM ihm = new IHM(ctl);
+		ctl.setIHM(ihm);
 	}
 
 }

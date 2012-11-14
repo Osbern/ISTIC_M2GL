@@ -1,4 +1,4 @@
-package v1.Impl;
+package v1.Impl.UI;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -6,20 +6,19 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 /**
- * @(#) StopButton.java
+ * @(#) IncButton.java
  */
 
-public class StopButton extends JButton {
+public class IncButton extends JButton {
 
-	public StopButton(final IHM ihm){
-		super("Stop");
+	public IncButton(final IHM ihm){
+		super("Inc");
 		
 		addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ihm.stop();
+				ihm.incMesure();
 			}
 		});
 	}
-
 }
