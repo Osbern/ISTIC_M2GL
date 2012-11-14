@@ -1,5 +1,7 @@
 package v1.Impl;
 
+import v1.Impl.IHM.IHM;
+
 
 /**
  * @(#) Controller.java
@@ -47,5 +49,9 @@ public class Controller {
 	
 	public void dec() {
 		mot.setMesure(mot.getMesure() - 1);
+	}
+
+	public void setTempo(int tempo) {
+		mot.setTempo(tempo);
 	}
 }
