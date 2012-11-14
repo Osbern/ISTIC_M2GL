@@ -78,8 +78,11 @@ public class Moteur {
 
 	public void setTempo(float tempo) {
 		this.tempo = tempo;
-		//setEnMarche(false);
-		//setEnMarche(true);
+		if (enMarche) {
+			timer.desactiver();
+			float delay = 1000 / (tempo / 60);
+			timer.activerPeriodiquement(new Toc(this), delay);
+		}
 	}
 
 	public float getTempo() {
