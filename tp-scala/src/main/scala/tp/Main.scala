@@ -27,8 +27,8 @@ object Main extends App {
   println(IntList(1, 2, 3, 4).fold(1, (x, y) => x * y))
   
   val cachedOpower = new OPower with Cache
-  println(cachedOpower.energy("julien"))
-  println(cachedOpower.energy("julien"))
-  
+  for(i <- 0 to 1000000){
+  println(i+":\t"+cachedOpower.energy("julien"))
+  }
 
 }
