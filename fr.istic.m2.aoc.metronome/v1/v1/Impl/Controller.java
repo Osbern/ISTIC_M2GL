@@ -62,4 +62,8 @@ public class Controller {
 	public void setTempo(int tempo) {
 		mot.setTempo(tempo);
 	}
+
+	public int getMesure() {
+		return mot.getMesure();
+	}
 }

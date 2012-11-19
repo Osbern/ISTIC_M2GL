@@ -2,6 +2,7 @@ package v1.Impl.UI;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.ComponentOrientation;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -39,6 +40,7 @@ public class IHM extends JFrame {
 
 	private int tempo;
 	private JPanel zoneDuCentre;
+	private Afficheur affMesure;
 
 	public IHM(final Controller ctl) {
 		this.ctl = ctl;
@@ -51,6 +53,7 @@ public class IHM extends JFrame {
 		aff = new Afficheur(this);
 		ledTemps = new Led(Color.GREEN);
 		ledMesure = new Led(Color.RED);
+		affMesure = new Afficheur(this);
 
 		tempoHasChanged(moletteSldr.getValue());
 
@@ -64,6 +67,7 @@ public class IHM extends JFrame {
 				.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		barreDeBouttons.add(startBtn);
 		barreDeBouttons.add(stopBtn);
+		barreDeBouttons.add(affMesure);
 		barreDeBouttons.add(incBtn);
 		barreDeBouttons.add(decBtn);
 		this.add(barreDeBouttons, BorderLayout.SOUTH);
@@ -107,10 +111,12 @@ public class IHM extends JFrame {
 
 	public void incMesure() {
 		ctl.inc();
+		affMesure.setText(""+ctl.getMesure());
 	}
 
 	public void decMesure() {
 		ctl.dec();
+		affMesure.setText(""+ctl.getMesure());
 	}
 
 	public void tempoHasChanged(int newTempo) {
