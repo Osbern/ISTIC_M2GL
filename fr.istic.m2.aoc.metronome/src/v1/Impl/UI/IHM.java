@@ -13,6 +13,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import v1.Impl.Controller;
+import v1.Impl.HorlogeImpl;
+import v2.Adaptor.Horloge;
 
 /**
  * @(#) IHM.java
@@ -49,8 +51,11 @@ public class IHM extends JFrame {
 		incBtn = new IncButton(this);
 		moletteSldr = new MoletteSlider(this);
 		aff = new Afficheur(this);
-		ledTemps = new Led(Color.GREEN);
-		ledMesure = new Led(Color.RED);
+		
+		Horloge h = new HorlogeImpl();
+		ledTemps = new Led(Color.GREEN, h);
+		ledMesure = new Led(Color.RED,h );
+		
 		affMesure = new Afficheur(this);
 
 		tempoHasChanged(moletteSldr.getValue());
@@ -91,12 +96,12 @@ public class IHM extends JFrame {
 	}
 
 	public void notifyTemps() {
-		ledTemps.update();
+		ledTemps.update(Led.LEDTEMPS);
 		bzzr.update();
 	}
 
 	public void notifyMesure() {
-		ledMesure.update();
+		ledMesure.update(Led.LEDMESURE);
 	}
 
 	public void start() {
