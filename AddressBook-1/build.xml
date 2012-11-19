@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="AddressBook" default="dist" basedir=".">
+    <description>
+        Build the AddressBook demo application.
+    </description>
+    <!-- set global properties for this build -->
+    <property name="src" location="src"/>
+    <property name="lib" location="lib"/>
+    <property name="build" location="build"/>
+    <property name="build.classes" location="${build}/classes"/>
+    <property name="build.lib" location="${build}/lib"/>
+    <property name="dist"  location="dist"/>
+    <property name="dist.lib" location="${dist}/lib"/>
+  
+    <target name="clean" description="clean up" >
+        <!-- Delete the ${build} and ${dist} directory trees -->
+        <delete dir="${build}"/>
+        <delete dir="${dist}"/>
+    </target>
+    
+    <target name="init">
+        <!-- Create the build directory structure used by compile -->
+        <mkdir dir="${build.classes}" />
+        <mkdir dir="${build.lib}" />
+    </target>
+
+    <target name="compile" depends="init" description="compile the source " >
+        <!-- Compile the java code from ${src} into ${build} -->
+        <javac classpath="${lib}" srcdir="${src}" destdir="${build.classes}" excludes="**/*.form,**/*.gif, **/*.png, **/*.jar" />
+
+        <!-- Move resources from ${src} into ${build} -->
+        <copy todir="${build.classes}" >
+            <fileset dir="${src}" includes="**/*.properties" />
+            <fileset dir="${src}" includes="**/*.gif" />
+        </copy>
+        
+        <copy todir="${build.lib}" >
+            <fileset dir="${lib}" includes="**/*.jar" />
+        </copy>
+    </target>
+    
+    <target name="dist" depends="compile"
+        description="generate the distribution" >
+        <!-- Create the distribution directory -->
+        <mkdir dir="${dist}"/>
+
+        <!-- Put everything in ${build} into the DesktopDemo.jar file -->
+        <jar jarfile="${dist}/AddressBook.jar" basedir="${build}/classes" manifest="manifest.mf"/>
+        
+        <copy todir="${dist.lib}">
+            <fileset dir="${build.lib}" includes="**/*.jar"/> 
+        </copy>
+    </target>
+
+    <target name="run" depends="dist" description="run AddressBook">
+        <java jar="${dist}/AddressBook.jar" fork="true" />
+    </target>
+
+</project>
