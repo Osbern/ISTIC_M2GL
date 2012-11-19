@@ -57,6 +57,8 @@ public class IHM extends JFrame {
 		ledMesure = new Led(Color.RED,h );
 		
 		affMesure = new Afficheur(this);
+		affMesure.setText(""+ctl.getMesure());
+
 
 		tempoHasChanged(moletteSldr.getValue());
 
@@ -146,5 +148,9 @@ public class IHM extends JFrame {
 
 	public void desactiverDec() {
 		decBtn.setEnabled(false);
+	}
+
+	public void tempoHasChanging(int value) {
+		aff.setText(value + " bpm");
 	}
 }
