@@ -2,7 +2,6 @@ package v1.Impl.UI;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.ComponentOrientation;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -14,7 +13,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import v1.Impl.Controller;
-import v1.Interface.Horloge;
 
 /**
  * @(#) IHM.java

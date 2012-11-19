@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 
 import v1.Impl.EteindreLed;
 import v1.Impl.HorlogeImpl;
-import v1.Interface.Horloge;
+import v2.Adaptor.Horloge;
 
 public class Led extends JPanel {
 	

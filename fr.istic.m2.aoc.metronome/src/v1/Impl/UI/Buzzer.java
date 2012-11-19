@@ -10,7 +10,7 @@ import java.awt.Toolkit;
 public class Buzzer {
 	
 	public Buzzer() {
-
+		
 	}
 
 	public void update() {
