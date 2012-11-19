@@ -79,14 +79,10 @@ public class IHM extends JFrame {
 		this.add(zoneDuCentre, BorderLayout.CENTER);
 		this.add(moletteSldr, BorderLayout.NORTH);
 		
-		
-		
-		
-		this.addWindowListener(new WindowAdapter() {
+		addWindowListener(new WindowAdapter() {
 			@Override
-			public void windowClosed(WindowEvent e) {
-				super.windowClosed(e);
-				ctl.stop();
+			public void windowClosing(WindowEvent e) {
+				super.windowClosing(e);
 				System.exit(0);
 			}
 		});
@@ -98,7 +94,7 @@ public class IHM extends JFrame {
 	
 	public void notifyTemps() {
 		ledTemps.update();
-		//bzzr.update();
+		bzzr.update();
 	}
 	
 	public void notifyMesure() {

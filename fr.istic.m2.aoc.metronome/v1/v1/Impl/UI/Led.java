@@ -29,5 +29,4 @@ public class Led extends JPanel {
 		this.repaint();
 		h.activerApresDelai(new EteindreLed(this), 100);
 	}
-
 }
