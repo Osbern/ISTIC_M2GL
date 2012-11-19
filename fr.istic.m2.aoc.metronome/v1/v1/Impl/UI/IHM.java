@@ -40,7 +40,7 @@ public class IHM extends JFrame {
 	private int tempo;
 	private JPanel zoneDuCentre;
 
-	public IHM(Controller ctl) {
+	public IHM(final Controller ctl) {
 		this.ctl = ctl;
 		bzzr = new Buzzer();
 		stopBtn = new StopButton(this);
@@ -86,6 +86,7 @@ public class IHM extends JFrame {
 			@Override
 			public void windowClosed(WindowEvent e) {
 				super.windowClosed(e);
+				ctl.stop();
 				System.exit(0);
 			}
 		});
@@ -97,7 +98,7 @@ public class IHM extends JFrame {
 	
 	public void notifyTemps() {
 		ledTemps.update();
-		bzzr.update();
+		//bzzr.update();
 	}
 	
 	public void notifyMesure() {
