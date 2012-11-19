@@ -45,10 +45,18 @@ public class Controller {
 	
 	public void inc() {
 		mot.setMesure(mot.getMesure() + 1);
+		ihm.activerDec();
+		if(mot.getMesure() >= 7){
+			ihm.desactiverInc();
+		}
 	}
 	
 	public void dec() {
+		ihm.activerInc();
 		mot.setMesure(mot.getMesure() - 1);
+		if(mot.getMesure()<=2){
+			ihm.desactiverDec();
+		}
 	}
 
 	public void setTempo(int tempo) {

@@ -23,20 +23,20 @@ public class IHM extends JFrame {
 
 	private Controller ctl;
 	private Buzzer bzzr;
-	
+
 	private StartButton startBtn;
 	private StopButton stopBtn;
-	
+
 	private DecButton decBtn;
 	private IncButton incBtn;
-	
+
 	private MoletteSlider moletteSldr;
-	
+
 	private Afficheur aff;
 	private Led ledTemps;
 	private Led ledMesure;
 	private JPanel barreDeBouttons;
-	
+
 	private int tempo;
 	private JPanel zoneDuCentre;
 
@@ -51,34 +51,32 @@ public class IHM extends JFrame {
 		aff = new Afficheur(this);
 		ledTemps = new Led(Color.GREEN);
 		ledMesure = new Led(Color.RED);
-		
+
 		tempoHasChanged(moletteSldr.getValue());
-		
+
 		this.setPreferredSize(new Dimension(300, 150));
 		this.setVisible(true);
 		this.setLayout(new BorderLayout());
-		
-		
+
 		barreDeBouttons = new JPanel();
 		barreDeBouttons.setLayout(new FlowLayout());
-		barreDeBouttons.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+		barreDeBouttons
+				.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		barreDeBouttons.add(startBtn);
 		barreDeBouttons.add(stopBtn);
 		barreDeBouttons.add(incBtn);
 		barreDeBouttons.add(decBtn);
 		this.add(barreDeBouttons, BorderLayout.SOUTH);
-		
-		
+
 		zoneDuCentre = new JPanel();
 		zoneDuCentre.setLayout(new GridLayout(1, 3));
 		zoneDuCentre.add(ledTemps);
 		zoneDuCentre.add(aff);
 		zoneDuCentre.add(ledMesure);
 
-		
 		this.add(zoneDuCentre, BorderLayout.CENTER);
 		this.add(moletteSldr, BorderLayout.NORTH);
-		
+
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
@@ -86,38 +84,36 @@ public class IHM extends JFrame {
 				System.exit(0);
 			}
 		});
-		
-	
-		
+
 		this.pack();
 	}
-	
+
 	public void notifyTemps() {
 		ledTemps.update();
 		bzzr.update();
 	}
-	
+
 	public void notifyMesure() {
 		ledMesure.update();
 	}
-	
+
 	public void start() {
 		ctl.start();
 	}
-	
+
 	public void stop() {
 		ctl.stop();
 	}
-	
+
 	public void incMesure() {
 		ctl.inc();
 	}
-	
+
 	public void decMesure() {
 		ctl.dec();
 	}
-	
-	public void tempoHasChanged(int newTempo){
+
+	public void tempoHasChanged(int newTempo) {
 		tempo = newTempo;
 		aff.setText(tempo + " bpm");
 		ctl.setTempo(tempo);
@@ -125,5 +121,21 @@ public class IHM extends JFrame {
 
 	public int getTempo() {
 		return tempo;
+	}
+
+	public void activerDec() {
+		decBtn.setEnabled(true);
+	}
+
+	public void desactiverInc() {
+		incBtn.setEnabled(false);
+	}
+
+	public void activerInc() {
+		incBtn.setEnabled(true);
+	}
+
+	public void desactiverDec() {
+		decBtn.setEnabled(false);
 	}
 }
