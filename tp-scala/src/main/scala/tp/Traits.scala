@@ -20,12 +20,13 @@ trait Cache extends OPower {
 
   override def energy(person: String) = {
     cache match {
-      case Some((t, b)) if (t.getTime() <= new Date().getTime() + 1000) => {
+      case Some((t, b)) if (t.getTime + 10000 > new Date().getTime ) => {
         b
       }
       case _ => {
+        val time = new Date()
         val e = super.energy(person)
-        cache = Some(new Date(), e)
+        cache = Some(time, e)
         e
       }
     }
