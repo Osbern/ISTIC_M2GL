@@ -1,0 +1,11 @@
+@(content: Html)
+
+@skel {
+    <div class="navbar">
+        <div class="navbar-inner">
+            <a class="brand" href="@controllers.routes.Application.askPvwatts">OPower</a>
+            <a class="navbar-text pull-right" href="@controllers.routes.Application.logout">Sign off</a>
+        </div>
+    </div>
+    @content
+}

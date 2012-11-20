@@ -1,0 +1,29 @@
+@(form: Form[(String, String)])
+
+@import views.form.HorizontalForm._
+@import util.Commons._
+
+@skel {
+
+    @helper.form(action = routes.Application.authenticate, 'class -> "form-horizontal") {
+
+        @if(form.hasGlobalErrors) {
+            <div class="control-group error">
+                <div class="controls">
+                    @for(error <- form.globalErrors) {
+                        <div class="help-block">@error.message</div>
+                    }
+                </div>
+            </div>
+        }
+
+        @helper.inputText(form("name"), 'placeholder -> "Clint Eastwood", '_label -> "Login")
+
+        @helper.inputPassword(form("pwd"), 'placeholder -> "********", '_label -> "Password")
+
+        <div class="controls">
+            <button type="submit" class="btn">Sign in</button>
+        </div>
+    }
+
+}
