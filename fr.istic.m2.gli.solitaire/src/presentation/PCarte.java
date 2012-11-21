@@ -28,7 +28,7 @@ public class PCarte extends JPanel {
 		this.controle = controle;
 
 		// image de la face
-		icone = new ImageIcon(ClassLoader.getSystemResource("cartesCSHD/"
+		icone = new ImageIcon(ClassLoader.getSystemResource("../cartesCSHD/"
 				+ chaine + ".gif"));
 		face = new JLabel(icone);
 		add(face);
@@ -74,7 +74,7 @@ public class PCarte extends JPanel {
 	 */
 	static {
 		iconeDos = new ImageIcon(
-				ClassLoader.getSystemResource("cartesCSHD/dos.jpg"));
+				ClassLoader.getSystemResource("../cartesCSHD/dos.jpg"));
 		largeur = iconeDos.getIconWidth() + 4;
 		hauteur = iconeDos.getIconHeight() + 4;
 	}
