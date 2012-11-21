@@ -1,0 +1,15 @@
+<!DOCTYPE dataset SYSTEM "data/dataset.dtd">
+<dataset>
+    <ADDRESS LASTNAME="CADAVID"
+    	FIRSTNAME="Juan"
+    	MIDDLENAME="Jose"
+    	PHONE="5742554391"
+    	EMAIL="Juan.Cadavid@inria.fr"
+    	ADDRESS1="11 Place du Colombier"
+    	ADDRESS2="Ap 7"
+    	CITY="Rennes"
+    	STATE="Bretagne"
+    	POSTALCODE="35000"
+    	COUNTRY="France"
+    	/> 
+</dataset>

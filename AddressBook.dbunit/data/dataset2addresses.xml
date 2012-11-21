@@ -1,0 +1,27 @@
+<!DOCTYPE dataset SYSTEM "data/dataset.dtd">
+<dataset>
+    <ADDRESS LASTNAME="CADAVID"
+    	FIRSTNAME="Juan"
+    	MIDDLENAME="Jose"
+    	PHONE="5742554391"
+    	EMAIL="Juan.Cadavid@inria.fr"
+    	ADDRESS1="11 Place du Colombier"
+    	ADDRESS2=""
+    	CITY="Rennes"
+    	STATE="Bretagne"
+    	POSTALCODE="35000"
+    	COUNTRY="France"
+    	/> 
+    <ADDRESS LASTNAME="LECRIVAIN"
+    	FIRSTNAME="Benoit"
+    	MIDDLENAME="Alexandre"
+    	PHONE="0225688722"
+    	EMAIL="benoit.lecrivain@hotmail.com"
+    	ADDRESS1="Chateau d Apigne"
+    	ADDRESS2="Porte 4"
+    	CITY="Apigne"
+    	STATE="Bretagne"
+    	POSTALCODE="35650"
+    	COUNTRY="France"
+    	/>
+</dataset>

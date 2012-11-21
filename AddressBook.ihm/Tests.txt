@@ -1,0 +1,11 @@
+SAMPLE TESTS
+Pass:
+1. All text fields should be disabled at application startup.
+2. All text fields should be enabled after clicking the new button.
+3. The button for delete should be enabled when there's a selected item in the list.
+
+Fail:
+The application has these bugs, so currently they don't pass. When they are fixed, they will pass.
+1. The Save button should not be enabled right after clicking the New button (since there's no data in the fields).
+2. The button for Delete should not be enabled where there isn't a selected item in the list. 
+

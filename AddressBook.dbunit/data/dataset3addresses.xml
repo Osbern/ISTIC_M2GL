@@ -1,0 +1,15 @@
+<!DOCTYPE dataset SYSTEM "data/dataset.dtd">
+<dataset>
+    <ADDRESS LASTNAME="Hello"
+    	FIRSTNAME="Little"
+    	MIDDLENAME="World"
+    	PHONE=""
+    	EMAIL="hello.world.com"
+    	ADDRESS1=""
+    	ADDRESS2=""
+    	CITY=""
+    	STATE=""
+    	POSTALCODE=""
+    	COUNTRY=""
+    	/>
+</dataset>
