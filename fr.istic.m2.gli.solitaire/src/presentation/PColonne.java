@@ -10,6 +10,7 @@ public class PColonne extends JPanel {
 	
 	private CColonne c;
 	private PTasDeCartes cachees, visibles;
+	
 
 	
 	public PColonne(CColonne c, PTasDeCartes cachees, PTasDeCartes visibles) {

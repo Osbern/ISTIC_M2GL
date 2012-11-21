@@ -15,10 +15,10 @@ public class Main {
 	public static void main(String[] args) {
 		
 		CUsine u = new CUsine();
-		Solitaire jeu = new Solitaire("Solitaire", u);
-		jeu.initialiser();
+		 Solitaire jeu = new Solitaire("Solitaire", u);
+		 jeu.initialiser();
 		
-		 
+		
 		
 		
 		
