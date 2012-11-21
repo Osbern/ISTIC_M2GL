@@ -1,12 +1,16 @@
 package presentation;
 
 import java.awt.Dimension;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.Transferable;
+import java.awt.datatransfer.UnsupportedFlavorException;
+import java.io.IOException;
 
 import javax.swing.JPanel;
 
 import controller.ICTasDeCartes;
 
-public class PTasDeCartes extends JPanel {
+public class PTasDeCartes extends JPanel implements Transferable {
 
 	private ICTasDeCartes cTas;
 	private int dx = 0;
@@ -44,5 +48,24 @@ public class PTasDeCartes extends JPanel {
 		this.setPreferredSize(getSize());
 		validate();
 		repaint();
+	}
+
+	@Override
+	public DataFlavor[] getTransferDataFlavors() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean isDataFlavorSupported(DataFlavor flavor) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Object getTransferData(DataFlavor flavor)
+			throws UnsupportedFlavorException, IOException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
