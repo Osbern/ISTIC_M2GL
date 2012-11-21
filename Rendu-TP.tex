@@ -28,28 +28,29 @@ Le but de ce TP est d’aborder le test d’Interface Homme-Machine. Pour ce fai
 \section{Tests effectués}
 
 \subsection{Tests demandés}
-
-1. All text fields should be disabled at application startup.
-2. All text fields should be enabled after clicking the new button.
-3. The button for delete should be enabled when there's a selected item in the list.
-4. The Save button should not be enabled right after clicking the New button (since there's no data in the fields). 
-5. The button for Delete should not be enabled where there isn't a selected item in the list.
-
+\begin{enumerate}
+\item All text fields should be disabled at application startup.
+\item All text fields should be enabled after clicking the new button.
+\item The button for delete should be enabled when there's a selected item in the list.
+\item The Save button should not be enabled right after clicking the New button (since there's no data in the fields). 
+\item The button for Delete should not be enabled where there isn't a selected item in the list.
+\end{enumerate}
 \subsection{Tests supplémentaires}
-
-lors de la saisie des données, entrer un '@' dans l'un des champs de texte fait planter l'application.	
-
-
+\begin{itemize}
+\item Lors de la saisie des données, entrer un '@' dans l'un des champs de texte fait planter l'application.	
+\item Lorsqu'aucun élément n'est selectionné, Edit et Delete sont désactivés.
+\item Lors d'une édition, si aucun des champs n'est mofifié, il est impossible de sauvegarder.
+\end{itemize}
 
 \section{Améliorations \& Corrections}
-
-Nous avons apporté de nombreuses modifications au niveau du comportement des boutons (actif/inactif) en fonction de l'état de l'application. 
-
-Par défaut (pas de séléction d'une fiche dans la liste) seul le bouton new est activé; lors d'une selection Edit et Delete s'activent.
-
-Cliquer sur Delete active les champs pour édition.
-
-New affiche une nouvelle fiche éditable; si tous les champs sont vide (ou s'ils sont remplis puis vidés) la sauvegarde n'est pas possible. Les bountons de suppression et d'édition sont désactivés lors de la saisie d'un contact.
+Nous avons apporté de nombreuses modifications au niveau du comportement des boutons (actif/inactif) en fonction de l'état de l'application.
+\begin{itemize}
+\item Par défaut (pas de séléction d'une fiche dans la liste) seul le bouton new est activé; lors d'une selection Edit et Delete s'activent.
+\item Cliquer sur Delete active les champs pour édition.
+\item New affiche une nouvelle fiche éditable; si tous les champs sont vide (ou s'ils sont remplis puis vidés) la sauvegarde n'est pas possible. 
+\item Les boutons de suppression et d'édition sont désactivés lors de la saisie d'un contact.
+\item Le bouton Save est désactivé si aucun champ n'est modifié lors d'une édition.
+\end{itemize}
 \newpage
 
 

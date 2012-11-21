@@ -3,3 +3,6 @@
 target/
 .metadata/
 .settings/
+*.aux
+*.log
+*.toc
