@@ -5,17 +5,38 @@ import java.awt.FlowLayout;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
+import solitaire.application.Solitaire;
+
 public class Main {
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		
+		CUsine u = new CUsine();
+		Solitaire jeu = new Solitaire("Solitaire", u);
+		jeu.initialiser();
+		
+		 
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		JFrame frame = new JFrame();
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		//frame.setLayout(new FlowLayout()); // au lieu de BorderLayout par défaut
 		
-		CUsine u = new CUsine();
 		CSabot cs = new CSabot("Sabot", u);
 		
 		CTasDeCartes ctdc = new CTasDeCartes("toto", u);
