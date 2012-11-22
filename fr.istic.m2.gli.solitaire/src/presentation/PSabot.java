@@ -1,5 +1,6 @@
 package presentation;
 
+import java.awt.FlowLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -17,8 +18,11 @@ public class PSabot extends JPanel {
 		this.cs = cs;
 		this.cachees = cachees;
 		this.visibles = visibles;
-		add(cachees);
-		add(visibles);
+		this.add(cachees);
+		this.add(visibles);
+		this.setSize(80+(20*26),120);
+		this.setPreferredSize(this.getSize());
+		this.setLayout(new FlowLayout(FlowLayout.LEADING));
 		
 		sl = new SabotListener();
 		setVisible(true);

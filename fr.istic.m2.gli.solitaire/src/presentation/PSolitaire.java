@@ -21,9 +21,8 @@ public class PSolitaire extends JFrame {
 	public static void main(String[] args) {
 
 		CUsine u = new CUsine();
-		Solitaire jeu = new Solitaire("Solitaire", u);
-		jeu.initialiser();
-		PSolitaire ps = new PSolitaire((CSolitaire) jeu);
+		CSolitaire jeu = new CSolitaire("Solitaire", u);
+		jeu.initialiser();		
 	}
 
 	/**
@@ -50,25 +49,32 @@ public class PSolitaire extends JFrame {
 		north.setLayout(nfl);
 		north.add(sabot.getPresentation());
 
-		north.add(new ComposantVide());
-
 		CTasDeCartesColorees[] piles = csolitaire.getPiles();
 		for (CTasDeCartesColorees t : piles) {
 			t.getPresentation().setVisible(true);
 			north.add(t.getPresentation());
 		}
-		north.setSize(50 + (4 * 90) + sabot.getPresentation().getWidth(), 110);
+		north.setSize(sabot.getPresentation().getWidth()+(4*piles[0].getPresentation().getWidth()+50), 150);
 		north.setPreferredSize(north.getSize());
 
+		
+		
 		JPanel center = new JPanel();
 		center.setLayout(new FlowLayout());
 		CColonne[] cols = csolitaire.getCols();
 		for (CColonne c : cols) {
 			c.getPresentation().setVisible(true);
-			center.add(c.getPresentation());
+			center.add(c.getPresentation(),0);
 		}
 
 		center.setSize(7 * 90, (7 * 25) + (12 * 25) + 100);
+		
+		
+		
+		
+		
+		
+		
 
 		board.add(north, BorderLayout.NORTH, 0);
 		center.setOpaque(false);
@@ -79,17 +85,8 @@ public class PSolitaire extends JFrame {
 		board.setPreferredSize(board.getSize());
 		board.setBackground(Color.RED);
 		board.setVisible(true);
+		validate();
 	}
 
-	class ComposantVide extends JPanel {
-		private static final long serialVersionUID = 1L;
-
-		ComposantVide() {
-			this.setSize(50, 50);
-			this.setPreferredSize(this.getSize());
-			Color tsp = new Color(0, 0, 0, 0);
-			this.setBackground(tsp);
-			this.setVisible(true);
-		}
-	}
+	
 }

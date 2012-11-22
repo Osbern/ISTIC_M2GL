@@ -1,5 +1,6 @@
 package presentation;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
@@ -24,6 +25,9 @@ public class PTasDeCartes extends JPanel implements Transferable {
 
 		this.setSize(new Dimension(80, 100));
 		this.setPreferredSize(getSize());
+		
+		this.setBackground(Color.GREEN);
+		
 		this.setVisible(true);
 	}
 	

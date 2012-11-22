@@ -6,14 +6,12 @@ import solitaire.application.Usine;
 
 public class CSolitaire extends Solitaire {
 
-	
 	private PSolitaire PS;
 
 	public CSolitaire(String arg0, Usine arg1) {
 		super(arg0, arg1);
-		
+
 	}
-	
 
 	public String getNom() {
 		return super.nom;
@@ -28,10 +26,7 @@ public class CSolitaire extends Solitaire {
 
 		for (int i = 0; i < super.pilesColorees.length; i++) {
 			res[i] = (CTasDeCartesColorees) super.pilesColorees[i];
-			System.err.println("***********Piles***************");
-			System.err.println(super.pilesColorees[i]);
-			System.err.println(res[i]);
-			System.err.println("******************************");
+
 		}
 
 		return res;
@@ -42,10 +37,7 @@ public class CSolitaire extends Solitaire {
 
 		for (int i = 0; i < super.pilesAlternees.length; i++) {
 			res[i] = (CColonne) super.pilesAlternees[i];
-			System.err.println("**********Colone**************");
-			System.err.println(super.pilesAlternees[i]);
-			System.err.println(res[i]);
-			System.err.println("******************************");
+
 		}
 
 		return res;
@@ -54,6 +46,7 @@ public class CSolitaire extends Solitaire {
 	@Override
 	public void initialiser() {
 		super.initialiser();
+		
 		this.PS = new PSolitaire(this);
 
 	}

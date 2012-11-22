@@ -1,5 +1,6 @@
 package presentation;
 
+import java.awt.Color;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.dnd.DnDConstants;
@@ -50,6 +51,9 @@ public class PColonne extends JPanel {
 //		visibles.setSize(cachees.getHeight(), cachees.getHeight() + 25);
 		cachees.setVisible(true);
 		visibles.setVisible(true);
+		
+		this.setBackground(Color.YELLOW);
+
 		
 		setVisible(true);
 		
