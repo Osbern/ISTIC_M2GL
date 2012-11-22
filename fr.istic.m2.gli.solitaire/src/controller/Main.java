@@ -48,8 +48,8 @@ public class Main {
 		/*
 		 * test des PTasDeCartes on affiche un tas colorees vertical
 		 */
-		CTasDeCartesColorees tasc = new CTasDeCartesColorees("toto", 4, u);
-		tasc.getPresentation().setDelta(0, 25);
+		CTasDeCartesColorees tasc = new CTasDeCartesColorees("titi", 4, u);
+		tasc.getPresentation().setDelta(0, 0);
 		tasc.getPresentation().setLocation(200, 0);
 
 		c = new CCarte(1, 4);
@@ -76,9 +76,9 @@ public class Main {
 
 		CColonne col = new CColonne("toto", u);
 		col.setReserve(pastas);
-		col.empiler(new CCarte(13, 1));
-		col.empiler(new CCarte(12, 4));
-		col.empiler(new CCarte(11, 3));
+		col.empiler(new CCarte(6, 2));
+		col.empiler(new CCarte(5, 3));
+		col.empiler(new CCarte(4, 4));
 
 		frame.add(col.getPresentation());
 

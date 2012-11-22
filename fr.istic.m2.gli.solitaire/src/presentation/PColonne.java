@@ -118,7 +118,7 @@ public class PColonne extends JPanel {
 	public void c2p_debutDnDOK(PTasDeCartes transfer) {
 		if (transfer != null) {
 			this.transfer = transfer;
-			add(transfer, 0);
+			getParent().add(transfer, 0);
 			ds.startDrag(initialEvent, ds.DefaultMoveDrop, transfer, dsl);
 			repaint();
 		}
