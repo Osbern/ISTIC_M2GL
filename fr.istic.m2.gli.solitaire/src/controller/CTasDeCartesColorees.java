@@ -33,4 +33,16 @@ public class CTasDeCartesColorees extends TasDeCartesColorees implements ICTasDe
 		super.depiler();
 	}
 
+	public void p2c_drop(CTasDeCartes transfer) {
+		if (isEmpilable(transfer)) {
+			empiler(transfer);
+			p.c2p_showNeutre();
+			p.c2p_finDnDOK();
+		} else {
+			p.c2p_showNeutre();
+			p.c2p_finDnDKO();
+		}
+	}
+
+
 }

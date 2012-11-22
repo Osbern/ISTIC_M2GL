@@ -21,10 +21,8 @@ public class CTasDeCartesAlternees extends TasDeCartesAlternees implements
 
 	@Override
 	public void empiler(Carte c) {
-		if (isEmpilable(c)) {
-			super.empiler(c);
-			p.empiler(((CCarte) c).getPresentation());
-		}
+		super.empiler(c);
+		p.empiler(((CCarte) c).getPresentation());
 	}
 
 	@Override

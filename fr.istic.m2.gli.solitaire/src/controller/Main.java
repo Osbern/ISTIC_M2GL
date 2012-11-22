@@ -2,6 +2,7 @@ package controller;
 
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
+import solitaire.application.Solitaire;
 
 public class Main {
 
@@ -14,7 +15,7 @@ public class Main {
 		
 		JFrame frame = new JFrame();
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		// frame.setLayout(new FlowLayout()); // au lieu de BorderLayout par
+		//frame.setLayout(new FlowLayout()); // au lieu de BorderLayout par
 		// d�faut
 
 		CSabot cs = new CSabot("Sabot", u);
@@ -48,7 +49,8 @@ public class Main {
 		 * test des PTasDeCartes on affiche un tas colorees vertical
 		 */
 		CTasDeCartesColorees tasc = new CTasDeCartesColorees("toto", 4, u);
-		tasc.getPresentation().setDelta(0, 4);
+		tasc.getPresentation().setDelta(0, 25);
+		tasc.getPresentation().setLocation(200, 0);
 
 		c = new CCarte(1, 4);
 		tasc.empiler(c);
@@ -57,7 +59,7 @@ public class Main {
 		c = new CCarte(3, 4);
 		tasc.empiler(c);
 
-		// frame.add(tasc.getPresentation());
+		frame.add(tasc.getPresentation());
 
 		/*
 		 * test des PColonne

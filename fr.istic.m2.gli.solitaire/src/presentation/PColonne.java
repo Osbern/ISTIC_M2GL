@@ -1,5 +1,6 @@
 package presentation;
 
+import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.dnd.DnDConstants;
 import java.awt.dnd.DragGestureEvent;
@@ -74,7 +75,12 @@ public class PColonne extends JPanel {
 			public void dragDropEnd(DragSourceDropEvent dsde) {
 				super.dragDropEnd(dsde);
 				try {
-					c.p2c_dragDropEnd(dsde.getDropSuccess(), (PTasDeCartes) dsde.getDragSourceContext().getTransferable().getTransferData(null));
+					try {
+						c.p2c_dragDropEnd(dsde.getDropSuccess(), (PTasDeCartes) dsde.getDragSourceContext().getTransferable().getTransferData(new DataFlavor(DataFlavor.javaJVMLocalObjectMimeType)));
+					} catch (ClassNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				} catch (UnsupportedFlavorException e) {
 					e.printStackTrace();
 				} catch (IOException e) {
