@@ -19,6 +19,10 @@ import controller.CColonne;
 
 public class PColonne extends JPanel {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private CColonne c;
 	private PTasDeCartes cachees, visibles;
 	
@@ -43,6 +47,9 @@ public class PColonne extends JPanel {
 		
 //		cachees.setSize(new Dimension(80, 1000));
 //		visibles.setSize(cachees.getHeight(), cachees.getHeight() + 25);
+		cachees.setVisible(true);
+		visibles.setVisible(true);
+		
 		setVisible(true);
 		
 		

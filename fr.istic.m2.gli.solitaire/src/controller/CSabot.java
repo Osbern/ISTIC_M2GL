@@ -17,7 +17,7 @@ public class CSabot extends Sabot {
 		PTasDeCartes pCachees = ((CTasDeCartes) cachees).getPresentation();
 		PTasDeCartes pVisibles = ((CTasDeCartes) visibles).getPresentation();
 		pCachees.setDelta(0, 0);
-		pVisibles.setDelta(25, 0); // Affichage tas horizontal
+		pVisibles.setDelta(17, 0); // Affichage tas horizontal
 		
 		p = new PSabot(this, pCachees, pVisibles);
 	}

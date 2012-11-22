@@ -1,13 +1,7 @@
 package controller;
 
-import java.awt.FlowLayout;
-
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
-
-import presentation.PSolitaire;
-
-import solitaire.application.Solitaire;
 
 public class Main {
 

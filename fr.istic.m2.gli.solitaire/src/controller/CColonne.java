@@ -1,13 +1,9 @@
 package controller;
 
-import java.awt.Color;
-
 import presentation.PColonne;
 import presentation.PTasDeCartes;
 import presentation.PTasDeCartesAlternees;
-import solitaire.application.Carte;
 import solitaire.application.Colonne;
-import solitaire.application.Tas;
 import solitaire.application.Usine;
 
 public class CColonne extends Colonne {
@@ -20,8 +16,8 @@ public class CColonne extends Colonne {
 		this.u = u;
 		PTasDeCartes pCachees = ((CTasDeCartes) cachees).getPresentation();
 		PTasDeCartesAlternees pVisibles = ((CTasDeCartesAlternees) visibles).getPresentation();
-		pCachees.setDelta(0, 25);
-		pVisibles.setDelta(0, 25);
+		pCachees.setDelta(0, 7);
+		pVisibles.setDelta(0, 15);
 		p = new PColonne(this, pCachees, pVisibles);
 	}
 

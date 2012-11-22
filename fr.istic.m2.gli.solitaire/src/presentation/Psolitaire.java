@@ -21,14 +21,12 @@ public class PSolitaire extends JFrame {
 	public static void main(String[] args) {
 
 		CUsine u = new CUsine();
-		Solitaire jeu = new Solitaire("Solitaire", u);
+		CSolitaire jeu = new CSolitaire("Solitaire", u);
 		jeu.initialiser();
-		PSolitaire ps = new PSolitaire((CSolitaire) jeu);
+		
+		
 	}
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private CSolitaire csolitaire;
 
@@ -45,11 +43,17 @@ public class PSolitaire extends JFrame {
 
 		CSabot sabot = csolitaire.getSabot();
 
+		
+		//north contient sabot et tas colorées
+		
 		JPanel north = new JPanel();
 		FlowLayout nfl = new FlowLayout(FlowLayout.LEADING);
 		north.setLayout(nfl);
 		north.add(sabot.getPresentation());
 
+		
+		
+		
 		north.add(new ComposantVide());
 
 		CTasDeCartesColorees[] piles = csolitaire.getPiles();
@@ -60,8 +64,13 @@ public class PSolitaire extends JFrame {
 		north.setSize(50 + (4 * 90) + sabot.getPresentation().getWidth(), 110);
 		north.setPreferredSize(north.getSize());
 
+		
+		
+		
+		//center contient les 7 colones (tas alternés).
+		
 		JPanel center = new JPanel();
-		center.setLayout(new FlowLayout());
+		center.setLayout(new FlowLayout(FlowLayout.LEADING));
 		CColonne[] cols = csolitaire.getCols();
 		for (CColonne c : cols) {
 			c.getPresentation().setVisible(true);
