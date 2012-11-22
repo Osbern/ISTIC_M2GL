@@ -8,7 +8,6 @@ import java.io.IOException;
 
 import javax.swing.JPanel;
 
-import controller.CTasDeCartes;
 import controller.ICTasDeCartes;
 
 public class PTasDeCartes extends JPanel implements Transferable {
@@ -25,10 +24,6 @@ public class PTasDeCartes extends JPanel implements Transferable {
 		this.setSize(new Dimension(80, 100));
 		this.setPreferredSize(getSize());
 		this.setVisible(true);
-	}
-	
-	public ICTasDeCartes getControle() {
-		return cTas;
 	}
 	
 	public void setDelta(int dx, int dy) {
@@ -70,6 +65,7 @@ public class PTasDeCartes extends JPanel implements Transferable {
 	@Override
 	public Object getTransferData(DataFlavor flavor)
 			throws UnsupportedFlavorException, IOException {
-		return this;
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
