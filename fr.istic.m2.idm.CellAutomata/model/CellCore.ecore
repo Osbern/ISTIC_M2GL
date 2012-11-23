@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="CellCore">
+  <eClassifiers xsi:type="ecore:EClass" name="Expression" interface="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="IntExpr" eSuperTypes="#//Expression"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BoolExpr" eSuperTypes="#//Expression"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Literal" eSuperTypes="#//IntExpr"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Bin" eSuperTypes="#//IntExpr"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Add" eSuperTypes="#//Bin"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Mul" eSuperTypes="#//Bin"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Bin" eSuperTypes="#//BoolExpr"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Equal" eSuperTypes="#//Bin.1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Greater" eSuperTypes="#//Bin.1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="State">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="state" eType="ecore:EDataType Topology.ecore#//Integer"/>
+  </eClassifiers>
+</ecore:EPackage>
