@@ -40,16 +40,17 @@ Le but de ce TP est d’aborder le test d’Interface Homme-Machine. Pour ce fai
 \item Lors de la saisie des données, entrer un '@' dans l'un des champs de texte fait planter l'application.	
 \item Lorsqu'aucun élément n'est selectionné, Edit et Delete sont désactivés.
 \item Lors d'une édition, si aucun des champs n'est mofifié, il est impossible de sauvegarder.
+\item Cliquer sur Edit active les champs pour édition.
 \end{itemize}
 
 \section{Améliorations \& Corrections}
 Nous avons apporté de nombreuses modifications au niveau du comportement des boutons (actif/inactif) en fonction de l'état de l'application.
 \begin{itemize}
 \item Par défaut (pas de séléction d'une fiche dans la liste) seul le bouton new est activé; lors d'une selection Edit et Delete s'activent.
-\item Cliquer sur Delete active les champs pour édition.
 \item New affiche une nouvelle fiche éditable; si tous les champs sont vide (ou s'ils sont remplis puis vidés) la sauvegarde n'est pas possible. 
 \item Les boutons de suppression et d'édition sont désactivés lors de la saisie d'un contact.
 \item Le bouton Save est désactivé si aucun champ n'est modifié lors d'une édition.
+\item Impossible de sauvegarder une édition si aucun champ n'a été modifié.
 \end{itemize}
 \newpage
 
