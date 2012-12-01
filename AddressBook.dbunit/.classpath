@@ -8,7 +8,5 @@
 	<classpathentry kind="lib" path="lib/slf4j-1.6.1/slf4j-api-1.6.1.jar"/>
 	<classpathentry kind="lib" path="lib/derby.jar"/>
 	<classpathentry kind="con" path="com.windowtester.eclipse.ui.runtimeClasspathContainer"/>
-	<classpathentry kind="lib" path="/AddressBook.ihm/lib/derby.jar"/>
-	<classpathentry kind="src" path="/AddressBook.ihm"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

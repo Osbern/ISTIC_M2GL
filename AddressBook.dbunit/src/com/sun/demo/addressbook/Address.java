@@ -257,9 +257,8 @@ public class Address {
     }
     
     public boolean isEmpty() {
-    	System.out.println("'" + firstName + "|" + lastName + "'");
-    	return (firstName == "" && lastName == "" && middleName == "" && phone == "" && email == "" && address1 == ""
-    			&& address2 == "" && city == "" && state == "" && postalCode == "" && country == "");
+    	return (firstName.equals("") && lastName.equals("") && middleName.equals("") && phone.equals("") && email.equals("") && address1.equals("")
+    			&& address2.equals("") && city.equals("") && state.equals("") && postalCode.equals("") && country.equals(""));
     }
    
     
