@@ -1,0 +1,7 @@
+/** Java 2 Access Control Policy for the JAAS Sample Application **/
+
+/* grant the sample LoginModule permissions */
+grant {
+    permission javax.security.auth.AuthPermission "modifyPrincipals";
+};
+

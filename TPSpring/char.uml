@@ -1,0 +1,235 @@
+<xmi:XMI xmi:version="2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1">
+	<xmi:Documentation exporter="Bouml" exporterVersion="1.2"/>
+	<uml:Model xmi:type="uml:Model" name="DSL">
+		<packagedElement xmi:type="uml:Package" xmi:id="BOUML_0x80db398" name ="DSL">
+			<packagedElement xmi:type="uml:Package" xmi:id="BOUML_0x8182348" name ="fr.triskell.irisa.robot">
+				<packagedElement xmi:type="uml:Class" name="BooleanActuator" xmi:id="BOUML_0x8182f38" visibility="public" isAbstract="false" >
+					<ownedTemplateSignature xmi:type="uml:TemplateSignature" xmi:id="FORMALS_BOUML_0x8182f38">
+						<parameter xmi:idref="TEMPLPARAM0_BOUML_0x8182f38"/>
+						<ownedParameter xmi:type="uml:ClassifierTemplateParameter" xmi:id="TEMPLPARAM0_BOUML_0x8182f38">
+							<ownedParameteredElement xmi:type="uml:Class" xmi:id="TEMPLELEM0_BOUML_0x8182f38" name="Boolean" templateParameter="TEMPLPARAM0_BOUML_0x8182f38"/>
+						</ownedParameter>
+					</ownedTemplateSignature>
+					<templateBinding xmi:type="uml:TemplateBinding" xmi:id="ACTUALS_BOUML_0x8182f38">
+						<parameterSubstitution xmi:type="uml:TemplateParameterSubstitution" xmi:id="ACTUALPARAM0_BOUML_0x8182f38">
+							<formal xmi:idref="TEMPLPARAM0_BOUML_0x8138268"/>
+							<!-- how to indicate the actual is  ? -->
+						</parameterSubstitution>
+					</templateBinding>
+					<generalization xmi:type="uml:Generalization" xmi:id="BOUML_0x816df48" general="BOUML_0x8138268"/>
+				</packagedElement>
+				<packagedElement xmi:type="uml:Class" name="SimpleBouton" xmi:id="BOUML_0x813d3e0" visibility="public" isAbstract="false" >
+					<templateBinding xmi:type="uml:TemplateBinding" xmi:id="ACTUALS_BOUML_0x813d3e0">
+						<parameterSubstitution xmi:type="uml:TemplateParameterSubstitution" xmi:id="ACTUALPARAM0_BOUML_0x813d3e0">
+							<formal xmi:idref="TEMPLPARAM0_BOUML_0x8138c40"/>
+							<!-- how to indicate the actual is  ? -->
+						</parameterSubstitution>
+					</templateBinding>
+					<generalization xmi:type="uml:Generalization" xmi:id="BOUML_0x8170838" general="BOUML_0x8138c40"/>
+				</packagedElement>
+				<packagedElement xmi:type="uml:Class" name="Potentiometer" xmi:id="BOUML_0x80e61e8" visibility="public" isAbstract="false" >
+					<templateBinding xmi:type="uml:TemplateBinding" xmi:id="ACTUALS_BOUML_0x80e61e8">
+						<parameterSubstitution xmi:type="uml:TemplateParameterSubstitution" xmi:id="ACTUALPARAM0_BOUML_0x80e61e8">
+							<formal xmi:idref="TEMPLPARAM0_BOUML_0x813ab08"/>
+							<!-- how to indicate the actual is  ? -->
+						</parameterSubstitution>
+					</templateBinding>
+					<generalization xmi:type="uml:Generalization" xmi:id="BOUML_0x816da68" general="BOUML_0x813ab08"/>
+					<ownedAttribute xmi:type="uml:Property" name="minValue" xmi:id="BOUML_0x816d368" visibility="protected">
+						<type xmi:idref="BOUML_0x813b990"/>
+					</ownedAttribute>
+					<ownedAttribute xmi:type="uml:Property" name="maxValue" xmi:id="BOUML_0x817ff28" visibility="protected">
+						<type xmi:idref="BOUML_0x813b990"/>
+					</ownedAttribute>
+				</packagedElement>
+				<packagedElement xmi:type="uml:Class" name="Canon" xmi:id="BOUML_0x810aff0" visibility="public" isAbstract="false" >
+				</packagedElement>
+				<packagedElement xmi:type="uml:Package" xmi:id="BOUML_0x817afd8" name ="datatype">
+					<packagedElement xmi:type="uml:Class" name="Integer" xmi:id="BOUML_0x813b990" visibility="public" isAbstract="false" >
+					</packagedElement>
+					<packagedElement xmi:type="uml:Class" name="Float" xmi:id="BOUML_0x813c820" visibility="public" isAbstract="false" >
+					</packagedElement>
+					<packagedElement xmi:type="uml:Class" name="Boolean" xmi:id="BOUML_0x813cf48" visibility="public" isAbstract="false" >
+					</packagedElement>
+					<packagedElement xmi:type="uml:Class" name="String" xmi:id="BOUML_0x813d6d8" visibility="public" isAbstract="false" >
+					</packagedElement>
+				</packagedElement>
+				<packagedElement xmi:type="uml:Package" xmi:id="BOUML_0x810b6e8" name ="library">
+					<packagedElement xmi:type="uml:Class" name="TemperatureSensor" xmi:id="BOUML_0x80efe80" visibility="public" isAbstract="false" >
+						<generalization xmi:type="uml:Generalization" xmi:id="BOUML_0x813f878" general="BOUML_0x813ab08"/>
+					</packagedElement>
+					<packagedElement xmi:type="uml:Class" name="ComplexMotor" xmi:id="BOUML_0x810cc60" visibility="public" isAbstract="false" >
+						<generalization xmi:type="uml:Generalization" xmi:id="BOUML_0x8194038" general="BOUML_0x8170958"/>
+					</packagedElement>
+					<packagedElement xmi:type="uml:Class" name="ServoMotor" xmi:id="BOUML_0x8190400" visibility="public" isAbstract="false" >
+						<generalization xmi:type="uml:Generalization" xmi:id="BOUML_0x8173f08" general="BOUML_0x80e6768"/>
+					</packagedElement>
+					<packagedElement xmi:type="uml:Class" name="FloatSensor" xmi:id="BOUML_0x816b768" visibility="public" isAbstract="false" >
+						<ownedTemplateSignature xmi:type="uml:TemplateSignature" xmi:id="FORMALS_BOUML_0x816b768">
+							<parameter xmi:idref="TEMPLPARAM0_BOUML_0x816b768"/>
+							<ownedParameter xmi:type="uml:ClassifierTemplateParameter" xmi:id="TEMPLPARAM0_BOUML_0x816b768">
+								<ownedParameteredElement xmi:type="uml:Class" xmi:id="TEMPLELEM0_BOUML_0x816b768" name="Float" templateParameter="TEMPLPARAM0_BOUML_0x816b768"/>
+							</ownedParameter>
+						</ownedTemplateSignature>
+						<templateBinding xmi:type="uml:TemplateBinding" xmi:id="ACTUALS_BOUML_0x816b768">
+							<parameterSubstitution xmi:type="uml:TemplateParameterSubstitution" xmi:id="ACTUALPARAM0_BOUML_0x816b768">
+								<formal xmi:idref="TEMPLPARAM0_BOUML_0x8139158"/>
+								<!-- how to indicate the actual is  ? -->
+							</parameterSubstitution>
+						</templateBinding>
+						<generalization xmi:type="uml:Generalization" xmi:id="BOUML_0x8172b48" general="BOUML_0x8139158"/>
+					</packagedElement>
+					<packagedElement xmi:type="uml:Class" name="IntegerSensor" xmi:id="BOUML_0x813ab08" visibility="public" isAbstract="true" >
+						<ownedTemplateSignature xmi:type="uml:TemplateSignature" xmi:id="FORMALS_BOUML_0x813ab08">
+							<parameter xmi:idref="TEMPLPARAM0_BOUML_0x813ab08"/>
+							<ownedParameter xmi:type="uml:ClassifierTemplateParameter" xmi:id="TEMPLPARAM0_BOUML_0x813ab08">
+								<ownedParameteredElement xmi:type="uml:Class" xmi:id="TEMPLELEM0_BOUML_0x813ab08" name="Integer" templateParameter="TEMPLPARAM0_BOUML_0x813ab08"/>
+							</ownedParameter>
+						</ownedTemplateSignature>
+						<templateBinding xmi:type="uml:TemplateBinding" xmi:id="ACTUALS_BOUML_0x813ab08">
+							<parameterSubstitution xmi:type="uml:TemplateParameterSubstitution" xmi:id="ACTUALPARAM0_BOUML_0x813ab08">
+								<formal xmi:idref="TEMPLPARAM0_BOUML_0x8139158"/>
+								<!-- how to indicate the actual is  ? -->
+							</parameterSubstitution>
+						</templateBinding>
+						<generalization xmi:type="uml:Generalization" xmi:id="BOUML_0x812d8d8" general="BOUML_0x8139158"/>
+					</packagedElement>
+					<packagedElement xmi:type="uml:Class" name="BooleanSensor" xmi:id="BOUML_0x8138c40" visibility="public" isAbstract="true" >
+						<ownedTemplateSignature xmi:type="uml:TemplateSignature" xmi:id="FORMALS_BOUML_0x8138c40">
+							<parameter xmi:idref="TEMPLPARAM0_BOUML_0x8138c40"/>
+							<ownedParameter xmi:type="uml:ClassifierTemplateParameter" xmi:id="TEMPLPARAM0_BOUML_0x8138c40">
+								<ownedParameteredElement xmi:type="uml:Class" xmi:id="TEMPLELEM0_BOUML_0x8138c40" name="Boolean" templateParameter="TEMPLPARAM0_BOUML_0x8138c40"/>
+							</ownedParameter>
+						</ownedTemplateSignature>
+						<templateBinding xmi:type="uml:TemplateBinding" xmi:id="ACTUALS_BOUML_0x8138c40">
+							<parameterSubstitution xmi:type="uml:TemplateParameterSubstitution" xmi:id="ACTUALPARAM0_BOUML_0x8138c40">
+								<formal xmi:idref="TEMPLPARAM0_BOUML_0x8139158"/>
+								<!-- how to indicate the actual is  ? -->
+							</parameterSubstitution>
+						</templateBinding>
+						<generalization xmi:type="uml:Generalization" xmi:id="BOUML_0x81714d8" general="BOUML_0x8139158"/>
+					</packagedElement>
+					<packagedElement xmi:type="uml:Class" name="SimpleMotor" xmi:id="BOUML_0x80e6768" visibility="public" isAbstract="true" >
+						<ownedTemplateSignature xmi:type="uml:TemplateSignature" xmi:id="FORMALS_BOUML_0x80e6768">
+							<parameter xmi:idref="TEMPLPARAM0_BOUML_0x80e6768"/>
+							<ownedParameter xmi:type="uml:ClassifierTemplateParameter" xmi:id="TEMPLPARAM0_BOUML_0x80e6768">
+								<ownedParameteredElement xmi:type="uml:Class" xmi:id="TEMPLELEM0_BOUML_0x80e6768" name="Integer" templateParameter="TEMPLPARAM0_BOUML_0x80e6768"/>
+							</ownedParameter>
+						</ownedTemplateSignature>
+						<templateBinding xmi:type="uml:TemplateBinding" xmi:id="ACTUALS_BOUML_0x80e6768">
+							<parameterSubstitution xmi:type="uml:TemplateParameterSubstitution" xmi:id="ACTUALPARAM0_BOUML_0x80e6768">
+								<formal xmi:idref="TEMPLPARAM0_BOUML_0x8138268"/>
+								<!-- how to indicate the actual is  ? -->
+							</parameterSubstitution>
+						</templateBinding>
+						<ownedAttribute xmi:type="uml:Property" name="minValue" xmi:id="BOUML_0x8182268" visibility="protected">
+							<type xmi:idref="BOUML_0x813b990"/>
+						</ownedAttribute>
+						<generalization xmi:type="uml:Generalization" xmi:id="BOUML_0x816e1a0" general="BOUML_0x8138268"/>
+						<ownedAttribute xmi:type="uml:Property" name="maxValue" xmi:id="BOUML_0x816dbe8" visibility="protected">
+							<type xmi:idref="BOUML_0x813b990"/>
+						</ownedAttribute>
+					</packagedElement>
+					<packagedElement xmi:type="uml:Class" name="StepbyStepMotor" xmi:id="BOUML_0x81111f8" visibility="public" isAbstract="false" >
+						<generalization xmi:type="uml:Generalization" xmi:id="BOUML_0x811e4e0" general="BOUML_0x80e6768"/>
+					</packagedElement>
+					<packagedElement xmi:type="uml:Class" name="Display" xmi:id="BOUML_0x8111e58" visibility="public" isAbstract="true" >
+						<ownedTemplateSignature xmi:type="uml:TemplateSignature" xmi:id="FORMALS_BOUML_0x8111e58">
+							<parameter xmi:idref="TEMPLPARAM0_BOUML_0x8111e58"/>
+							<ownedParameter xmi:type="uml:ClassifierTemplateParameter" xmi:id="TEMPLPARAM0_BOUML_0x8111e58">
+								<ownedParameteredElement xmi:type="uml:Class" xmi:id="TEMPLELEM0_BOUML_0x8111e58" name="String" templateParameter="TEMPLPARAM0_BOUML_0x8111e58"/>
+							</ownedParameter>
+						</ownedTemplateSignature>
+						<templateBinding xmi:type="uml:TemplateBinding" xmi:id="ACTUALS_BOUML_0x8111e58">
+							<parameterSubstitution xmi:type="uml:TemplateParameterSubstitution" xmi:id="ACTUALPARAM0_BOUML_0x8111e58">
+								<formal xmi:idref="TEMPLPARAM0_BOUML_0x8138268"/>
+								<!-- how to indicate the actual is  ? -->
+							</parameterSubstitution>
+						</templateBinding>
+						<generalization xmi:type="uml:Generalization" xmi:id="BOUML_0x81844d8" general="BOUML_0x8138268"/>
+					</packagedElement>
+					<packagedElement xmi:type="uml:Class" name="GraphicalDisplay" xmi:id="BOUML_0x813db70" visibility="public" isAbstract="false" >
+						<generalization xmi:type="uml:Generalization" xmi:id="BOUML_0x81b2d00" general="BOUML_0x8111e58"/>
+					</packagedElement>
+					<packagedElement xmi:type="uml:Class" name="ContinuousMotor" xmi:id="BOUML_0x813e648" visibility="public" isAbstract="false" >
+						<templateBinding xmi:type="uml:TemplateBinding" xmi:id="ACTUALS_BOUML_0x813e648">
+							<parameterSubstitution xmi:type="uml:TemplateParameterSubstitution" xmi:id="ACTUALPARAM0_BOUML_0x813e648">
+								<formal xmi:idref="TEMPLPARAM0_BOUML_0x80e6768"/>
+								<!-- how to indicate the actual is  ? -->
+							</parameterSubstitution>
+						</templateBinding>
+						<generalization xmi:type="uml:Generalization" xmi:id="BOUML_0x8183f38" general="BOUML_0x80e6768"/>
+					</packagedElement>
+					<packagedElement xmi:type="uml:Class" name="TextDisplay" xmi:id="BOUML_0x813ef60" visibility="public" isAbstract="false" >
+						<generalization xmi:type="uml:Generalization" xmi:id="BOUML_0x8177fe8" general="BOUML_0x8111e58"/>
+					</packagedElement>
+				</packagedElement>
+				<packagedElement xmi:type="uml:Package" xmi:id="BOUML_0x8184388" name ="primitiveElement">
+					<packagedElement xmi:type="uml:Class" name="CompositeElement" xmi:id="BOUML_0x8170958" visibility="public" isAbstract="false" >
+						<generalization xmi:type="uml:Generalization" xmi:id="BOUML_0x8182de8" general="BOUML_0x8170740"/>
+						<ownedAttribute xmi:type="uml:Property" name="children" xmi:id="BOUML_0x8193de0" visibility="protected" association="ASSOC_BOUML_0x8193de0" aggregation="none">
+							<type xmi:idref="BOUML_0x8170740"/>
+							<lowerValue xmi:type="uml:LiteralString" xmi:id="MULTIPLICITY_BOUML_0x50" value="*"/>
+							<upperValue xmi:type="uml:LiteralString" xmi:id="MULTIPLICITY_BOUML_0xa0" value="*"/>
+						</ownedAttribute>
+					</packagedElement>
+					<packagedElement xmi:type="uml:Class" name="Element" xmi:id="BOUML_0x8170740" visibility="public" isAbstract="false" >
+						<ownedAttribute xmi:type="uml:Property" name="name" xmi:id="BOUML_0x8140948" visibility="protected">
+							<type xmi:idref="BOUML_datatype_0"/>
+						</ownedAttribute>
+						<ownedAttribute xmi:type="uml:Property" name="parent" xmi:id="BOUML_0x816bac8" visibility="protected" association="ASSOC_BOUML_0x8193de0" aggregation="composite">
+							<type xmi:idref="BOUML_0x8170958"/>
+							<lowerValue xmi:type="uml:LiteralString" xmi:id="MULTIPLICITY_BOUML_0xf0" value="1"/>
+							<upperValue xmi:type="uml:LiteralString" xmi:id="MULTIPLICITY_BOUML_0x140" value="1"/>
+						</ownedAttribute>
+						<ownedOperation xmi:type="uml:Operation" name="getQualifiedName" xmi:id="BOUML_0x81b2990" visibility="public" isAbstract="false">
+							<ownedParameter name="return" xmi:id="BOUML_return_1" direction="return">
+								<type xmi:idref="BOUML_datatype_0"/>
+							</ownedParameter>
+						</ownedOperation>
+					</packagedElement>
+					<packagedElement xmi:type="uml:Class" name="Converter" xmi:id="BOUML_0x8171388" visibility="public" isAbstract="false" >
+						<generalization xmi:type="uml:Generalization" xmi:id="BOUML_0x817b5e8" general="BOUML_0x8170740"/>
+					</packagedElement>
+					<packagedElement xmi:type="uml:Class" name="Timer" xmi:id="BOUML_0x816cf68" visibility="public" isAbstract="false" >
+						<generalization xmi:type="uml:Generalization" xmi:id="BOUML_0x81a8700" general="BOUML_0x8170740"/>
+					</packagedElement>
+					<packagedElement xmi:type="uml:Class" name="Actuator" xmi:id="BOUML_0x8138268" visibility="public" isAbstract="false" >
+						<ownedTemplateSignature xmi:type="uml:TemplateSignature" xmi:id="FORMALS_BOUML_0x8138268">
+							<parameter xmi:idref="TEMPLPARAM0_BOUML_0x8138268"/>
+							<ownedParameter xmi:type="uml:ClassifierTemplateParameter" xmi:id="TEMPLPARAM0_BOUML_0x8138268">
+								<ownedParameteredElement xmi:type="uml:Class" xmi:id="TEMPLELEM0_BOUML_0x8138268" name="T" templateParameter="TEMPLPARAM0_BOUML_0x8138268"/>
+							</ownedParameter>
+						</ownedTemplateSignature>
+						<generalization xmi:type="uml:Generalization" xmi:id="BOUML_0x812dfe8" general="BOUML_0x8170740"/>
+						<ownedOperation xmi:type="uml:Operation" name="setValue" xmi:id="BOUML_0x8180028" visibility="public" isAbstract="false">
+							<ownedParameter xmi:type="uml:Parameter" name="t" xmi:id="BOUML_op_param_1" direction="in">
+								<type xmi:idref="BOUML_datatype_1"/>
+							</ownedParameter>
+						</ownedOperation>
+					</packagedElement>
+					<packagedElement xmi:type="uml:Class" name="Sensor" xmi:id="BOUML_0x8139158" visibility="public" isAbstract="true" >
+						<ownedTemplateSignature xmi:type="uml:TemplateSignature" xmi:id="FORMALS_BOUML_0x8139158">
+							<parameter xmi:idref="TEMPLPARAM0_BOUML_0x8139158"/>
+							<ownedParameter xmi:type="uml:ClassifierTemplateParameter" xmi:id="TEMPLPARAM0_BOUML_0x8139158">
+								<ownedParameteredElement xmi:type="uml:Class" xmi:id="TEMPLELEM0_BOUML_0x8139158" name="T" templateParameter="TEMPLPARAM0_BOUML_0x8139158"/>
+							</ownedParameter>
+						</ownedTemplateSignature>
+						<generalization xmi:type="uml:Generalization" xmi:id="BOUML_0x81b2b38" general="BOUML_0x8170740"/>
+						<ownedOperation xmi:type="uml:Operation" name="getValue" xmi:id="BOUML_0x8193410" visibility="public" isAbstract="false">
+							<ownedParameter name="return" xmi:id="BOUML_return_2" direction="return">
+								<type xmi:idref="BOUML_datatype_1"/>
+							</ownedParameter>
+						</ownedOperation>
+					</packagedElement>
+					<packagedElement xmi:type="uml:Association" xmi:id="ASSOC_BOUML_0x8193de0" visibility="protected">
+						<memberEnd xmi:idref="BOUML_0x8193de0"/>
+						<memberEnd xmi:idref="BOUML_0x816bac8"/>
+					</packagedElement>
+				</packagedElement>
+			</packagedElement>
+		</packagedElement>
+		<packagedElement xmi:type="uml:DataType" xmi:id="BOUML_datatype_1" name = "T"/>
+		<packagedElement xmi:type="uml:DataType" xmi:id="BOUML_datatype_0" name = "string"/>
+	</uml:Model>
+</xmi:XMI>
