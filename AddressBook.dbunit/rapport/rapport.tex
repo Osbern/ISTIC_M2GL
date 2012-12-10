@@ -1,0 +1,56 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{tabularx}
+\usepackage[pdftex]{graphicx}
+\usepackage{fancyhdr}
+
+\renewcommand{\headheight}{0.6in}
+
+\setlength{\headwidth}{\textwidth}
+\fancyhead[L]{Audit de l'application \textit{AdressBook}}% left
+\fancyhead[R]{ % right
+   \includegraphics[height=0.53in]{UberLogo}
+}
+\pagestyle{fancy}
+
+\title{Audit de l'application \textit{AdressBook} \\ --}
+\author{   \includegraphics{UberLogo}}
+\date{Décembre 2012}
+
+\begin{document}
+
+\begin{titlepage}
+\pagestyle{fancy}
+
+  	\maketitle
+  	\tableofcontents
+\end{titlepage}
+
+\newpage
+\section{Introduction}
+
+Une base de donnée recoupant toutes les informations essentielles d'une application (comme les noms et prénoms de ses utilisateurs, ou encore des coordonnées banquaires), elle se doit d'être la plus sécurisée possible. Vous trouverez ci-après les tests demandés sur votre base de donnée ainsi que des tests supplémentaires comme vous nous en aviez fait part lors de notre entretien (ceux-ci étant facturé au tarif jour-homme convenu). Nous avons également pris l'initiative de corriger les problèmes identifiés.
+
+\section{Tests effectués}
+
+\subsection{Tests demandés}
+\begin{enumerate}
+\item Deux contacts avec le même tuple (lastName, firstName, middleName, eMail) ne peuvent être créé dans la base de données
+\item Un contact vide ne peut être créé en base de données.
+\end{enumerate}
+
+Ces tests ont été testés sur votre base de donnée applicative, et ont échoué. Ils ont ainsi révélé des failles dans votre système de stockage, que nous avons pris le soin de corriger.
+
+\subsection{Tests supplémentaires}
+\begin{enumerate}
+\item la suppression d'un contact fonctionne correctement: un contact supprimé dans l'application est bien supprimé dans la base de données.
+\end{enumerate}
+
+\section{Etat de l'application}
+
+Suite aux tests effecutés sur votre base de données, nous pouvons émettre plusieurs réserves sur l'intégrité de votre application, en effet aucune vérification n'est faite au niveau de celle-ci pour empécher des comportements dangereux (autant au niveau de l'interface homme-machine, que au niveau de la base de donnée elle même). Nous vous conseillons donc d'améliorer la solidité applicative de votre solution, pour rendre celle-ci moins vunérable à d'éventuelles attaques contre votre système ou simplement des saisies éronnées par les utilisateurs légitimes. Si vous le désirez nous pouvons convenir d'un nouveau contrat pour nous permettre d'effectuer le refactoring de votre application afin de combler ses lacunes.
+
+\end{document}
