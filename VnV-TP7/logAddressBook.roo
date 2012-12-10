@@ -1,0 +1,26 @@
+jpa setup --database DERBY_EMBEDDED --provider HIBERNATE 
+entity jpa --class ~.domain.Address --testAutomatically
+field string --fieldName firstname
+field string --fieldName middlename
+field string --fieldName lastname
+field string --fieldName phone
+field string --fieldName email
+field string --fieldName address1
+field string --fieldName address2
+field string --fieldName city
+field string --fieldName addressState
+field string --fieldName postalCode
+field string --fieldName country
+
+controller scaffold --class ~.web.Controller --entity Address
+
+perform eclipse 
+perform package 
+perform clean 
+
+perform tests
+
+selenium test --controller ~.web.Controller
+
+perform package 
+perform clean

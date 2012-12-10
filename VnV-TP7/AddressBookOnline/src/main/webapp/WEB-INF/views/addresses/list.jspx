@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_addressbookonline_domain_Address" items="${addresses}" z="sWI3+1bQU7RkF6/HEh/4Akm6H8Y=">
+        <table:table data="${addresses}" id="l_addressbookonline_domain_Address" path="/addresses" z="XUj7RCmafz/O/UVnMbVbgoiB99Q=">
+            <table:column id="c_addressbookonline_domain_Address_firstname" property="firstname" z="KJiPrNeS63chh4df/EjtPapB/ek="/>
+            <table:column id="c_addressbookonline_domain_Address_middlename" property="middlename" z="bM8tymHVXFB2/csGMeZRhSdFfrw="/>
+            <table:column id="c_addressbookonline_domain_Address_lastname" property="lastname" z="rRYt8dNYs17++TW0DEwurPoV4SI="/>
+            <table:column id="c_addressbookonline_domain_Address_phone" property="phone" z="ueFiQkX8PE93bkIaU726eYt2r7U="/>
+            <table:column id="c_addressbookonline_domain_Address_email" property="email" z="s4bc/nxaFer8I0Np0R+U2zpbPks="/>
+            <table:column id="c_addressbookonline_domain_Address_address1" property="address1" z="AENftL2pTwNx0AOhH5hLTGvVO4Q="/>
+        </table:table>
+    </page:list>
+</div>

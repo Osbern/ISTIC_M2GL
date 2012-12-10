@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_addressbookonline_domain_Address" modelAttribute="address" path="/addresses" versionField="Version" z="o60LOFa5xPxuCeoBSFSuaGuPWaw=">
+        <field:input field="firstname" id="c_addressbookonline_domain_Address_firstname" z="IGZiwPVIN2VKYT9K7LrFjdL6xDs="/>
+        <field:input field="middlename" id="c_addressbookonline_domain_Address_middlename" z="FpzW6G7+dq9pDZHfN1+PssM+zvw="/>
+        <field:input field="lastname" id="c_addressbookonline_domain_Address_lastname" z="LawsV3jdEx/eO8c7vi54wWrZu8g="/>
+        <field:input field="phone" id="c_addressbookonline_domain_Address_phone" z="suJDSMpoTVbR8WRNEPc/BBscE+w="/>
+        <field:input field="email" id="c_addressbookonline_domain_Address_email" validationMessageCode="field_invalid_email" z="wFB8ZSsiSD8q7wa2j2md241z/MU="/>
+        <field:input field="address1" id="c_addressbookonline_domain_Address_address1" z="MPHRhNVdOA4GcU4loJeYvkperpw="/>
+        <field:input field="address2" id="c_addressbookonline_domain_Address_address2" z="pwUvj2WtLrVrFGKVHZJK9goKv6A="/>
+        <field:input field="city" id="c_addressbookonline_domain_Address_city" z="gq9f2U6w4thh4a1VLiUBe1lsE+A="/>
+        <field:input field="addressState" id="c_addressbookonline_domain_Address_addressState" z="fFUNAMOxwMfj0jcrBnAWH34xz1c="/>
+        <field:input field="postalCode" id="c_addressbookonline_domain_Address_postalCode" z="QJz8i4j1VKyQpva/b+qLsS16xOA="/>
+        <field:input field="country" id="c_addressbookonline_domain_Address_country" z="cCXvh2QyvAlNoN/JdjfmjCp/QM0="/>
+    </form:update>
+</div>

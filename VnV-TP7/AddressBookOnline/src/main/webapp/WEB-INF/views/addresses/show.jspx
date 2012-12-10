@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_addressbookonline_domain_Address" object="${address}" path="/addresses" z="yH/GjIYuiYdFHDZEij7k7plQyUU=">
+        <field:display field="firstname" id="s_addressbookonline_domain_Address_firstname" object="${address}" z="a7NWROT8LdafJTMLT75ogv1xhf4="/>
+        <field:display field="middlename" id="s_addressbookonline_domain_Address_middlename" object="${address}" z="H/8w+Jv5LPVg4YXlkGF3AZY3BlE="/>
+        <field:display field="lastname" id="s_addressbookonline_domain_Address_lastname" object="${address}" z="aYjOM50v/VS88VxgFwaZ7AyqnlE="/>
+        <field:display field="phone" id="s_addressbookonline_domain_Address_phone" object="${address}" z="3EQxfCofLr6TI12yFbx1TuJz6Ss="/>
+        <field:display field="email" id="s_addressbookonline_domain_Address_email" object="${address}" z="+SLX8//BHXWnGEt/qUBGhbQ6Vm8="/>
+        <field:display field="address1" id="s_addressbookonline_domain_Address_address1" object="${address}" z="JpX310yGkAJd+5z8nINBVRFGLl4="/>
+        <field:display field="address2" id="s_addressbookonline_domain_Address_address2" object="${address}" z="GJFTDOoabxrbfIZ//xXZB2Zbs0M="/>
+        <field:display field="city" id="s_addressbookonline_domain_Address_city" object="${address}" z="V5/mzOZffb/SK1zZ9iw2RaT9OVg="/>
+        <field:display field="addressState" id="s_addressbookonline_domain_Address_addressState" object="${address}" z="Li/jvGZlRGfiyPE0w/DrtY/We20="/>
+        <field:display field="postalCode" id="s_addressbookonline_domain_Address_postalCode" object="${address}" z="wnhUywWTW/mpLqGg6mgLhUW8C+U="/>
+        <field:display field="country" id="s_addressbookonline_domain_Address_country" object="${address}" z="QOJXmfy6sEWtvythO7wuKT4feLU="/>
+    </page:show>
+</div>
