@@ -9,6 +9,7 @@ public class AllDataTests {
 		TestSuite suite = new TestSuite(AllDataTests.class.getName());
 		//$JUnit-BEGIN$
 		suite.addTestSuite(AddContactDataTest.class);
+		suite.addTestSuite(AddSameTuple.class);
 		//$JUnit-END$
 		return suite;
 	}
