@@ -32,11 +32,14 @@ public class IHM extends JFrame {
 	private IncButton incBtn;
 
 	private MoletteSlider moletteSldr;
+	private MesureDisplayer md;
 
 	private Afficheur aff;
 	private Led ledTemps;
 	private Led ledMesure;
 	private JPanel barreDeBouttons;
+
+	private Horloge h;
 
 	private int tempo;
 	private JPanel zoneDuCentre;
@@ -51,8 +54,9 @@ public class IHM extends JFrame {
 		incBtn = new IncButton(this);
 		moletteSldr = new MoletteSlider(this);
 		aff = new Afficheur(this);
+		md = new MesureDisplayer(this, ctl.getMesure());
 		
-		Horloge h = new HorlogeImpl();
+		h = new HorlogeImpl();
 		ledTemps = new Led(Color.GREEN, h);
 		ledMesure = new Led(Color.RED,h );
 		
@@ -66,6 +70,8 @@ public class IHM extends JFrame {
 		this.setVisible(true);
 		this.setLayout(new BorderLayout());
 
+		stopBtn.setEnabled(false);
+		
 		barreDeBouttons = new JPanel();
 		barreDeBouttons.setLayout(new FlowLayout());
 		barreDeBouttons
@@ -78,10 +84,11 @@ public class IHM extends JFrame {
 		this.add(barreDeBouttons, BorderLayout.SOUTH);
 
 		zoneDuCentre = new JPanel();
-		zoneDuCentre.setLayout(new GridLayout(1, 3));
-		zoneDuCentre.add(ledTemps);
-		zoneDuCentre.add(aff);
-		zoneDuCentre.add(ledMesure);
+		zoneDuCentre.setLayout(new BorderLayout());
+		zoneDuCentre.add(ledTemps,BorderLayout.WEST);
+		zoneDuCentre.add(aff,BorderLayout.CENTER);
+		zoneDuCentre.add(ledMesure, BorderLayout.EAST);
+		zoneDuCentre.add(md, BorderLayout.SOUTH);
 
 		this.add(zoneDuCentre, BorderLayout.CENTER);
 		this.add(moletteSldr, BorderLayout.NORTH);
@@ -98,30 +105,36 @@ public class IHM extends JFrame {
 	}
 
 	public void notifyTemps() {
+		md.temps();
 		ledTemps.update(Led.LEDTEMPS);
 		bzzr.update();
 	}
 
 	public void notifyMesure() {
+		md.mesure();
 		ledMesure.update(Led.LEDMESURE);
 	}
 
 	public void start() {
 		ctl.start();
+		stopBtn.setEnabled(true);
 	}
 
 	public void stop() {
 		ctl.stop();
+		stopBtn.setEnabled(false);
 	}
 
 	public void incMesure() {
 		ctl.inc();
-		affMesure.setText(""+ctl.getMesure());
+		md.inc();
+		affMesure.setText("" + ctl.getMesure());
 	}
 
 	public void decMesure() {
 		ctl.dec();
-		affMesure.setText(""+ctl.getMesure());
+		md.dec();
+		affMesure.setText("" + ctl.getMesure());
 	}
 
 	public void tempoHasChanged(int newTempo) {
@@ -153,4 +166,13 @@ public class IHM extends JFrame {
 	public void tempoHasChanging(int value) {
 		aff.setText(value + " bpm");
 	}
+
+	public int getMaxMesure() {
+		return ctl.getMaxMesure();
+	}
+
+	public int getMinMesure() {
+		return ctl.getMinMesure();
+	}
+
 }

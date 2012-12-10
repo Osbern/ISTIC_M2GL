@@ -1,3 +1,1 @@
-Séparer en 2 packages IHM & Moteur
-
-Slider : Bornes, tooltip valeurs
+redémarrer le compte de la mesure en cas de changement (inc/dec mesure, chgmt de tempo)

@@ -18,6 +18,7 @@ public class StopButton extends JButton {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				ihm.stop();
+				
 			}
 		});
 	}
