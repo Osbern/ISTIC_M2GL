@@ -1,0 +1,12 @@
+movePiece(null, .. -> NPE car .getPosition dessus
+movePieceBack(..) -> NPE avec Type de Piece null
+setSquare(..) -> NPE avec Square row null
+getPieces(..) -> NPE sur String inconnue
+Square(List..) -> NPE quand List null
+setAttackedSquares(..) -> NPE quand appelé une 2e fois après le constructeur
+checkBoard(..) -> NPE avec Piece Type null
+movePieceBack(..) -> NPE avec Piece null
+getKing(..) -> NPE avec Color null
+movePiece(..) -> NPE avec Square row null
+movePiece(..) -> NPE avec Piece null
+getSquare(..) -> NPE sur Square row null
