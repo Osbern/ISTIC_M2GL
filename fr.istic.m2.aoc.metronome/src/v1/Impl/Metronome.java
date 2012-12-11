@@ -5,10 +5,6 @@ import v1.Interface.Command;
 
 public class Metronome {
 	
-	public static final int MESURE_MAX = 7;
-	public static final int MESURE_MIN = 2;
-	
-	
 	public static void main(String[] args) {
 		Controller ctl = new Controller();
 		Moteur mot = new Moteur();

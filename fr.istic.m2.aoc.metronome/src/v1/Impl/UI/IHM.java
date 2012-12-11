@@ -167,12 +167,4 @@ public class IHM extends JFrame {
 		aff.setText(value + " bpm");
 	}
 
-	public int getMaxMesure() {
-		return ctl.getMaxMesure();
-	}
-
-	public int getMinMesure() {
-		return ctl.getMinMesure();
-	}
-
 }

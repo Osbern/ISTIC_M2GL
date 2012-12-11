@@ -46,7 +46,7 @@ public class Main {
 		// frame.add(tas.getPresentation());
 
 		/*
-		 * test des PTasDeCartes on affiche un tas colorees vertical
+		 * test des PTasDeCartes on affiche un tas coloré vertical
 		 */
 		CTasDeCartesColorees tasc = new CTasDeCartesColorees("titi", 4, u);
 		tasc.getPresentation().setDelta(0, 0);

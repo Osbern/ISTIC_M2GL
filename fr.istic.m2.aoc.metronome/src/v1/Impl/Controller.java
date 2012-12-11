@@ -12,9 +12,6 @@ public class Controller {
 	private IHM ihm;
 	private Moteur mot;
 	
-	public int getMaxMesure(){return mot.MAX_MESURE;}
-	public int getMinMesure(){return mot.MIN_MESURE;}
-	
 	
 	public Controller() {
 	}
