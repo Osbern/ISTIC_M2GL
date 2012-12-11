@@ -24,8 +24,8 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>fr.istic.ejb</groupId>
-			<artifactId>api_ejb3</artifactId>
+			<groupId>fr.istic.euros.dollars</groupId>
+			<artifactId>EurosDollars.API</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>

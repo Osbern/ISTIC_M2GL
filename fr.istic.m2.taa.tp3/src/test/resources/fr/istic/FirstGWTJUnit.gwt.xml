@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+  <!-- Inherit our applications main module.                      -->
+  <inherits name='fr.istic.firstgwt' />
+
+  <!-- Specify the path to any remote services.                   -->
+  <servlet path="/firstgwt/greet" class="fr.istic.server.GreetingServiceImpl" />
+
+</module>
