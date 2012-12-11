@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Built-By: benoitf
+Build-Jdk: 1.6.0_21
+Specification-Title: EasyBeans: Assembly :: EE :: War :: OpenJPA
+Specification-Version: 1.2.3
+Specification-Vendor: OW2 Consortium
+Implementation-Title: EasyBeans: Assembly :: EE :: War :: OpenJPA
+Implementation-Vendor-Id: org.ow2.easybeans
+Implementation-Vendor: OW2 Consortium
+Implementation-Version: 1.2.3.6050
+
