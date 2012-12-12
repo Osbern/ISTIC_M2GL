@@ -115,7 +115,7 @@ public class PColonne extends JPanel {
 			@Override
 			public void dragMouseMoved(DragSourceDragEvent dsde) {
 				int x = dsde.getLocation().x - initialEvent.getDragOrigin().x;
-				int y = dsde.getLocation().y - 50;//- initialEvent.getDragOrigin().y - 10;
+				int y = dsde.getLocation().y - 100 + /* - initialEvent.getDragOrigin().y -*/ ((transfer.getControle().getSize() -1 ) * 10);
 				transfer.setLocation(x, y);
 				repaint();
 			}
@@ -127,9 +127,6 @@ public class PColonne extends JPanel {
 
 		// DROP
 		dtl = new DropTargetAdapter() {
-
-			private PTasDeCartes transfer;
-
 			@Override
 			public void dragEnter(DropTargetDragEvent dtde) {
 				try {

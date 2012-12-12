@@ -6,6 +6,7 @@ import presentation.PColonne;
 import presentation.PTasDeCartes;
 import presentation.PTasDeCartesAlternees;
 import solitaire.application.Colonne;
+import solitaire.application.Tas;
 import solitaire.application.Usine;
 
 public class CColonne extends Colonne {
@@ -58,6 +59,12 @@ public class CColonne extends Colonne {
 					transfer.empiler(c);
 				}
 			}
+			
+			if (!cachees.isVide()) {
+				PTasDeCartesAlternees ptas = ((CTasDeCartesAlternees) visibles).getPresentation();
+				ptas.setLocation(ptas.getX(), ptas.getY() - 15);
+			}
+			
 			transfer.getPresentation().setOpaque(false);
 			p.c2p_debutDnDOK(transfer.getPresentation());
 		} else {
@@ -69,12 +76,13 @@ public class CColonne extends Colonne {
 		CTasDeCartes ctdc = (CTasDeCartes) ptdc.getControle();
 		if (!success)
 			empiler(ctdc);
-		else
+		else {
 			try {
 				retournerCarte();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}
 	}
 
 	// DROP

@@ -27,7 +27,6 @@ public class PSolitaire extends JFrame {
 		//jeu.jouer();
 		
 		while (!jeu.termine()) {
-			
 		}
 		System.out.println("GAGNE !");
 	}

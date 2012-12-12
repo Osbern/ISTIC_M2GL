@@ -7,5 +7,4 @@ public class PTasDeCartesAlternees extends PTasDeCartes {
 	public PTasDeCartesAlternees(ICTasDeCartes cTas) {
 		super(cTas);
 	}
-
 }
