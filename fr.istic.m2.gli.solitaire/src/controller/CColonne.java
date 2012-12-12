@@ -19,7 +19,7 @@ public class CColonne extends Colonne {
 		PTasDeCartes pCachees = ((CTasDeCartes) cachees).getPresentation();
 		PTasDeCartesAlternees pVisibles = ((CTasDeCartesAlternees) visibles)
 				.getPresentation();
-		pCachees.setDelta(0, 7);
+		pCachees.setDelta(0, 15);
 		pVisibles.setDelta(0, 15);
 		p = new PColonne(this, pCachees, pVisibles);
 	}

@@ -31,4 +31,9 @@ public class CTasDeCartesAlternees extends TasDeCartesAlternees implements
 		super.depiler();
 	}
 
+	@Override
+	public int getSize() {
+		return this.getNombre();
+	}
+
 }

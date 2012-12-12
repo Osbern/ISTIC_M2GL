@@ -35,58 +35,58 @@ public class CTasDeCartesColorees extends TasDeCartesColorees implements
 		p.depiler(((CCarte) getSommet()).getPresentation());
 		super.depiler();
 	}
-	
+
 	// DRAG
-		public void p2c_debutDnD(CCarte cc) throws Exception {
-			if (cc != null) {
-				CTasDeCartes transfer = new CTasDeCartes("Transfer", u);
-				transfer.getPresentation().setDelta(0, 25);
-				if (cc == getSommet()) {
-					depiler();
-					transfer.empiler(cc);
-				} else {
-					CCarte tmp;
-					CTasDeCartes tasTmp = new CTasDeCartes("Transfer", u);
-					int size = 1;
-					while ((tmp = (CCarte) getSommet()) != cc) {
-						depiler();
-						tasTmp.empiler(tmp);
-						size++;
-					}
+	public void p2c_debutDnD(CCarte cc) throws Exception {
+		if (cc != null) {
+			CTasDeCartes transfer = new CTasDeCartes("Transfer", u);
+			transfer.getPresentation().setDelta(0, 25);
+			if (cc == getSommet()) {
+				depiler();
+				transfer.empiler(cc);
+			} else {
+				CCarte tmp;
+				CTasDeCartes tasTmp = new CTasDeCartes("Transfer", u);
+				int size = 1;
+				while ((tmp = (CCarte) getSommet()) != cc) {
 					depiler();
 					tasTmp.empiler(tmp);
-
-					for (int i = 0; i < size; i++) {
-						CCarte c = (CCarte) tasTmp.getSommet();
-						tasTmp.depiler();
-						transfer.empiler(c);
-					}
+					size++;
 				}
-				transfer.getPresentation().setOpaque(false);
-				p.c2p_debutDnDOK(transfer.getPresentation());
-			} else {
-				p.c2p_debutDnDNull();
-			}
-		}
+				depiler();
+				tasTmp.empiler(tmp);
 
-		public void p2c_dragDropEnd(boolean success, PTasDeCartes ptdc) {
-			CTasDeCartes ctdc = (CTasDeCartes) ptdc.getControle();
-			if (!success)
-				empiler(ctdc);
+				for (int i = 0; i < size; i++) {
+					CCarte c = (CCarte) tasTmp.getSommet();
+					tasTmp.depiler();
+					transfer.empiler(c);
+				}
+			}
+			transfer.getPresentation().setOpaque(false);
+			p.c2p_debutDnDOK(transfer.getPresentation());
+		} else {
+			p.c2p_debutDnDNull();
 		}
+	}
+
+	public void p2c_dragDropEnd(boolean success, PTasDeCartes ptdc) {
+		CTasDeCartes ctdc = (CTasDeCartes) ptdc.getControle();
+		if (!success)
+			empiler(ctdc);
+	}
 
 	// DROP
 	public void p2c_dragEnter(CTasDeCartes transfer) {
 		if (transfer.getNombre() == 1) {
-		try {
-			if (isEmpilable(transfer.getSommet())) {
-				p.c2p_showEmpilable();
-			} else {
-				p.c2p_showNotEmpilable();
+			try {
+				if (isEmpilable(transfer.getSommet())) {
+					p.c2p_showEmpilable();
+				} else {
+					p.c2p_showNotEmpilable();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 		} else {
 			p.c2p_showNotEmpilable();
 		}
@@ -112,6 +112,11 @@ public class CTasDeCartesColorees extends TasDeCartesColorees implements
 		} else {
 			p.c2p_showNeutre();
 		}
+	}
+
+	@Override
+	public int getSize() {
+		return this.getNombre();
 	}
 
 }
