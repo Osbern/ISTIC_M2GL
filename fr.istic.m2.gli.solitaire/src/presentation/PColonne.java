@@ -45,7 +45,7 @@ public class PColonne extends JPanel {
 		add(visibles);
 		add(cachees);
 		
-		visibles.setLocation(cachees.getX(), cachees.getHeight() - 25);
+		visibles.setLocation(cachees.getX(), cachees.getHeight() - 77);
 		
 //		cachees.setSize(new Dimension(80, 1000));
 //		visibles.setSize(cachees.getHeight(), cachees.getHeight() + 25);

@@ -15,7 +15,8 @@ public class CColonne extends Colonne {
 		super(name, u);
 		this.u = u;
 		PTasDeCartes pCachees = ((CTasDeCartes) cachees).getPresentation();
-		PTasDeCartesAlternees pVisibles = ((CTasDeCartesAlternees) visibles).getPresentation();
+		PTasDeCartesAlternees pVisibles = ((CTasDeCartesAlternees) visibles)
+				.getPresentation();
 		pCachees.setDelta(0, 7);
 		pVisibles.setDelta(0, 15);
 		p = new PColonne(this, pCachees, pVisibles);
@@ -25,6 +26,10 @@ public class CColonne extends Colonne {
 		return p;
 	}
 
+	public void setPresentation(PColonne p) {
+		this.p = p;
+	}
+
 	public void p2c_debutDnD(CCarte cc) throws Exception {
 		if (cc != null) {
 			CTasDeCartes transfer = new CTasDeCartes("Transfer", u);
@@ -32,7 +37,7 @@ public class CColonne extends Colonne {
 			if (cc == getSommet()) {
 				depiler();
 				transfer.empiler(cc);
-				
+
 				System.out.println("SOMMET");
 			} else {
 				CCarte tmp;
@@ -45,13 +50,13 @@ public class CColonne extends Colonne {
 				}
 				depiler();
 				tasTmp.empiler(tmp);
-				
+
 				for (int i = 0; i < size; i++) {
 					CCarte c = (CCarte) tasTmp.getSommet();
 					tasTmp.depiler();
 					transfer.empiler(c);
 				}
-				
+
 				System.out.println("PAS SOMMET: " + size);
 			}
 			transfer.getPresentation().setOpaque(false);

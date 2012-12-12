@@ -5,6 +5,8 @@ import java.awt.FlowLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import v1.Impl.Constantes;
+
 public class MesureDisplayer extends JPanel {
 
 	private IHM ihm;
@@ -16,7 +18,7 @@ public class MesureDisplayer extends JPanel {
 		this.ihm = ihm;
 		this.mesure = mesure-1;
 		this.cpt = 0;
-		btns = new JButton[ihm.getMaxMesure()];
+		btns = new JButton[Constantes.MAX_MESURE];
 		this.setLayout(new FlowLayout());
 		for (int i = 0; i < btns.length; i++) {
 			JButton res = new JButton();

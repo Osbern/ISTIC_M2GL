@@ -1,5 +1,6 @@
 package controller;
 
+import presentation.PSolitaire;
 import solitaire.application.Carte;
 import solitaire.application.Colonne;
 import solitaire.application.DoubleTas;
@@ -24,26 +25,32 @@ public class CUsine extends Usine {
 	}
 
 	@Override
-	public Carte newCarte(int arg0, int arg1) {
-		return new CCarte(arg0, arg1);
+	public Carte newCarte(int nom, int usine) {
+		return new CCarte(nom, usine);
 	}
 
 	@Override
-	public Colonne newColonne(String arg0, Usine arg1) {
-		return new CColonne(arg0, arg1);
+	public Colonne newColonne(String nom, Usine usine) {
+		return new CColonne(nom, usine);
 	}
 
 	@Override
-	public Sabot newSabot(String arg0, Usine arg1) {
-		// TODO Auto-generated method stub
-		return new CSabot(arg0, arg1);
+	public Sabot newSabot(String nom, Usine usine) {
+		return new CSabot(nom, usine);
 	}
 
 	@Override
-	public TasDeCartesColorees newTasDeCartesColorees(String arg0, int arg1,
-			Usine arg2) {
+	public TasDeCartesColorees newTasDeCartesColorees(String nom, int couleur,
+			Usine u) {
 
-		return new CTasDeCartesColorees(arg0, arg1, arg2);
+		return new CTasDeCartesColorees(nom, couleur, u);
+	}
+	
+	@Override
+	public Solitaire newSolitaire(String nom, Usine usine) {
+		CSolitaire res = new CSolitaire(nom, usine);
+		res.setPS(new PSolitaire(res));
+		return res;
 	}
 
 }

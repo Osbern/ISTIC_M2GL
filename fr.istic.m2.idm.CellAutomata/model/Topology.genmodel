@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/fr.istic.m2.idm.CellAutomata/src" modelPluginID="fr.istic.m2.idm.CellAutomata"
+    modelName="Topology" importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0"
+    copyrightFields="false" usedGenPackages="DataType.genmodel#//DataType">
+  <foreignModel>Topology.ecore</foreignModel>
+  <genPackages prefix="Topology" disposableProviderFactory="true" ecorePackage="Topology.ecore#/">
+    <genClasses ecoreClass="Topology.ecore#//Dimension">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Topology.ecore#//Dimension/size"/>
+    </genClasses>
+    <genClasses ecoreClass="Topology.ecore#//Geometry">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Topology.ecore#//Geometry/dimensions"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Topology.ecore#//Geometry/neighbors"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Topology.ecore#//Geometry/nDim"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Topology.ecore#//Geometry/isCircular"/>
+    </genClasses>
+    <genClasses ecoreClass="Topology.ecore#//Neighbor">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Topology.ecore#//Neighbor/coord"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature id="fr.istic.m2.idm.xtext.sdk"
+	label="Topanl SDK Feature "
+	version="1.0.0.qualifier">
+	<plugin
+			id="fr.istic.m2.idm.xtext"
+			download-size="0"
+			install-size="0"
+			version="0.0.0"
+			unpack="false"/>
+	<plugin
+			id="fr.istic.m2.idm.xtext.ui"
+			download-size="0"
+			install-size="0"
+			version="0.0.0"
+			unpack="false"/>
+</feature>

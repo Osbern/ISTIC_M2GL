@@ -22,7 +22,7 @@ public class PSolitaire extends JFrame {
 
 		CUsine u = new CUsine();
 		CSolitaire jeu = new CSolitaire("Solitaire", u);
-		jeu.initialiser();		
+		jeu.initialiser();
 	}
 
 	/**
@@ -54,31 +54,27 @@ public class PSolitaire extends JFrame {
 			t.getPresentation().setVisible(true);
 			north.add(t.getPresentation());
 		}
-		north.setSize(sabot.getPresentation().getWidth()+(4*piles[0].getPresentation().getWidth()+50), 150);
+		north.setSize(sabot.getPresentation().getWidth()
+				+ (4 * piles[0].getPresentation().getWidth() + 50), 150);
 		north.setPreferredSize(north.getSize());
 
-		
-		
 		JPanel center = new JPanel();
-		center.setLayout(new FlowLayout());
+		center.setLayout(null);
 		CColonne[] cols = csolitaire.getCols();
+		int n = 0, dx = 20 + 80, dy = 10 + 100;
 		for (CColonne c : cols) {
-			c.getPresentation().setVisible(true);
-			center.add(c.getPresentation(),0);
+			PColonne p = c.getPresentation();
+			p.setLocation(center.getX() + (n * dx), center.getY() + (n * dy));
+			p.setVisible(true);
+			center.add(p);
+			n++;
 		}
 
 		center.setSize(7 * 90, (7 * 25) + (12 * 25) + 100);
-		
-		
-		
-		
-		
-		
-		
 
 		board.add(north, BorderLayout.NORTH, 0);
-		center.setOpaque(false);
-		board.add(center, BorderLayout.CENTER, 0);
+
+		board.add(center, BorderLayout.SOUTH, 0);
 
 		board.setSize(Math.max(center.getWidth(), north.getWidth()),
 				center.getHeight() + 5 + north.getHeight());
@@ -88,5 +84,4 @@ public class PSolitaire extends JFrame {
 		validate();
 	}
 
-	
 }

@@ -9,10 +9,7 @@ import v2.Adaptor.Horloge;
 
 public class Moteur {
 	
-	public static final int MIN_MESURE = 2;
-	public static final int MAX_MESURE = 7;
-	
-	
+
 	private Controller ctl;
 	private Horloge timer;
 	private Command tocTemps, tocMesure;
@@ -71,12 +68,12 @@ public class Moteur {
 	}
 
 	public void inc() {
-		if (mesure < Metronome.MESURE_MAX)
+		if (mesure < Constantes.MAX_MESURE)
 			mesure++;
 	}
 
 	public void dec() {
-		if (mesure > Metronome.MESURE_MIN)
+		if (mesure > Constantes.MIN_MESURE)
 			mesure--;
 	}
 
@@ -94,7 +91,7 @@ public class Moteur {
 	}
 	
 	public void setMesure(int mesure) {
-		if (mesure >= MIN_MESURE && mesure <= MAX_MESURE)
+		if (mesure >= Constantes.MIN_MESURE && mesure <= Constantes.MAX_MESURE)
 			this.mesure = mesure;
 	}
 	

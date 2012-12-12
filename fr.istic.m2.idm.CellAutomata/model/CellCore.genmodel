@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/fr.istic.m2.idm.CellAutomata/src" modelPluginID="fr.istic.m2.idm.CellAutomata"
+    modelName="CellCore" importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0"
+    copyrightFields="false" usedGenPackages="DataType.genmodel#//DataType">
+  <foreignModel>CellCore.ecore</foreignModel>
+  <genPackages prefix="CellCore" disposableProviderFactory="true" ecorePackage="CellCore.ecore#/">
+    <genClasses image="false" ecoreClass="CellCore.ecore#//Expression"/>
+    <genClasses ecoreClass="CellCore.ecore#//IntExpr"/>
+    <genClasses ecoreClass="CellCore.ecore#//BoolExpr"/>
+    <genClasses ecoreClass="CellCore.ecore#//Literal"/>
+    <genClasses ecoreClass="CellCore.ecore#//IntBin"/>
+    <genClasses ecoreClass="CellCore.ecore#//Add"/>
+    <genClasses ecoreClass="CellCore.ecore#//Mul"/>
+    <genClasses ecoreClass="CellCore.ecore#//BoolBin"/>
+    <genClasses ecoreClass="CellCore.ecore#//Equal"/>
+    <genClasses ecoreClass="CellCore.ecore#//Greater"/>
+    <genClasses ecoreClass="CellCore.ecore#//State">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CellCore.ecore#//State/state"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
