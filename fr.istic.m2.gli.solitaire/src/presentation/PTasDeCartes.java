@@ -24,21 +24,22 @@ public class PTasDeCartes extends JPanel implements Transferable {
 		this.setLayout(null);
 
 	
-		this.setSize(80, 100);
+		this.setSize(77, 100);
 		this.setPreferredSize(getSize());
 		
 		
-		//this.setBackground(Color.GREEN);
+		// this.setBackground(Color.GRAY);
 		
 		this.setVisible(true);
 	}
 	
 	public void initialiser(){
 		int size = cTas.getSize();
-		int x = 80;
-		int y = 100+(size*15);
+		int x = 77;
+		int y = 100 + (size * 15);
 		this.setSize(x, y);
 		this.setPreferredSize(getSize());
+		this.setBackground(Color.GRAY);
 	}
 	
 	public ICTasDeCartes getControle() {

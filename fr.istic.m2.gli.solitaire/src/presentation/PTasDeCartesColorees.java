@@ -172,7 +172,7 @@ public class PTasDeCartesColorees extends PTasDeCartes {
 	public void c2p_showNeutre() {
 		if (!ctdcc.isVide()) {
 			try {
-				((CCarte) ctdcc.getSommet()).getPresentation().setBackground(Color.GRAY);
+				((CCarte) ctdcc.getSommet()).getPresentation().setBackground(Color.LIGHT_GRAY);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -184,13 +184,11 @@ public class PTasDeCartesColorees extends PTasDeCartes {
 	public void c2p_finDnDOK() {
 		finalEv.acceptDrop(DnDConstants.ACTION_MOVE);
 		finalEv.getDropTargetContext().dropComplete(true);
-		System.out.println("OK");
 		repaint();
 	}
 
 	public void c2p_finDnDKO() {
 		finalEv.rejectDrop();
-		System.out.println("KO");
 	}
 
 	public void c2p_showEmpilable() {

@@ -57,4 +57,9 @@ public class CSolitaire extends Solitaire {
 	public void setPS(PSolitaire pS) {
 		PS = pS;
 	}
+	
+	@Override
+	public boolean termine() {
+		return super.termine();
+	}
 }

@@ -102,6 +102,7 @@ public class CTasDeCartesColorees extends TasDeCartesColorees implements
 				p.c2p_showNeutre();
 				if (isEmpilable(transfer.getSommet())) {
 					empiler(transfer);
+					// CHECK WIN
 					p.c2p_finDnDOK();
 				} else {
 					p.c2p_finDnDKO();

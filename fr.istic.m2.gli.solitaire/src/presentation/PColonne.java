@@ -59,7 +59,6 @@ public class PColonne extends JPanel {
 		add(cachees);
 		visibles.setOpaque(false);
 
-		System.err.println("cachees height: " + cachees.getHeight());
 		// cachees.setSize(new Dimension(80, 1000));
 		// visibles.setSize(cachees.getHeight(), cachees.getHeight() + 25);
 		cachees.setVisible(true);
@@ -195,7 +194,6 @@ public class PColonne extends JPanel {
 	}
 
 	public void c2p_debutDnDNull() {
-		// TODO Auto-generated method stub
 
 	}
 
@@ -204,7 +202,7 @@ public class PColonne extends JPanel {
 		try {
 			if (!c.isVide())
 				((CCarte) c.getSommet()).getPresentation().setBackground(
-						Color.YELLOW);
+						Color.LIGHT_GRAY);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -213,12 +211,10 @@ public class PColonne extends JPanel {
 	public void c2p_finDnDOK() {
 		finalEv.acceptDrop(DnDConstants.ACTION_MOVE);
 		finalEv.getDropTargetContext().dropComplete(true);
-		System.out.println("OK");
 	}
 
 	public void c2p_finDnDKO() {
 		finalEv.rejectDrop();
-		System.out.println("KO");
 	}
 
 	public void c2p_showEmpilable() {
@@ -243,6 +239,6 @@ public class PColonne extends JPanel {
 
 	public void initCachees() {
 		cachees.initialiser();
-		visibles.setLocation(cachees.getX(), cachees.getHeight() - 95);
+		visibles.setLocation(cachees.getX(), cachees.getHeight() - 100);
 	}
 }

@@ -24,7 +24,12 @@ public class PSolitaire extends JFrame {
 		CUsine u = new CUsine();
 		CSolitaire jeu = new CSolitaire("Solitaire", u);
 		jeu.initialiser();
-		jeu.jouer();
+		//jeu.jouer();
+		
+		while (!jeu.termine()) {
+			
+		}
+		System.out.println("GAGNE !");
 	}
 
 	/**
@@ -70,8 +75,6 @@ public class PSolitaire extends JFrame {
 		cols = csolitaire.getCols();
 		sabot = csolitaire.getSabot();
 		piles = csolitaire.getPiles();
-		
-		
 
 		north.add(sabot.getPresentation());
 
