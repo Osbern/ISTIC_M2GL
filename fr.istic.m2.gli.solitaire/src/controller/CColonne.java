@@ -78,19 +78,19 @@ public class CColonne extends Colonne {
 				e.printStackTrace();
 			}
 	}
-	
+
 	// DROP
 	public void p2c_dragEnter(CTasDeCartes transfer) {
 		if (transfer.getNombre() == 1) {
-		try {
-			if (isEmpilable(transfer.getSommet())) {
-				p.c2p_showEmpilable();
-			} else {
-				p.c2p_showNotEmpilable();
+			try {
+				if (isEmpilable(transfer.getSommet())) {
+					p.c2p_showEmpilable();
+				} else {
+					p.c2p_showNotEmpilable();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 		} else {
 			p.c2p_showNotEmpilable();
 		}
@@ -101,19 +101,17 @@ public class CColonne extends Colonne {
 	}
 
 	public void p2c_drop(CTasDeCartes transfer) {
-		if (transfer.getNombre() == 1) {
-			try {
-				if (isEmpilable(transfer.getSommet())) {
-					empiler(transfer);
-					p.c2p_showNeutre();
-					p.c2p_finDnDOK();
-				} else {
-					p.c2p_showNeutre();
-					p.c2p_finDnDKO();
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
+		try {
+			if (isEmpilable(transfer.getBase())) {
+				empiler(transfer);
+				p.c2p_showNeutre();
+				p.c2p_finDnDOK();
+			} else {
+				p.c2p_showNeutre();
+				p.c2p_finDnDKO();
 			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 }
