@@ -52,9 +52,10 @@ public class PColonne extends JPanel {
 		cachees.setVisible(true);
 		visibles.setVisible(true);
 		
-		this.setBackground(Color.YELLOW);
+	
 
-		
+		this.setSize(100,500);
+		this.setPreferredSize(this.getSize());
 		setVisible(true);
 		
 		

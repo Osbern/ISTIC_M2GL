@@ -10,6 +10,7 @@ public class CSolitaire extends Solitaire {
 
 	public CSolitaire(String arg0, Usine arg1) {
 		super(arg0, arg1);
+		PS = new PSolitaire(this);
 	}
 
 	public String getNom() {
@@ -45,8 +46,7 @@ public class CSolitaire extends Solitaire {
 	@Override
 	public void initialiser() {
 		super.initialiser();
-
-		this.setPS(new PSolitaire(this));
+		PS.initialiser();
 
 	}
 
