@@ -49,7 +49,6 @@ public class CUsine extends Usine {
 	@Override
 	public Solitaire newSolitaire(String nom, Usine usine) {
 		CSolitaire res = new CSolitaire(nom, usine);
-		res.setPS(new PSolitaire(res));
 		return res;
 	}
 
