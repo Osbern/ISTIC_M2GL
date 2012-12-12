@@ -27,14 +27,14 @@ import controller.CColonne;
 import controller.CTasDeCartes;
 
 public class PColonne extends JPanel {
-	
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	private CColonne c;
 	private PTasDeCartes cachees, visibles;
-	
+
 	// DRAG
 	private DragGestureListener dgl;
 	private DragGestureEvent initialEvent;
@@ -42,35 +42,33 @@ public class PColonne extends JPanel {
 	private DragSourceListener dsl;
 	private DragSourceMotionListener dsml;
 	private PTasDeCartes transfer;
-	
+
 	// DROP
 	private DropTarget dt;
 	private DropTargetListener dtl;
 	private DropTargetDropEvent finalEv;
-	
+
 	public PColonne(CColonne _c, PTasDeCartes _cachees, PTasDeCartes _visibles) {
 		this.c = _c;
 		this.cachees = _cachees;
 		this.visibles = _visibles;
-		
+
 		setLayout(null);
-		
+
 		add(visibles);
 		add(cachees);
-		
-		visibles.setLocation(cachees.getX(), cachees.getHeight() - 77);
-		
-//		cachees.setSize(new Dimension(80, 1000));
-//		visibles.setSize(cachees.getHeight(), cachees.getHeight() + 25);
+		visibles.setOpaque(false);
+
+		System.err.println("cachees height: " + cachees.getHeight());
+		// cachees.setSize(new Dimension(80, 1000));
+		// visibles.setSize(cachees.getHeight(), cachees.getHeight() + 25);
 		cachees.setVisible(true);
 		visibles.setVisible(true);
-		
-	
 
-		this.setSize(100,500);
+		this.setSize(100, 500);
 		this.setPreferredSize(this.getSize());
 		setVisible(true);
-		
+
 		// DRAG
 		dgl = new DragGestureListener() {
 			@Override
@@ -82,11 +80,11 @@ public class PColonne extends JPanel {
 					pc = (PCarte) visibles.getComponentAt(dge.getDragOrigin());
 					cc = pc.getControle();
 					c.p2c_debutDnD(cc);
-				}  catch (Exception e) { 
+				} catch (Exception e) {
 				}
 			}
 		};
-		
+
 		ds = new DragSource();
 		dsl = new DragSourceAdapter() {
 			@Override
@@ -94,7 +92,14 @@ public class PColonne extends JPanel {
 				super.dragDropEnd(dsde);
 				try {
 					try {
-						c.p2c_dragDropEnd(dsde.getDropSuccess(), (PTasDeCartes) dsde.getDragSourceContext().getTransferable().getTransferData(new DataFlavor(DataFlavor.javaJVMLocalObjectMimeType)));
+						c.p2c_dragDropEnd(
+								dsde.getDropSuccess(),
+								(PTasDeCartes) dsde
+										.getDragSourceContext()
+										.getTransferable()
+										.getTransferData(
+												new DataFlavor(
+														DataFlavor.javaJVMLocalObjectMimeType)));
 					} catch (ClassNotFoundException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -106,20 +111,22 @@ public class PColonne extends JPanel {
 				}
 			}
 		};
-		
+
 		dsml = new DragSourceMotionListener() {
 			@Override
 			public void dragMouseMoved(DragSourceDragEvent dsde) {
 				int x = dsde.getLocation().x - initialEvent.getDragOrigin().x;
-				int y = dsde.getLocation().y - initialEvent.getDragOrigin().y - 10;
-				transfer.setLocation(x , y);
+				int y = dsde.getLocation().y - initialEvent.getDragOrigin().y
+						- 10;
+				transfer.setLocation(x, y);
 				repaint();
 			}
 		};
-		
-		ds.createDefaultDragGestureRecognizer(visibles, DnDConstants.ACTION_MOVE, dgl);
+
+		ds.createDefaultDragGestureRecognizer(visibles,
+				DnDConstants.ACTION_MOVE, dgl);
 		ds.addDragSourceMotionListener(dsml);
-		
+
 		// DROP
 		dtl = new DropTargetAdapter() {
 
@@ -169,7 +176,7 @@ public class PColonne extends JPanel {
 		};
 		dt = new DropTarget(this, dtl);
 	}
-	
+
 	public void empiler(PCarte pc) {
 		visibles.empiler(pc);
 	}
@@ -190,14 +197,15 @@ public class PColonne extends JPanel {
 
 	public void c2p_debutDnDNull() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	// DROP
 	public void c2p_showNeutre() {
 		try {
 			if (!c.isVide())
-				((CCarte) c.getSommet()).getPresentation().setBackground(Color.YELLOW);
+				((CCarte) c.getSommet()).getPresentation().setBackground(
+						Color.YELLOW);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -217,7 +225,8 @@ public class PColonne extends JPanel {
 	public void c2p_showEmpilable() {
 		try {
 			if (!c.isVide())
-				((CCarte) c.getSommet()).getPresentation().setBackground(Color.GREEN);
+				((CCarte) c.getSommet()).getPresentation().setBackground(
+						Color.GREEN);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -226,10 +235,15 @@ public class PColonne extends JPanel {
 	public void c2p_showNotEmpilable() {
 		try {
 			if (!c.isVide())
-				((CCarte) c.getSommet()).getPresentation().setBackground(Color.RED);
+				((CCarte) c.getSommet()).getPresentation().setBackground(
+						Color.RED);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
+	public void initCachees() {
+		cachees.initialiser();
+		visibles.setLocation(cachees.getX(), cachees.getHeight() - 95);
+	}
 }

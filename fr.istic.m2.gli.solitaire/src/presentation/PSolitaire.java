@@ -70,12 +70,16 @@ public class PSolitaire extends JFrame {
 		cols = csolitaire.getCols();
 		sabot = csolitaire.getSabot();
 		piles = csolitaire.getPiles();
+		
+		
 
 		north.add(sabot.getPresentation());
 
 		for (CTasDeCartesColorees t : piles) {
-			t.getPresentation().setVisible(true);
-			north.add(t.getPresentation());
+			PTasDeCartesColorees p = t.getPresentation();
+			p.setBackground(Color.GRAY);
+			p.setVisible(true);
+			north.add(p);
 		}
 		north.setSize(sabot.getPresentation().getWidth()
 				+ (4 * piles[0].getPresentation().getWidth() + 50), 150);
@@ -86,6 +90,7 @@ public class PSolitaire extends JFrame {
 			PColonne p = c.getPresentation();
 			p.setLocation(center.getX() + (n * dx), center.getY() + (n * dy));
 			p.setVisible(true);
+			p.initCachees();
 			center.add(p);
 			n++;
 		}
