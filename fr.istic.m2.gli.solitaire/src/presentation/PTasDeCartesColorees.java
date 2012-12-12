@@ -17,17 +17,17 @@ import controller.CTasDeCartesColorees;
 import controller.ICTasDeCartes;
 
 public class PTasDeCartesColorees extends PTasDeCartes {
-	
+
 	private CTasDeCartesColorees ctdcc;
-	
+
 	private DropTarget dt;
 	private DropTargetListener dtl;
 	private DropTargetDropEvent finalEv;
-	
+
 	public PTasDeCartesColorees(ICTasDeCartes cTas) {
 		super(cTas);
 		ctdcc = (CTasDeCartesColorees) cTas;
-		
+
 		dtl = new DropTargetAdapter() {
 
 			private PTasDeCartes transfer;
@@ -35,7 +35,11 @@ public class PTasDeCartesColorees extends PTasDeCartes {
 			@Override
 			public void dragEnter(DropTargetDragEvent dtde) {
 				try {
-					transfer = (PTasDeCartes) dtde.getTransferable().getTransferData(new DataFlavor(DataFlavor.javaJVMLocalObjectMimeType));
+					transfer = (PTasDeCartes) dtde
+							.getTransferable()
+							.getTransferData(
+									new DataFlavor(
+											DataFlavor.javaJVMLocalObjectMimeType));
 					ctdcc.p2c_dragEnter((CTasDeCartes) transfer.getControle());
 				} catch (UnsupportedFlavorException e) {
 					e.printStackTrace();
@@ -55,7 +59,12 @@ public class PTasDeCartesColorees extends PTasDeCartes {
 			public void drop(DropTargetDropEvent dtde) {
 				finalEv = dtde;
 				try {
-					ctdcc.p2c_drop((CTasDeCartes) ((PTasDeCartes) dtde.getTransferable().getTransferData(new DataFlavor(DataFlavor.javaJVMLocalObjectMimeType))).getControle());
+					ctdcc.p2c_drop((CTasDeCartes) ((PTasDeCartes) dtde
+							.getTransferable()
+							.getTransferData(
+									new DataFlavor(
+											DataFlavor.javaJVMLocalObjectMimeType)))
+							.getControle());
 				} catch (UnsupportedFlavorException e) {
 					e.printStackTrace();
 				} catch (IOException e) {
@@ -69,7 +78,7 @@ public class PTasDeCartesColorees extends PTasDeCartes {
 	}
 
 	public void c2p_showNeutre() {
-		setBackground(null);
+		setBackground(Color.GREEN);
 	}
 
 	public void c2p_finDnDOK() {

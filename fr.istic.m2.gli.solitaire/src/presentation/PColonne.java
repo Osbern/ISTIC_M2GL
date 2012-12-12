@@ -12,12 +12,19 @@ import java.awt.dnd.DragSourceDragEvent;
 import java.awt.dnd.DragSourceDropEvent;
 import java.awt.dnd.DragSourceListener;
 import java.awt.dnd.DragSourceMotionListener;
+import java.awt.dnd.DropTarget;
+import java.awt.dnd.DropTargetAdapter;
+import java.awt.dnd.DropTargetDragEvent;
+import java.awt.dnd.DropTargetDropEvent;
+import java.awt.dnd.DropTargetEvent;
+import java.awt.dnd.DropTargetListener;
 import java.io.IOException;
 
 import javax.swing.JPanel;
 
 import controller.CCarte;
 import controller.CColonne;
+import controller.CTasDeCartes;
 
 public class PColonne extends JPanel {
 	
@@ -28,12 +35,18 @@ public class PColonne extends JPanel {
 	private CColonne c;
 	private PTasDeCartes cachees, visibles;
 	
+	// DRAG
 	private DragGestureListener dgl;
 	private DragGestureEvent initialEvent;
 	private DragSource ds;
 	private DragSourceListener dsl;
 	private DragSourceMotionListener dsml;
 	private PTasDeCartes transfer;
+	
+	// DROP
+	private DropTarget dt;
+	private DropTargetListener dtl;
+	private DropTargetDropEvent finalEv;
 	
 	public PColonne(CColonne _c, PTasDeCartes _cachees, PTasDeCartes _visibles) {
 		this.c = _c;
@@ -98,7 +111,7 @@ public class PColonne extends JPanel {
 			@Override
 			public void dragMouseMoved(DragSourceDragEvent dsde) {
 				int x = dsde.getLocation().x - initialEvent.getDragOrigin().x;
-				int y = dsde.getLocation().y - initialEvent.getDragOrigin().y;
+				int y = dsde.getLocation().y - initialEvent.getDragOrigin().y - 200;
 				transfer.setLocation(x , y);
 				repaint();
 			}
@@ -106,6 +119,53 @@ public class PColonne extends JPanel {
 		
 		ds.createDefaultDragGestureRecognizer(visibles, DnDConstants.ACTION_MOVE, dgl);
 		ds.addDragSourceMotionListener(dsml);
+		dtl = new DropTargetAdapter() {
+
+			private PTasDeCartes transfer;
+
+			@Override
+			public void dragEnter(DropTargetDragEvent dtde) {
+				try {
+					transfer = (PTasDeCartes) dtde
+							.getTransferable()
+							.getTransferData(
+									new DataFlavor(
+											DataFlavor.javaJVMLocalObjectMimeType));
+					c.p2c_dragEnter((CTasDeCartes) transfer.getControle());
+				} catch (UnsupportedFlavorException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				} catch (ClassNotFoundException e) {
+					e.printStackTrace();
+				}
+			}
+
+			@Override
+			public void dragExit(DropTargetEvent dte) {
+				c.p2c_dragExit((CTasDeCartes) transfer.getControle());
+			}
+
+			@Override
+			public void drop(DropTargetDropEvent dtde) {
+				finalEv = dtde;
+				try {
+					c.p2c_drop((CTasDeCartes) ((PTasDeCartes) dtde
+							.getTransferable()
+							.getTransferData(
+									new DataFlavor(
+											DataFlavor.javaJVMLocalObjectMimeType)))
+							.getControle());
+				} catch (UnsupportedFlavorException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				} catch (ClassNotFoundException e) {
+					e.printStackTrace();
+				}
+			}
+		};
+		dt = new DropTarget(this, dtl);
 	}
 	
 	public void empiler(PCarte pc) {
@@ -116,6 +176,7 @@ public class PColonne extends JPanel {
 		visibles.depiler(pc);
 	}
 
+	// DRAG
 	public void c2p_debutDnDOK(PTasDeCartes transfer) {
 		if (transfer != null) {
 			this.transfer = transfer;
@@ -128,6 +189,45 @@ public class PColonne extends JPanel {
 	public void c2p_debutDnDNull() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	// DROP
+	public void c2p_showNeutre() {
+		try {
+			if (!c.isVide())
+				((CCarte) c.getSommet()).getPresentation().setBackground(Color.YELLOW);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void c2p_finDnDOK() {
+		finalEv.acceptDrop(DnDConstants.ACTION_MOVE);
+		finalEv.getDropTargetContext().dropComplete(true);
+		System.out.println("OK");
+	}
+
+	public void c2p_finDnDKO() {
+		finalEv.rejectDrop();
+		System.out.println("KO");
+	}
+
+	public void c2p_showEmpilable() {
+		try {
+			if (!c.isVide())
+				((CCarte) c.getSommet()).getPresentation().setBackground(Color.GREEN);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void c2p_showNotEmpilable() {
+		try {
+			if (!c.isVide())
+				((CCarte) c.getSommet()).getPresentation().setBackground(Color.RED);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }
