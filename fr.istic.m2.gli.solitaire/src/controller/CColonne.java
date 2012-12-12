@@ -79,18 +79,14 @@ public class CColonne extends Colonne {
 
 	// DROP
 	public void p2c_dragEnter(CTasDeCartes transfer) {
-		if (transfer.getNombre() == 1) {
-			try {
-				if (isEmpilable(transfer.getBase())) {
-					p.c2p_showEmpilable();
-				} else {
-					p.c2p_showNotEmpilable();
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
+		try {
+			if (isEmpilable(transfer.getBase())) {
+				p.c2p_showEmpilable();
+			} else {
+				p.c2p_showNotEmpilable();
 			}
-		} else {
-			p.c2p_showNotEmpilable();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 

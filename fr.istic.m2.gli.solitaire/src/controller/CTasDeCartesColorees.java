@@ -109,6 +109,8 @@ public class CTasDeCartesColorees extends TasDeCartesColorees implements
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		} else {
+			p.c2p_showNeutre();
 		}
 	}
 

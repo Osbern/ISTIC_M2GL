@@ -28,7 +28,7 @@ import controller.ICTasDeCartes;
 public class PTasDeCartesColorees extends PTasDeCartes {
 
 	private CTasDeCartesColorees ctdcc;
-	
+
 	// DRAG
 	private DragGestureListener dgl;
 	private DragGestureEvent initialEvent;
@@ -47,54 +47,62 @@ public class PTasDeCartesColorees extends PTasDeCartes {
 		ctdcc = (CTasDeCartesColorees) cTas;
 
 		// DRAG
-				dgl = new DragGestureListener() {
-					@Override
-					public void dragGestureRecognized(DragGestureEvent dge) {
-						CCarte cc = null;
-						PCarte pc = null;
-						try {
-							initialEvent = dge;
-							pc = (PCarte) getComponentAt(dge.getDragOrigin());
-							cc = pc.getControle();
-							ctdcc.p2c_debutDnD(cc);
-						}  catch (Exception e) { 
-						}
+		dgl = new DragGestureListener() {
+			@Override
+			public void dragGestureRecognized(DragGestureEvent dge) {
+				CCarte cc = null;
+				PCarte pc = null;
+				try {
+					initialEvent = dge;
+					pc = (PCarte) getComponentAt(dge.getDragOrigin());
+					cc = pc.getControle();
+					ctdcc.p2c_debutDnD(cc);
+				} catch (Exception e) {
+				}
+			}
+		};
+
+		ds = new DragSource();
+		dsl = new DragSourceAdapter() {
+			@Override
+			public void dragDropEnd(DragSourceDropEvent dsde) {
+				super.dragDropEnd(dsde);
+				try {
+					try {
+						ctdcc.p2c_dragDropEnd(
+								dsde.getDropSuccess(),
+								(PTasDeCartes) dsde
+										.getDragSourceContext()
+										.getTransferable()
+										.getTransferData(
+												new DataFlavor(
+														DataFlavor.javaJVMLocalObjectMimeType)));
+					} catch (ClassNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
 					}
-				};
-				
-				ds = new DragSource();
-				dsl = new DragSourceAdapter() {
-					@Override
-					public void dragDropEnd(DragSourceDropEvent dsde) {
-						super.dragDropEnd(dsde);
-						try {
-							try {
-								ctdcc.p2c_dragDropEnd(dsde.getDropSuccess(), (PTasDeCartes) dsde.getDragSourceContext().getTransferable().getTransferData(new DataFlavor(DataFlavor.javaJVMLocalObjectMimeType)));
-							} catch (ClassNotFoundException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
-						} catch (UnsupportedFlavorException e) {
-							e.printStackTrace();
-						} catch (IOException e) {
-							e.printStackTrace();
-						}
-					}
-				};
-				
-				dsml = new DragSourceMotionListener() {
-					@Override
-					public void dragMouseMoved(DragSourceDragEvent dsde) {
-						int x = dsde.getLocation().x - initialEvent.getDragOrigin().x;
-						int y = dsde.getLocation().y - initialEvent.getDragOrigin().y;
-						transfer.setLocation(x , y);
-						repaint();
-					}
-				};
-				
-				ds.createDefaultDragGestureRecognizer(this, DnDConstants.ACTION_MOVE, dgl);
-				ds.addDragSourceMotionListener(dsml);
-		
+				} catch (UnsupportedFlavorException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		};
+
+		dsml = new DragSourceMotionListener() {
+			@Override
+			public void dragMouseMoved(DragSourceDragEvent dsde) {
+				int x = dsde.getLocation().x - initialEvent.getDragOrigin().x;
+				int y = dsde.getLocation().y - initialEvent.getDragOrigin().y;
+				transfer.setLocation(x, y);
+				repaint();
+			}
+		};
+
+		ds.createDefaultDragGestureRecognizer(this, DnDConstants.ACTION_MOVE,
+				dgl);
+		ds.addDragSourceMotionListener(dsml);
+
 		// DROP
 		dtl = new DropTargetAdapter() {
 
@@ -157,12 +165,20 @@ public class PTasDeCartesColorees extends PTasDeCartes {
 
 	public void c2p_debutDnDNull() {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
+
 	// DROP
 	public void c2p_showNeutre() {
-		setBackground(Color.GREEN);
+		if (!ctdcc.isVide()) {
+			try {
+				((CCarte) ctdcc.getSommet()).getPresentation().setBackground(Color.GRAY);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else {
+			setBackground(Color.GRAY);
+		}
 	}
 
 	public void c2p_finDnDOK() {
@@ -178,11 +194,27 @@ public class PTasDeCartesColorees extends PTasDeCartes {
 	}
 
 	public void c2p_showEmpilable() {
-		setBackground(Color.GREEN);
+		if (!ctdcc.isVide()) {
+			try {
+				((CCarte) ctdcc.getSommet()).getPresentation().setBackground(Color.GREEN);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else {
+			setBackground(Color.GREEN);
+		}
 	}
 
 	public void c2p_showNotEmpilable() {
-		setBackground(Color.RED);
+		if (!ctdcc.isVide()) {
+			try {
+				((CCarte) ctdcc.getSommet()).getPresentation().setBackground(Color.RED);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else {
+			setBackground(Color.RED);
+		}
 	}
 
 }
