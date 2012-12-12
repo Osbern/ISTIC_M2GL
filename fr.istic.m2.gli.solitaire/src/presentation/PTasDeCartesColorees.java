@@ -85,6 +85,7 @@ public class PTasDeCartesColorees extends PTasDeCartes {
 		finalEv.acceptDrop(DnDConstants.ACTION_MOVE);
 		finalEv.getDropTargetContext().dropComplete(true);
 		System.out.println("OK");
+		repaint();
 	}
 
 	public void c2p_finDnDKO() {

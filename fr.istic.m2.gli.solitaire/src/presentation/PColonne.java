@@ -71,7 +71,7 @@ public class PColonne extends JPanel {
 		this.setPreferredSize(this.getSize());
 		setVisible(true);
 		
-		
+		// DRAG
 		dgl = new DragGestureListener() {
 			@Override
 			public void dragGestureRecognized(DragGestureEvent dge) {
@@ -111,7 +111,7 @@ public class PColonne extends JPanel {
 			@Override
 			public void dragMouseMoved(DragSourceDragEvent dsde) {
 				int x = dsde.getLocation().x - initialEvent.getDragOrigin().x;
-				int y = dsde.getLocation().y - initialEvent.getDragOrigin().y - 200;
+				int y = dsde.getLocation().y - initialEvent.getDragOrigin().y;
 				transfer.setLocation(x , y);
 				repaint();
 			}
@@ -119,6 +119,8 @@ public class PColonne extends JPanel {
 		
 		ds.createDefaultDragGestureRecognizer(visibles, DnDConstants.ACTION_MOVE, dgl);
 		ds.addDragSourceMotionListener(dsml);
+		
+		// DROP
 		dtl = new DropTargetAdapter() {
 
 			private PTasDeCartes transfer;
@@ -180,7 +182,7 @@ public class PColonne extends JPanel {
 	public void c2p_debutDnDOK(PTasDeCartes transfer) {
 		if (transfer != null) {
 			this.transfer = transfer;
-			getParent().add(transfer, 0);
+			getParent().getParent().add(transfer, 0);
 			ds.startDrag(initialEvent, ds.DefaultMoveDrop, transfer, dsl);
 			repaint();
 		}

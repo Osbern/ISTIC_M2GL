@@ -57,12 +57,11 @@ public class CTasDeCartesColorees extends TasDeCartesColorees implements
 	public void p2c_drop(CTasDeCartes transfer) {
 		if (transfer.getNombre() == 1) {
 			try {
+				p.c2p_showNeutre();
 				if (isEmpilable(transfer.getSommet())) {
 					empiler(transfer);
-					p.c2p_showNeutre();
 					p.c2p_finDnDOK();
 				} else {
-					p.c2p_showNeutre();
 					p.c2p_finDnDKO();
 				}
 			} catch (Exception e) {

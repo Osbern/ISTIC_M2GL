@@ -1,5 +1,7 @@
 package controller;
 
+import java.awt.Color;
+
 import presentation.PColonne;
 import presentation.PTasDeCartes;
 import presentation.PTasDeCartesAlternees;
@@ -102,12 +104,11 @@ public class CColonne extends Colonne {
 
 	public void p2c_drop(CTasDeCartes transfer) {
 		try {
+			p.c2p_showNeutre();
 			if (isEmpilable(transfer.getBase())) {
 				empiler(transfer);
-				p.c2p_showNeutre();
 				p.c2p_finDnDOK();
 			} else {
-				p.c2p_showNeutre();
 				p.c2p_finDnDKO();
 			}
 		} catch (Exception e) {
