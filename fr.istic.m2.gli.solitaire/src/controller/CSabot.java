@@ -50,7 +50,6 @@ public class CSabot extends Sabot {
 			retournerCarte();
 			retournerCarte();
 		} catch (Exception e) {
-			System.err.println("retourner3Cartes");
 			e.printStackTrace();
 		}
 	}
@@ -67,8 +66,6 @@ public class CSabot extends Sabot {
 				if (cc == getSommet()) {
 					depiler();
 					transfer.empiler(cc);
-
-					System.out.println("SOMMET");
 				} else {
 					CCarte tmp;
 					CTasDeCartes tasTmp = new CTasDeCartes("Transfer", u);
@@ -86,8 +83,6 @@ public class CSabot extends Sabot {
 						tasTmp.depiler();
 						transfer.empiler(c);
 					}
-
-					System.out.println("PAS SOMMET: " + size);
 				}
 				transfer.getPresentation().setOpaque(false);
 				p.c2p_debutDnDOK(transfer.getPresentation());
@@ -100,12 +95,6 @@ public class CSabot extends Sabot {
 			CTasDeCartes ctdc = (CTasDeCartes) ptdc.getControle();
 			if (!success)
 				empiler(ctdc);
-			else
-				try {
-					retournerCarte();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
 		}
 
 }

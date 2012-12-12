@@ -111,7 +111,7 @@ public class PColonne extends JPanel {
 			@Override
 			public void dragMouseMoved(DragSourceDragEvent dsde) {
 				int x = dsde.getLocation().x - initialEvent.getDragOrigin().x;
-				int y = dsde.getLocation().y - initialEvent.getDragOrigin().y;
+				int y = dsde.getLocation().y - initialEvent.getDragOrigin().y - 10;
 				transfer.setLocation(x , y);
 				repaint();
 			}

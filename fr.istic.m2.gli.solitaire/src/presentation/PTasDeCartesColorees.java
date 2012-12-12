@@ -4,6 +4,14 @@ import java.awt.Color;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.dnd.DnDConstants;
+import java.awt.dnd.DragGestureEvent;
+import java.awt.dnd.DragGestureListener;
+import java.awt.dnd.DragSource;
+import java.awt.dnd.DragSourceAdapter;
+import java.awt.dnd.DragSourceDragEvent;
+import java.awt.dnd.DragSourceDropEvent;
+import java.awt.dnd.DragSourceListener;
+import java.awt.dnd.DragSourceMotionListener;
 import java.awt.dnd.DropTarget;
 import java.awt.dnd.DropTargetAdapter;
 import java.awt.dnd.DropTargetDragEvent;
@@ -12,6 +20,7 @@ import java.awt.dnd.DropTargetEvent;
 import java.awt.dnd.DropTargetListener;
 import java.io.IOException;
 
+import controller.CCarte;
 import controller.CTasDeCartes;
 import controller.CTasDeCartesColorees;
 import controller.ICTasDeCartes;
@@ -19,7 +28,16 @@ import controller.ICTasDeCartes;
 public class PTasDeCartesColorees extends PTasDeCartes {
 
 	private CTasDeCartesColorees ctdcc;
+	
+	// DRAG
+	private DragGestureListener dgl;
+	private DragGestureEvent initialEvent;
+	private DragSource ds;
+	private DragSourceListener dsl;
+	private DragSourceMotionListener dsml;
+	private PTasDeCartes transfer;
 
+	// DROP
 	private DropTarget dt;
 	private DropTargetListener dtl;
 	private DropTargetDropEvent finalEv;
@@ -28,6 +46,56 @@ public class PTasDeCartesColorees extends PTasDeCartes {
 		super(cTas);
 		ctdcc = (CTasDeCartesColorees) cTas;
 
+		// DRAG
+				dgl = new DragGestureListener() {
+					@Override
+					public void dragGestureRecognized(DragGestureEvent dge) {
+						CCarte cc = null;
+						PCarte pc = null;
+						try {
+							initialEvent = dge;
+							pc = (PCarte) getComponentAt(dge.getDragOrigin());
+							cc = pc.getControle();
+							ctdcc.p2c_debutDnD(cc);
+						}  catch (Exception e) { 
+						}
+					}
+				};
+				
+				ds = new DragSource();
+				dsl = new DragSourceAdapter() {
+					@Override
+					public void dragDropEnd(DragSourceDropEvent dsde) {
+						super.dragDropEnd(dsde);
+						try {
+							try {
+								ctdcc.p2c_dragDropEnd(dsde.getDropSuccess(), (PTasDeCartes) dsde.getDragSourceContext().getTransferable().getTransferData(new DataFlavor(DataFlavor.javaJVMLocalObjectMimeType)));
+							} catch (ClassNotFoundException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+						} catch (UnsupportedFlavorException e) {
+							e.printStackTrace();
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+					}
+				};
+				
+				dsml = new DragSourceMotionListener() {
+					@Override
+					public void dragMouseMoved(DragSourceDragEvent dsde) {
+						int x = dsde.getLocation().x - initialEvent.getDragOrigin().x;
+						int y = dsde.getLocation().y - initialEvent.getDragOrigin().y;
+						transfer.setLocation(x , y);
+						repaint();
+					}
+				};
+				
+				ds.createDefaultDragGestureRecognizer(this, DnDConstants.ACTION_MOVE, dgl);
+				ds.addDragSourceMotionListener(dsml);
+		
+		// DROP
 		dtl = new DropTargetAdapter() {
 
 			private PTasDeCartes transfer;
@@ -77,6 +145,22 @@ public class PTasDeCartesColorees extends PTasDeCartes {
 		dt = new DropTarget(this, dtl);
 	}
 
+	// DRAG
+	public void c2p_debutDnDOK(PTasDeCartes transfer) {
+		if (transfer != null) {
+			this.transfer = transfer;
+			getParent().getParent().add(transfer, 0);
+			ds.startDrag(initialEvent, ds.DefaultMoveDrop, transfer, dsl);
+			repaint();
+		}
+	}
+
+	public void c2p_debutDnDNull() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	// DROP
 	public void c2p_showNeutre() {
 		setBackground(Color.GREEN);
 	}

@@ -40,8 +40,6 @@ public class CColonne extends Colonne {
 			if (cc == getSommet()) {
 				depiler();
 				transfer.empiler(cc);
-
-				System.out.println("SOMMET");
 			} else {
 				CCarte tmp;
 				CTasDeCartes tasTmp = new CTasDeCartes("Transfer", u);
@@ -59,8 +57,6 @@ public class CColonne extends Colonne {
 					tasTmp.depiler();
 					transfer.empiler(c);
 				}
-
-				System.out.println("PAS SOMMET: " + size);
 			}
 			transfer.getPresentation().setOpaque(false);
 			p.c2p_debutDnDOK(transfer.getPresentation());
@@ -85,7 +81,7 @@ public class CColonne extends Colonne {
 	public void p2c_dragEnter(CTasDeCartes transfer) {
 		if (transfer.getNombre() == 1) {
 			try {
-				if (isEmpilable(transfer.getSommet())) {
+				if (isEmpilable(transfer.getBase())) {
 					p.c2p_showEmpilable();
 				} else {
 					p.c2p_showNotEmpilable();

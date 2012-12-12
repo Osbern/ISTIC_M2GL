@@ -92,8 +92,7 @@ public class PSolitaire extends JFrame {
 		center.setSize((7*(80+10)),(20+(7*7)+(13*15)));
 		center.setPreferredSize(center.getSize());
 		
-		board.setSize(Math.max(center.getWidth(), north.getWidth()),
-				center.getHeight() + 5 + north.getHeight());
+		board.setSize(1024, 768);
 		board.setPreferredSize(board.getSize());
 	}
 
