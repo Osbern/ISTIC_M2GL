@@ -60,7 +60,7 @@ public class CColonne extends Colonne {
 					transfer.empiler(c);
 				}
 			}
-			
+			dest = null;
 			src = this;
 			transfer.getPresentation().setOpaque(false);
 			p.c2p_debutDnDOK(transfer.getPresentation());
@@ -80,7 +80,7 @@ public class CColonne extends Colonne {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			if (!cachees.isVide() && src != dest) {
+			if (dest != null && dest != src) {
 				PTasDeCartesAlternees ptas = ((CTasDeCartesAlternees) visibles).getPresentation();
 				ptas.setLocation(ptas.getX(), ptas.getY() - 15);
 			}
