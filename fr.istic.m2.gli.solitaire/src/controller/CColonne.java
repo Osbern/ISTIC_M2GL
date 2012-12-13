@@ -12,6 +12,7 @@ import solitaire.application.Usine;
 public class CColonne extends Colonne {
 
 	private PColonne p;
+	private static CColonne src, dest;
 	private Usine u;
 
 	public CColonne(String name, Usine u) {
@@ -60,11 +61,7 @@ public class CColonne extends Colonne {
 				}
 			}
 			
-			if (!cachees.isVide()) {
-				PTasDeCartesAlternees ptas = ((CTasDeCartesAlternees) visibles).getPresentation();
-				ptas.setLocation(ptas.getX(), ptas.getY() - 15);
-			}
-			
+			src = this;
 			transfer.getPresentation().setOpaque(false);
 			p.c2p_debutDnDOK(transfer.getPresentation());
 		} else {
@@ -74,13 +71,18 @@ public class CColonne extends Colonne {
 
 	public void p2c_dragDropEnd(boolean success, PTasDeCartes ptdc) {
 		CTasDeCartes ctdc = (CTasDeCartes) ptdc.getControle();
-		if (!success)
+		if (!success) {
 			empiler(ctdc);
+		}
 		else {
 			try {
 				retournerCarte();
 			} catch (Exception e) {
 				e.printStackTrace();
+			}
+			if (!cachees.isVide() && src != dest) {
+				PTasDeCartesAlternees ptas = ((CTasDeCartesAlternees) visibles).getPresentation();
+				ptas.setLocation(ptas.getX(), ptas.getY() - 15);
 			}
 		}
 	}
@@ -107,6 +109,7 @@ public class CColonne extends Colonne {
 			p.c2p_showNeutre();
 			if (isEmpilable(transfer.getBase())) {
 				empiler(transfer);
+				dest = this;
 				p.c2p_finDnDOK();
 			} else {
 				p.c2p_finDnDKO();
