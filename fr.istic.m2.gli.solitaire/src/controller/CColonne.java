@@ -75,14 +75,14 @@ public class CColonne extends Colonne {
 			empiler(ctdc);
 		}
 		else {
+			if (!cachees.isVide() && ( dest != src || dest == null)) {
+				PTasDeCartesAlternees ptas = ((CTasDeCartesAlternees) visibles).getPresentation();
+				ptas.setLocation(ptas.getX(), ptas.getY() - 15);
+			}
 			try {
 				retournerCarte();
 			} catch (Exception e) {
 				e.printStackTrace();
-			}
-			if (dest != null && dest != src) {
-				PTasDeCartesAlternees ptas = ((CTasDeCartesAlternees) visibles).getPresentation();
-				ptas.setLocation(ptas.getX(), ptas.getY() - 15);
 			}
 		}
 	}
