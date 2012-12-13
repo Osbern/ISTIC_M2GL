@@ -75,7 +75,7 @@ public class CColonne extends Colonne {
 			empiler(ctdc);
 		}
 		else {
-			if (!cachees.isVide() && ( dest != src || dest == null)) {
+			if (!cachees.isVide() && ((dest != null && dest != src && src != null) || (dest == null && src != null))) {
 				PTasDeCartesAlternees ptas = ((CTasDeCartesAlternees) visibles).getPresentation();
 				ptas.setLocation(ptas.getX(), ptas.getY() - 15);
 			}
@@ -85,6 +85,7 @@ public class CColonne extends Colonne {
 				e.printStackTrace();
 			}
 		}
+		src = null;
 	}
 
 	// DROP
