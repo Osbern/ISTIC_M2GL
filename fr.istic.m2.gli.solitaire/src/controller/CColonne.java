@@ -75,7 +75,7 @@ public class CColonne extends Colonne {
 			empiler(ctdc);
 		}
 		else {
-			if (!cachees.isVide() && ((dest != null && dest != src && src != null) || (dest == null && src != null))) {
+			if (!cachees.isVide() && ((dest != null && dest != src && src != null) || (visibles.isVide() && dest == null && src != null))) {
 				PTasDeCartesAlternees ptas = ((CTasDeCartesAlternees) visibles).getPresentation();
 				ptas.setLocation(ptas.getX(), ptas.getY() - 15);
 			}
