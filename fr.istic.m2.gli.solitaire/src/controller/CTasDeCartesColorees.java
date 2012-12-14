@@ -73,6 +73,7 @@ public class CTasDeCartesColorees extends TasDeCartesColorees implements
 		CTasDeCartes ctdc = (CTasDeCartes) ptdc.getControle();
 		if (!success) {
 			empiler(ctdc);
+			p.repaint();
 		}
 	}
 

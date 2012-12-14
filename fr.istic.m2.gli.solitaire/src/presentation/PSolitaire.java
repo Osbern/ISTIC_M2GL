@@ -7,6 +7,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.TrayIcon.MessageType;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -15,6 +16,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
@@ -34,7 +36,8 @@ public class PSolitaire extends JFrame {
 
 		while (!jeu.termine()) {
 		}
-		System.out.println("GAGNE !");
+		JOptionPane.showMessageDialog(jeu.getPS(), new String("Bien joué Bob !"), "Gagné !", 1);
+		System.exit(0);
 	}
 
 	/**

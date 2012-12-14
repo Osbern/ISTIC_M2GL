@@ -147,7 +147,7 @@ public class PSabot extends JPanel {
 			this.transfer = transfer;
 			getParent().getParent().add(transfer, 0);
 			ds.startDrag(initialEvent, ds.DefaultMoveDrop, transfer, dsl);
-			repaint();
+			//repaint();
 		}
 	}
 

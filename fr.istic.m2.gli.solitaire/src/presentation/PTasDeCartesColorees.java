@@ -175,7 +175,6 @@ public class PTasDeCartesColorees extends PTasDeCartes {
 	}
 
 	public void c2p_debutDnDNull() {
-		// TODO Auto-generated method stub
 
 	}
 
