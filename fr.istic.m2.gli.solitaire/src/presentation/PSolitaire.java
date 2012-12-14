@@ -121,6 +121,7 @@ public class PSolitaire extends JFrame {
 		f.setMaximumSize(f.getSize());
 		f.setMinimumSize(f.getSize());
 		f.setPreferredSize(f.getSize());
+		f.setResizable(false);
 	}
 
 }
