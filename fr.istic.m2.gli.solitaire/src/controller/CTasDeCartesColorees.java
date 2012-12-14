@@ -71,8 +71,9 @@ public class CTasDeCartesColorees extends TasDeCartesColorees implements
 
 	public void p2c_dragDropEnd(boolean success, PTasDeCartes ptdc) {
 		CTasDeCartes ctdc = (CTasDeCartes) ptdc.getControle();
-		if (!success)
+		if (!success) {
 			empiler(ctdc);
+		}
 	}
 
 	// DROP

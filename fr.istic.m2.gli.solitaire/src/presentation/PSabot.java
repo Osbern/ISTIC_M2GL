@@ -17,6 +17,7 @@ import java.awt.event.MouseEvent;
 import java.io.IOException;
 
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 import controller.CCarte;
 import controller.CSabot;
@@ -88,8 +89,8 @@ public class PSabot extends JPanel {
 				dsml = new DragSourceMotionListener() {
 					@Override
 					public void dragMouseMoved(DragSourceDragEvent dsde) {
-						int x = dsde.getLocation().x - 45;
-						int y = dsde.getLocation().y - 80;
+						int x = dsde.getLocation().x - 45 - getWindowX();
+						int y = dsde.getLocation().y - 80 - getWindowY();
 						transfer.setLocation(x , y);
 						repaint();
 					}
@@ -97,6 +98,14 @@ public class PSabot extends JPanel {
 				
 				ds.createDefaultDragGestureRecognizer(visibles, DnDConstants.ACTION_MOVE, dgl);
 				ds.addDragSourceMotionListener(dsml);
+	}
+	
+	private int getWindowX() {
+		return SwingUtilities.getWindowAncestor(this).getX();
+	}
+	
+	private int getWindowY() {
+		return SwingUtilities.getWindowAncestor(this).getY();
 	}
 
 	public void activerRetournerCarte() {

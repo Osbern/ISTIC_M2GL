@@ -20,6 +20,8 @@ import java.awt.dnd.DropTargetEvent;
 import java.awt.dnd.DropTargetListener;
 import java.io.IOException;
 
+import javax.swing.SwingUtilities;
+
 import controller.CCarte;
 import controller.CTasDeCartes;
 import controller.CTasDeCartesColorees;
@@ -93,8 +95,8 @@ public class PTasDeCartesColorees extends PTasDeCartes {
 		dsml = new DragSourceMotionListener() {
 			@Override
 			public void dragMouseMoved(DragSourceDragEvent dsde) {
-				int x = dsde.getLocation().x - initialEvent.getDragOrigin().x - 5;
-				int y = dsde.getLocation().y - initialEvent.getDragOrigin().y - 30;
+				int x = dsde.getLocation().x - initialEvent.getDragOrigin().x - 5 - getWindowX();
+				int y = dsde.getLocation().y - initialEvent.getDragOrigin().y - 30 - getWindowY();
 				transfer.setLocation(x, y);
 				repaint();
 			}
@@ -152,6 +154,14 @@ public class PTasDeCartesColorees extends PTasDeCartes {
 			}
 		};
 		dt = new DropTarget(this, dtl);
+	}
+	
+	private int getWindowX() {
+		return SwingUtilities.getWindowAncestor(this).getX();
+	}
+	
+	private int getWindowY() {
+		return SwingUtilities.getWindowAncestor(this).getY();
 	}
 
 	// DRAG
