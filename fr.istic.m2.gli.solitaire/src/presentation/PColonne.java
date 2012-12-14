@@ -66,6 +66,7 @@ public class PColonne extends JPanel {
 
 		this.setSize(100, 500);
 		this.setPreferredSize(this.getSize());
+		this.setOpaque(false);
 		setVisible(true);
 
 		// DRAG

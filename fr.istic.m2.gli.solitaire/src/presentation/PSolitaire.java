@@ -2,15 +2,21 @@ package presentation;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
-import javax.swing.border.EmptyBorder;
-
-import solitaire.application.Solitaire;
 
 import controller.CColonne;
 import controller.CSabot;
@@ -24,8 +30,8 @@ public class PSolitaire extends JFrame {
 		CUsine u = new CUsine();
 		CSolitaire jeu = new CSolitaire("Solitaire", u);
 		jeu.initialiser();
-		//jeu.jouer();
-		
+		// jeu.jouer();
+
 		while (!jeu.termine()) {
 		}
 		System.out.println("GAGNE !");
@@ -41,32 +47,43 @@ public class PSolitaire extends JFrame {
 	CTasDeCartesColorees[] piles;
 	private JPanel north;
 	private JPanel center;
-	private JFrame board;
+	private JFrame f;
+
+	Container con = null;
+	JPanel panelBgImg;
 
 	/**
 	 * Create the frame.
 	 */
 	public PSolitaire(CSolitaire s) {
 		this.csolitaire = s;
-		board = new JFrame();
-		board.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		board.setTitle("Solitaire - Destouches Lacroix");
+		f = new JFrame();
+		f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		f.setTitle("Solitaire - Destouches Lacroix");
+		
+		JLabel board = new JLabel(new ImageIcon("W:\\ISTIC_M2GL\\fr.istic.m2.gli.solitaire\\bin\\backgroundImage\\back.png"));
+		
+		
+
 
 		board.setLayout(new BorderLayout());
 
 		north = new JPanel();
 		FlowLayout nfl = new FlowLayout(FlowLayout.LEADING);
 		north.setLayout(nfl);
+		north.setOpaque(false);
 
 		center = new JPanel();
 		center.setLayout(new FlowLayout());
-
+		center.setOpaque(false);
 		board.add(north, BorderLayout.NORTH);
 
 		board.add(center, BorderLayout.CENTER);
-
-		board.setBackground(Color.RED);
 		board.setVisible(true);
+		board.setOpaque(true);
+		f.add(board);
+		f.setVisible(true);
+
 		validate();
 	}
 
@@ -80,6 +97,7 @@ public class PSolitaire extends JFrame {
 		for (CTasDeCartesColorees t : piles) {
 			PTasDeCartesColorees p = t.getPresentation();
 			p.setBackground(Color.GRAY);
+
 			p.setVisible(true);
 			north.add(p);
 		}
@@ -96,11 +114,13 @@ public class PSolitaire extends JFrame {
 			center.add(p);
 			n++;
 		}
-		center.setSize((7*(80+10)),(20+(7*7)+(13*15)));
+		center.setSize((7 * (80 + 10)), (20 + (7 * 7) + (13 * 15)));
 		center.setPreferredSize(center.getSize());
-		
-		board.setSize(1024, 768);
-		board.setPreferredSize(board.getSize());
+
+		f.setSize(1024, 768);
+		f.setMaximumSize(f.getSize());
+		f.setMinimumSize(f.getSize());
+		f.setPreferredSize(f.getSize());
 	}
 
 }

@@ -45,6 +45,7 @@ public class PTasDeCartesColorees extends PTasDeCartes {
 	public PTasDeCartesColorees(ICTasDeCartes cTas) {
 		super(cTas);
 		ctdcc = (CTasDeCartesColorees) cTas;
+		this.setOpaque(false);
 
 		// DRAG
 		dgl = new DragGestureListener() {

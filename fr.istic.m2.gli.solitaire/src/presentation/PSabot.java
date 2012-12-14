@@ -44,7 +44,8 @@ public class PSabot extends JPanel {
 		this.setSize(80+(20*26),120);
 		this.setPreferredSize(this.getSize());
 		this.setLayout(new FlowLayout(FlowLayout.LEADING));
-		
+		this.setOpaque(false);
+
 		sl = new SabotListener();
 		setVisible(true);
 		

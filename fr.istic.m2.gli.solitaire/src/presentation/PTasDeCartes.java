@@ -29,7 +29,6 @@ public class PTasDeCartes extends JPanel implements Transferable {
 		
 		
 		// this.setBackground(Color.GRAY);
-		
 		this.setVisible(true);
 	}
 	
