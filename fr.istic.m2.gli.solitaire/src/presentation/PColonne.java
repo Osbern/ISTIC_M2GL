@@ -21,6 +21,7 @@ import java.awt.dnd.DropTargetListener;
 import java.io.IOException;
 
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 import controller.CCarte;
 import controller.CColonne;
@@ -115,8 +116,8 @@ public class PColonne extends JPanel {
 		dsml = new DragSourceMotionListener() {
 			@Override
 			public void dragMouseMoved(DragSourceDragEvent dsde) {
-				int x = dsde.getLocation().x - initialEvent.getDragOrigin().x;
-				int y = dsde.getLocation().y - 100 + /* - initialEvent.getDragOrigin().y -*/ ((transfer.getControle().getSize() -1 ) * 10);
+				int x = dsde.getLocation().x - initialEvent.getDragOrigin().x - getWindowX();
+				int y = dsde.getLocation().y - 100 + /* - initialEvent.getDragOrigin().y -*/ ((transfer.getControle().getSize() -1 ) * 10) - getWindowY();
 				transfer.setLocation(x, y);
 				repaint();
 			}
@@ -171,6 +172,14 @@ public class PColonne extends JPanel {
 			}
 		};
 		dt = new DropTarget(this, dtl);
+	}
+	
+	private int getWindowX() {
+		return SwingUtilities.getWindowAncestor(this).getX();
+	}
+	
+	private int getWindowY() {
+		return SwingUtilities.getWindowAncestor(this).getY();
 	}
 
 	public void empiler(PCarte pc) {
