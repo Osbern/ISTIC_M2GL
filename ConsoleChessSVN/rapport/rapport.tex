@@ -17,7 +17,7 @@
 }
 \pagestyle{fancy}
 
-\title{Audit de l'application \textit{AdressBookOnline} \\ --}
+\title{Audit de l'application \textit{ConsoleChess} \\ --}
 \author{   \includegraphics{UberLogo}}
 \date{Décembre 2012}
 
@@ -32,9 +32,7 @@
 
 \newpage
 \section{Introduction}
-Avec la démocratisation des clients Web pour les applications professionnelles il a été nécessaire de repenser intégralement l'outillage de test autour du test d'interface homme-machine. Selenium répond à ce besoin en permettant d'enregistrer des tests sur un client Web puis de l'exporter sous forme de test JUnit, facilement intégrable au cycle de développement de l'application.
 
-Vous trouverez donc ci-après l'audit que nous avions contractualisé ensemble, concernant les tests sur votre client léger \textit{AddressBookOnline}, cet audit donne juste un état des lieux de votre application et n'apporte aucune correction.
 
 
 \section{Tests effectués}
@@ -48,9 +46,9 @@ Ci-dessous l'intégralité des test fonctionnels effectués sur votre applicatio
 \end{enumerate}
 
 \section{Etat de l'application}
-Suite aux tests effectués sur votre client Web léger, nous pouvons émettre plusieurs réserves sur l’intégrité de votre application, en effet aucune vérification n’est faite au niveau de celle-ci pour empêcher des comportements dangereux (autant au niveau de l’interface homme-machine, que au niveau de la base de donnée elle même). Nous vous conseillons donc d'améliorer la solidité applicative de votre solution, pour rendre celle-ci moins vulnérable à éventuelles attaques contre votre système ou simplement des saisies erronées par les utilisateurs légitimes.
 
-Si vous le désirez nous pouvons convenir d’un nouveau contrat pour nous permettre d’effectuer le refactoring de votre client léger, ou de votre base de données, voir des deux si vous souhaiter bénéficier d'une application sécurisée à tous les niveaux.
+
+Pour conclure, nous pouvons avancer que votre application d'Echec en mode console, est un échec d'un point de vue sécurité !
 
 \renewcommand{\footrulewidth}{0.4pt}
 \lfoot{Thibaud Destouches -- Marceau Lacroix}
