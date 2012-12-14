@@ -88,8 +88,8 @@ public class PSabot extends JPanel {
 				dsml = new DragSourceMotionListener() {
 					@Override
 					public void dragMouseMoved(DragSourceDragEvent dsde) {
-						int x = dsde.getLocation().x - 40;
-						int y = dsde.getLocation().y - 100;
+						int x = dsde.getLocation().x - 45;
+						int y = dsde.getLocation().y - 80;
 						transfer.setLocation(x , y);
 						repaint();
 					}

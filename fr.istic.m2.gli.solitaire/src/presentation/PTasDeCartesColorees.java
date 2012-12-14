@@ -93,8 +93,8 @@ public class PTasDeCartesColorees extends PTasDeCartes {
 		dsml = new DragSourceMotionListener() {
 			@Override
 			public void dragMouseMoved(DragSourceDragEvent dsde) {
-				int x = dsde.getLocation().x - initialEvent.getDragOrigin().x;
-				int y = dsde.getLocation().y - initialEvent.getDragOrigin().y - 60;
+				int x = dsde.getLocation().x - initialEvent.getDragOrigin().x - 5;
+				int y = dsde.getLocation().y - initialEvent.getDragOrigin().y - 30;
 				transfer.setLocation(x, y);
 				repaint();
 			}
