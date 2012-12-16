@@ -66,26 +66,12 @@ public class CSabot extends Sabot {
 				if (cc == getSommet()) {
 					depiler();
 					transfer.empiler(cc);
+					transfer.getPresentation().setOpaque(false);
+					p.c2p_debutDnDOK(transfer.getPresentation());
 				} else {
-					CCarte tmp;
-					CTasDeCartes tasTmp = new CTasDeCartes("Transfer", u);
-					int size = 1;
-					while ((tmp = (CCarte) getSommet()) != cc) {
-						depiler();
-						tasTmp.empiler(tmp);
-						size++;
-					}
-					depiler();
-					tasTmp.empiler(tmp);
-
-					for (int i = 0; i < size; i++) {
-						CCarte c = (CCarte) tasTmp.getSommet();
-						tasTmp.depiler();
-						transfer.empiler(c);
-					}
+					p.c2p_debutDnDNull();
 				}
-				transfer.getPresentation().setOpaque(false);
-				p.c2p_debutDnDOK(transfer.getPresentation());
+
 			} else {
 				p.c2p_debutDnDNull();
 			}
