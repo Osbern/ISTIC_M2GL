@@ -1,0 +1,65 @@
+/* $Id:$ 
+ * Creation : November 16, 2008
+ * Licence  : EPL 
+ * Copyright:
+ * Authors  : 
+ *            mclavreu
+ */
+//@mainClass "EcoreHelpers::EcoreHelper"
+//@mainOperation "main"
+
+
+package EcoreUtil;
+
+
+require kermeta
+require "http://www.eclipse.org/emf/2002/Ecore"
+
+using kermeta::standard
+using ecore
+using kermeta::persistence
+using kermeta::io
+
+class EcoreUtil
+{
+	operation loadModel(uri : String) : EPackage is do
+		var rep : Repository init EMFRepository.new
+		var res : Resource init rep.getResource(uri)
+		res.load()
+		result ?= res.one
+	end
+	
+	operation loadTableurModel(uri : String, meta_uri : String) : EPackage is do
+		var rep : Repository init EMFRepository.new
+		var res : Resource init rep.createResource(uri, meta_uri)
+		res.load()
+		result ?= res.one
+	end
+	
+	operation saveModel(root : EPackage, uri : String) is do
+		var rep : Repository init EMFRepository.new
+		var res : Resource init rep.createResource(uri, "http://www.eclipse.org/emf/2002/Ecore")
+		res.add(root)
+		res.save
+	end
+    
+    /** add an annotation to the given model element
+     *  ensures that there is only one EAnnotation instance
+     */
+    operation addAnnotation(aModelElement : EModelElement,
+    	source : String, detailKey : String, detailValue : String) : EAnnotation is do
+    	
+		var theAnnotation : EAnnotation init
+			aModelElement.eAnnotations.detect{annot | annot.source.equals(source)}
+		if theAnnotation.isVoid then 
+			theAnnotation := EAnnotation.new
+			theAnnotation.source := source
+			aModelElement.eAnnotations.add(theAnnotation)
+		end
+		var detail : EStringToStringMapEntry init EStringToStringMapEntry.new
+		detail.key := detailKey
+		detail.~value := detailValue
+		theAnnotation.details.add(detail)
+		result := void
+    end
+}

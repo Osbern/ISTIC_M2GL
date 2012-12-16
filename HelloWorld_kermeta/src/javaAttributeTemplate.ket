@@ -1,0 +1,31 @@
+<%@ket
+package="eAttribute2Attribute"
+require="http://www.eclipse.org/emf/2002/Ecore kermeta/helpers/EcoreUtil.kmt"
+using="kermeta::language::structure ecore"
+class="EAttribute2Attribute"
+parameters="c : EClass"
+%>
+	<%c.eStructuralFeatures.each{ a |
+			if (a.isInstanceOf(EAttribute)) then
+				if (a.eType.isVoid()) then
+					%>private Object <%=a.name%>; // TODO : insert type here
+					
+					<%
+				else
+					%>private <%=a.eType.name%> <%=a.name%>;
+					
+					<%
+				end
+			end
+		}
+		
+		c.eOperations.each { o |
+			%>public void <%=o.name%>(<%
+			o.eParameters.each { p |
+				%><%=p.eType.name%> <%=p.name%>, <%
+			}
+			%>) {
+			
+			}
+			<%
+		}%>

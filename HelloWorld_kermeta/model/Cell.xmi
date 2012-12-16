@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="ASCII"?>
+<tableur:Cell xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tableur="http://tableur/1.0" xsi:schemaLocation="http://tableur/1.0 tableur_modified.ecore">
+  <expression xsi:type="tableur:Value" val="2"/>
+</tableur:Cell>

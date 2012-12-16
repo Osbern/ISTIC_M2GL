@@ -1,0 +1,75 @@
+/* $Id: EcoreGenericsHelper.kmt,v 1.1 2008/09/05 14:42:21 dvojtise Exp $ 
+ * Creation : September 5, 2008
+ * Licence  : EPL 
+ * Copyright:
+ * Authors  : 
+ *            dvojtise
+ */
+
+
+
+package ecore;
+
+
+require kermeta
+require "ecore_behavior.kmt"
+
+aspect class EClass
+{
+	/**
+	 * Helper operation to add a super type in both eSuperTypes and eGenericSuperTypes
+	 */
+	operation addSuperType(aClass : EClass) : Void is do 
+		var generic : EGenericType init EGenericType.new
+		generic.eClassifier := aClass
+		self.eSuperTypes.add(aClass)
+		self.eGenericSuperTypes.add(generic)
+	end
+	
+	/**
+	 * Helper operation to remove a super type from both eSuperTypes and eGenericSuperTypes
+	 */
+	operation removeSuperType(aClass : EClass) : Void is do 
+		var generic : EGenericType init self.eGenericSuperTypes.detect{
+			generic| generic.eClassifier == aClass}
+		generic.eClassifier := aClass
+		self.eSuperTypes.remove(aClass)
+		self.eGenericSuperTypes.add(generic)
+	end
+}
+aspect class EOperation
+{
+	/**
+	 * Helper operation to add an exception type in both eExceptions and eGenericExceptions
+	 */
+	operation addException(aClass : EClassifier) : Void is do 
+		var generic : EGenericType init EGenericType.new
+		generic.eClassifier := aClass
+		self.eExceptions.add(aClass)
+		self.eGenericExceptions.add(generic)
+	end
+	
+	/**
+	 * Helper operation to remove an exception type from both eExceptions and eGenericExceptions
+	 */
+	operation removeSuperType(aClass : EClassifier) : Void is do 
+		var generic : EGenericType init self.eGenericExceptions.detect{
+			generic| generic.eClassifier == aClass}
+		generic.eClassifier := aClass
+		self.eExceptions.remove(aClass)
+		self.eGenericExceptions.add(generic)
+	end
+}
+
+aspect abstract class ETypedElement
+{
+	/**
+	 * Helper operation to add an exception type in both eType and eGenericType
+	 */
+	operation setType(aClass : EClassifier) : Void is do
+		var generic : EGenericType init EGenericType.new
+		generic.eClassifier := aClass
+		self.eType := aClass
+		self.eGenericType := generic
+	end
+}

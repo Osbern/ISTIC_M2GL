@@ -1,0 +1,36 @@
+package tableur;
+require "../model/spreadsheet.ecore"
+require "Tableur_visitors.kmt"
+require kermeta
+using tableur::visitors
+
+aspect class Cell inherits Visitable {
+	method accept(v : Visitor) from Visitable
+	is do
+		v.visitCell(self)		
+	end
+}
+aspect class Expression inherits Visitable {
+	method accept(v : Visitor) from Visitable
+	is do
+		v.visitExpression(self)		
+	end
+}
+aspect class BinExpression inherits Visitable {
+	method accept(v : Visitor) from Visitable
+	is do
+		v.visitBinExpression(self)		
+	end
+}
+aspect class Value inherits Visitable {
+	method accept(v : Visitor) from Visitable
+	is do
+		v.visitValue(self)		
+	end
+}
+aspect class CellRef inherits Visitable {
+	method accept(v : Visitor) from Visitable
+	is do
+		v.visitCellRef(self)		
+	end
+}

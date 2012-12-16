@@ -1,0 +1,53 @@
+package eAttribute2Attribute;
+require kermeta
+require "http://www.eclipse.org/emf/2002/Ecore"
+require "kermeta/helpers/EcoreUtil.kmt"
+using kermeta::standard
+using kermeta::utils
+using kermeta::language::structure
+using ecore
+class EAttribute2Attribute{
+operation generate(c : EClass):String is do
+var _res: StringBuffer init StringBuffer.new
+_res.append("\t")
+c.eStructuralFeatures.each{ a |
+			if (a.isInstanceOf(EAttribute)) then
+				if (a.eType.isVoid()) then
+					
+_res.append("private Object ")
+_res.append(a.name)
+_res.append("; // TODO : insert type here\n\t\t\t\t\t\n\t\t\t\t\t")
+
+				else
+					
+_res.append("private ")
+_res.append(a.eType.name)
+_res.append(" ")
+_res.append(a.name)
+_res.append(";\n\t\t\t\t\t\n\t\t\t\t\t")
+
+				end
+			end
+		}
+		
+		c.eOperations.each { o |
+			
+_res.append("public void ")
+_res.append(o.name)
+_res.append("(")
+
+			o.eParameters.each { p |
+				
+_res.append(p.eType.name)
+_res.append(" ")
+_res.append(p.name)
+_res.append(", ")
+
+			}
+			
+_res.append(") {\n\t\t\t\n\t\t\t}\n")
+
+		}
+result := _res.toString
+end
+}

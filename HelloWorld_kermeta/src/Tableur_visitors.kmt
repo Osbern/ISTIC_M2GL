@@ -1,0 +1,39 @@
+package tableur::visitors;
+require "Tableur.kmt"
+require kermeta
+using tableur
+
+abstract class Visitor {
+
+	operation visitCell(v : Cell) : Void
+	is do
+	
+	end
+
+	operation visitExpression(v : Expression) : Void
+	is do
+	
+	end
+
+	operation visitBinExpression(v : BinExpression) : Void
+	is do
+	
+	end
+
+	operation visitValue(v : Value) : Void
+	is do
+	
+	end
+
+	operation visitCellRef(v : CellRef) : Void
+	is do
+	
+	end
+
+}
+class Visitable {
+	operation accept(v : Visitor) : Void
+	is do
+	
+	end
+}

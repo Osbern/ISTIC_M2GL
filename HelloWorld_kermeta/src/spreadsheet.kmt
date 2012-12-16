@@ -1,0 +1,255 @@
+/* $Id:$ 
+ * Creation : October 25, 2012
+ * Licence  : EPL 
+ * Copyright:
+ * Authors  : 
+ *            28002846
+ */
+@mainClass "root_package::Main"
+@mainOperation "main"
+
+
+package root_package;
+
+
+require kermeta
+require "http://www.eclipse.org/emf/2002/Ecore"
+require "kermeta/helpers/EcoreUtil.kmt"
+require "kermeta/helpers/EcoreGenericsHelper.kmt"
+
+using ecore
+using kermeta::standard
+using kermeta::io
+
+class Main
+{
+	attribute model : EPackage
+	reference integer : EDataType
+	reference visitors : EPackage
+	reference visitor : EClass
+	reference visitable : EClass
+
+	operation main() : Void is do 
+		var util : EcoreUtil::EcoreUtil init EcoreUtil::EcoreUtil.new
+		
+		//var integer : ecore::EDataType init ecore::EDataType.new
+		integer := ecore::EDataType.new
+		integer.name := "integer"
+		integer.instanceTypeName := "java.lang.Integer"
+		
+		model := util.loadModel("../model/spreadsheet.ecore")
+		model.eClassifiers.add(integer)
+		
+		//createVisitor()
+		//createConcreteVisitor()
+		generate_visitor()
+		generate_aspects()
+		
+		model.eClassifiers.each { e |
+			if (e.isInstanceOf(EClass)) then
+				var c : EClass init e.asType(EClass)
+				if (c.name == "Value") then
+					var val : ecore::EAttribute init ecore::EAttribute.new
+					val.name := "val"
+					val.eType := integer
+					addAttr(c, val)
+				end
+				//flatshort(c)
+				createAccept(c)
+			end
+		}
+		//util.saveModel(model, "../model/tableur_visitable_aspects.ecore")
+	end
+	
+	operation flatshort(c : EClass) : Void is do
+		stdio.write(c.name)
+		c.eSuperTypes.each { s |
+			stdio.write(" :\n\t SuperClasse : ")
+			flat(s)
+			stdio.write("\n")
+			short(s)
+		}
+		short(c.asType(EClass))
+		stdio.write("\n")
+	end
+	
+	operation flat(c : EClass) : Void is do
+		stdio.write(c.name)
+		c.eSuperTypes.each { s |
+			stdio.write("\n\t SuperClasse : ")
+			flat(s)
+		}
+	end
+	
+	operation short(c : EClass) : Void is do
+		c.eStructuralFeatures.each{ a |
+			if (a.isInstanceOf(EAttribute)) then
+					stdio.write("\t attr " + a.name + " : " + a.eType.name + "\n")
+			end
+		}
+		
+		c.eOperations.each { o |
+			stdio.write("\t op " + o.name + "(")
+			o.eParameters.each { p |
+				stdio.write(p.name + ":" + p.eType.name + ", ")
+			}
+			stdio.write(")\n")
+		}
+	end
+	
+	operation addAttr (c : EClass, val : EAttribute) : Void is do
+		c.eStructuralFeatures.add(val)
+		
+		var get : ecore::EOperation init ecore::EOperation.new
+		get.name := "get" + val.name.substring(0, 1).toUpperCase() + val.name.substring(1, val.name.size())
+		get.eType := integer
+		c.eOperations.add(get)
+		
+		var sett : ecore::EOperation init ecore::EOperation.new
+		sett.name := "set" + val.name.substring(0, 1).toUpperCase() + val.name.substring(1, val.name.size())
+		sett.eType := void
+		var newVal : ecore::EParameter init ecore::EParameter.new
+		newVal.name := "newVal"
+		newVal.eType := integer
+		sett.eParameters.add(newVal)
+		c.eOperations.add(sett)
+	end
+	
+	operation createAccept (c : EClass) : Void is do
+		//create operation accept
+		var accept : ecore::EOperation init ecore::EOperation.new
+		accept.name := "accept"
+		accept.eType := void
+		var v : ecore::EParameter init ecore::EParameter.new
+		v.name := "v"
+		v.eType := visitor
+		accept.eParameters.add(v)
+		
+		var body : ecore::EAnnotation init ecore::EAnnotation.new
+		body.source := "v.visit" + c.name + "(this);"
+		accept.eAnnotations.add(body)
+		
+		//add operatopn accept to c, add interface visitable to c
+		c.eOperations.add(accept)
+		
+		if (notInHierarchy(c, visitable)) then 
+			c.addSuperType(visitable)
+		end
+	end
+
+	operation notInHierarchy(c : EClass, v : EClass) : Boolean is do
+	result := true
+	if c.eSuperTypes.contains(v) then
+		result := false
+	else
+		c.eSuperTypes.each{ t | 
+			result := result and notInHierarchy(t, v)
+		}
+	end
+	end
+	
+	operation createVisitor () : Void is do
+		//create sub-package visitor
+		visitors := ecore::EPackage.new
+		visitors.name := "visitors"
+		
+		//create interface visitable
+		visitable := ecore::EClass.new
+		visitable.name := "Visitable"
+		visitable.interface := true
+
+		//create abstract class visitor
+		visitor := ecore::EClass.new
+		visitor.name := "Visitor"
+		visitor.~abstract := true
+		
+		//create operation accept in visitable
+		var accept : ecore::EOperation init ecore::EOperation.new
+		accept.name := "accept"
+		accept.eType := void
+		var v : ecore::EParameter init ecore::EParameter.new
+		v.name := "v"
+		v.eType := visitor
+		accept.eParameters.add(v)
+		visitable.eOperations.add(accept)
+		
+		//create operation visit in visitor
+		model.eClassifiers.each { e |
+			if (e.isInstanceOf(EClass)) then
+				var c : EClass init e.asType(EClass)
+				var visit : ecore::EOperation init ecore::EOperation.new
+				visit.name := "visit" + c.name
+				visit.eType := void
+				var cv : ecore::EParameter init ecore::EParameter.new
+				cv.name := "v"
+				cv.eType := c
+				visit.eParameters.add(cv)
+				visitor.eOperations.add(visit)
+			end
+		}
+		
+		//add visitable & visitor to package visitor
+		visitors.eClassifiers.add(visitable)
+		visitors.eClassifiers.add(visitor)
+		
+		//add package visitor to the root package's subpackages
+		model.eSubpackages.add(visitors)
+	end
+	
+	operation createConcreteVisitor() : Void is do
+		var concreteV : ecore::EClass init ecore::EClass.new
+		concreteV.name := "ConcreteVisitor"
+		concreteV.eSuperTypes.add(visitor)
+		visitors.eClassifiers.add(concreteV)
+	end
+	
+	operation generate_visitor() : Void is do
+		var gen : String init "package tableur::visitors;
+require \"Tableur.kmt\"
+require kermeta
+using tableur
+
+abstract class Visitor {\n\n"
+	model.eClassifiers.each { e |
+			if (e.isInstanceOf(EClass)) then
+				var c : EClass init e.asType(EClass)
+				gen := gen + "	operation visit" + c.name + "(v : " + c.name + ") : Void
+	is do
+	
+	end\n\n"
+			end
+	}
+	gen := gen + "}
+class Visitable {
+	operation accept(v : Visitor) : Void
+	is do
+	
+	end
+}"
+	var io : kermeta::io::FileIO init kermeta::io::FileIO.new
+	io.writeTextFile("Tableur_visitors.kmt", gen)
+	end
+	
+	operation generate_aspects() : Void is do
+		var gen : String init "package tableur;
+require \"../model/spreadsheet.ecore\"
+require \"Tableur_visitors.kmt\"
+require kermeta
+using tableur::visitors\n\n"
+
+		model.eClassifiers.each { e |
+			if (e.isInstanceOf(EClass)) then
+				var c : EClass init e.asType(EClass)
+				gen := gen + "aspect class " + c.name + " inherits Visitable {
+	method accept(v : Visitor) from Visitable
+	is do
+		v.visit" + c.name + "(self)		
+	end
+}\n"		
+			end
+		}
+		var io : kermeta::io::FileIO init kermeta::io::FileIO.new
+		io.writeTextFile("Tableur.kmt", gen)
+	end
+
+}

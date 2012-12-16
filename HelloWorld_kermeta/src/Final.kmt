@@ -1,0 +1,29 @@
+/* $Id:$ 
+ * Creation : November 22, 2012
+ * Licence  : EPL 
+ * Copyright:
+ * Authors  : 
+ *            28002846
+ */
+@mainClass "root_package::Main"
+@mainOperation "main"
+
+package root_package;
+
+require kermeta
+require "kermeta/helpers/EcoreUtil.kmt"
+require "kermeta/helpers/EcoreGenericsHelper.kmt"
+require "Tableur.kmt"
+require "Tableur_visitors.kmt"
+
+using ecore
+using kermeta::standard
+using kermeta::io
+
+class Main
+{
+	operation main() : Void is do 
+		var util : EcoreUtil::EcoreUtil init EcoreUtil::EcoreUtil.new
+		var model : EPackage init util.loadTableurModel("../model/tableur_visitable.ecore", "")
+	end
+}

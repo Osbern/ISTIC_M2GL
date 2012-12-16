@@ -1,0 +1,146 @@
+/* $Id:$ 
+ * Creation : November 22, 2012
+ * Licence  : EPL 
+ * Copyright:
+ * Authors  : 
+ *            28002846
+ */
+@mainClass "root_package::Main"
+@mainOperation "main"
+
+package root_package;
+
+require kermeta
+require "http://www.eclipse.org/emf/2002/Ecore"
+require "kermeta/helpers/EcoreUtil.kmt"
+require "kermeta/helpers/EcoreGenericsHelper.kmt"
+
+using ecore
+using kermeta::standard
+using kermeta::io
+
+class Main
+{
+	attribute model : EPackage
+
+	operation main() : Void is do 
+		var util : EcoreUtil::EcoreUtil init EcoreUtil::EcoreUtil.new
+		model := util.loadModel("kermeta/research_team.ecore")
+		
+		generateIndex()
+		generateToc()
+		
+		model.eClassifiers.each { e |
+			if (e.isInstanceOf(EClass)) then
+				var c : EClass init e.asType(EClass)
+				flatshort(c)
+			end
+		}
+		
+	end
+	
+	operation generateIndex() : Void is do
+		var gen : String init "
+<frameset cols=\"20%,80%\">
+	<frame src=\"toc.html\" name=\"TOC\" noresize>
+	<frame src=\"contents.html\" name=\"EcoreDoc\" noresize>
+</frameset>"
+		var io : kermeta::io::FileIO init kermeta::io::FileIO.new
+		io.writeTextFile("javadoc/index.html", gen)
+		
+		gen := "
+<html>
+<head>
+</head>
+<body>
+	<h1>Welcome</h1>
+	Click on the 'other right' list to display doc.
+</body>
+</html>"
+	io.writeTextFile("javadoc/contents.html", gen)
+	end
+	
+	operation generateToc() : Void is do
+		var gen : String init "
+<html>
+<body>
+	<h3>Classes of " + model.name + "</h3>
+	<CENTER>
+"
+
+		model.eClassifiers.each { e |
+			if (e.isInstanceOf(EClass)) then
+				var c : EClass init e.asType(EClass)
+				gen := gen + "<a href=\"" + c.name + ".html\" target=\"EcoreDoc\">" + c.name + "</a><br/>"
+			end
+		}
+		gen := gen + "
+	</CENTER>
+</body>
+</html>"
+		var io : kermeta::io::FileIO init kermeta::io::FileIO.new
+		io.writeTextFile("javadoc/toc.html", gen)
+	end
+	
+	
+	// FLATSHORT
+	operation flatshort(c : EClass) : Void is do
+		var gen : String init "
+<html>
+<head>
+</head>
+<body>
+	<h3>Class " + c.name + ": </h3><br/>"
+		c.eSuperTypes.each { s |
+			gen := gen + "SuperClasse : "
+			gen := gen + flat(s)
+			gen := gen + short(s)
+		}
+		gen := gen + short(c.asType(EClass))
+gen := gen + "
+</body>
+</html>"
+		var io : kermeta::io::FileIO init kermeta::io::FileIO.new
+		io.writeTextFile("javadoc/" + c.name + ".html", gen)
+	end
+	
+	operation flat(c : EClass) : String is do
+		var gen : String init "
+<a href=\"" + c.name + ".html\">" + c.name + "</a>"
+
+		c.eSuperTypes.each { s |
+			gen := gen + "
+	<a href=\"" + s.name + ".html\">" + s.name + "</a>"
+			gen := gen + flat(s)
+		}
+		result := gen
+	end
+	
+	operation short(c : EClass) : String is do
+		var gen : String init "
+	<ul>"
+		
+		c.eStructuralFeatures.each{ a |
+			if (a.isInstanceOf(EAttribute)) then
+					gen := gen + "<li>" + a.name
+					if (a.eType.isVoid()) then
+						gen := gen + " of type no specified"
+					else					
+						gen := gen + " of type " + a.eType.name
+					end
+					gen := gen + "</li>"
+			end
+		}
+		
+		c.eOperations.each { o |
+			gen := gen + "<li>" + o.name + "("
+			o.eParameters.each { p |
+				gen := gen + p.name + ":" + p.eType.name + ", "
+			}
+			gen := gen + ")</li>"
+		}
+		gen := gen + "
+	</ul>"
+		result := gen
+	end
+}

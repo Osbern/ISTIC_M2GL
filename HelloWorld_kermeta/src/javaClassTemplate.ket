@@ -1,0 +1,29 @@
+<%@ket
+package="eClass2Class"
+require="http://www.eclipse.org/emf/2002/Ecore kermeta/helpers/EcoreUtil.kmt javaAttributeTemplate.kmt"
+using="kermeta::language::structure ecore eAttribute2Attribute"
+class="EClass2Class"
+parameters="aPackage:EPackage, aClass:EClass"
+%>
+package <%=aPackage.name%>;
+
+import java.util.*;
+
+/**
+* TODO javadoc
+*/
+<%
+/*
+* Class
+*/
+var counterSuperClass: Integer init 0
+var interfaceList : String init ""
+var interfaceName : String init ""
+var attr : EAttribute2Attribute init EAttribute2Attribute.new
+%>
+
+<%if aClass.~abstract == true then%>public abstract class<%else%>public class<%end%> <%=aClass.name%> {
+
+	<%=attr.generate(aClass)%>
+
+}

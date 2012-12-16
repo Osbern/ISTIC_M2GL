@@ -1,0 +1,39 @@
+package eClass2Class;
+require kermeta
+require "http://www.eclipse.org/emf/2002/Ecore"
+require "kermeta/helpers/EcoreUtil.kmt"
+require "javaAttributeTemplate.kmt"
+using kermeta::standard
+using kermeta::utils
+using kermeta::language::structure
+using ecore
+using eAttribute2Attribute
+class EClass2Class{
+operation generate(aPackage:EPackage, aClass:EClass):String is do
+var _res: StringBuffer init StringBuffer.new
+_res.append("package ")
+_res.append(aPackage.name)
+_res.append(";\n\nimport java.util.*;\n\n/**\n* TODO javadoc\n*/\n")
+
+/*
+* Class
+*/
+var counterSuperClass: Integer init 0
+var interfaceList : String init ""
+var interfaceName : String init ""
+var attr : EAttribute2Attribute init EAttribute2Attribute.new
+
+_res.append("\n")
+if aClass.~abstract == true then
+_res.append("public abstract class")
+else
+_res.append("public class")
+end
+_res.append(" ")
+_res.append(aClass.name)
+_res.append(" {\n\n\t")
+_res.append(attr.generate(aClass))
+_res.append("\n\n}\n")
+result := _res.toString
+end
+}

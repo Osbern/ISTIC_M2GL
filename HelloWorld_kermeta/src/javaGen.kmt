@@ -1,0 +1,43 @@
+/* $Id:$ 
+ * Creation : November 22, 2012
+ * Licence  : EPL 
+ * Copyright:
+ * Authors  : 
+ *            28002846
+ */
+@mainClass "root_package::Main"
+@mainOperation "main"
+
+
+package root_package;
+
+require kermeta
+require "http://www.eclipse.org/emf/2002/Ecore"
+require "kermeta/helpers/EcoreUtil.kmt"
+require "kermeta/helpers/EcoreGenericsHelper.kmt"
+require "javaClassTemplate.kmt"
+
+using ecore
+using kermeta::standard
+using kermeta::io
+
+class Main
+{
+	attribute model : EPackage
+
+	operation main() : Void is do 
+		var util : EcoreUtil::EcoreUtil init EcoreUtil::EcoreUtil.new
+		model := util.loadModel("kermeta/research_team.ecore")
+		
+		var gen : eClass2Class::EClass2Class init eClass2Class::EClass2Class.new
+		var io : kermeta::io::FileIO init kermeta::io::FileIO.new
+
+		model.eClassifiers.each { e |
+			if (e.isInstanceOf(EClass)) then
+				var c : EClass init e.asType(EClass)
+				var res : String init gen.generate(model, c)
+				io.writeTextFile("javagen/" + c.name +".java", res)
+			end
+		}
+	end
+}

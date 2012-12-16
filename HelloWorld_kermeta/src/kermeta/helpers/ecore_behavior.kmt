@@ -1,0 +1,391 @@
+/* $Id: ecore_behavior.kmt,v 1.15 2008/09/24 09:41:28 dvojtise Exp $
+ * Creation date: May 2, 2006
+ * License: E.P.L.
+ * Copyright:
+ * 	Implementation of ECORE metamodel in Kermeta
+ * Authors:	
+ *	Vincent MAHE vmahe@irisa.fr
+ */
+package ecore;
+
+require kermeta
+require "http://www.eclipse.org/emf/2002/Ecore"
+
+using kermeta::standard
+
+/** This class refers to any EDataType feature*/
+aspect class EAttribute 
+{
+	property eAttributeType : EDataType[1..1]
+		getter is do			
+ 			if eType.getMetaClass == EDataType then
+				result ?= eType
+			else
+				var exception : kermeta::exceptions::Exception init kermeta::exceptions::Exception.new
+				exception.message := "The EClassifer pointed by this EAttribute must be of type EDataType"
+				raise exception
+			end
+		end
+		setter is do
+			if eType.getMetaClass == EDataType then				
+				eType := value
+			else
+				var exception : kermeta::exceptions::Exception init kermeta::exceptions::Exception.new
+				exception.message := "The EClassifer pointed by this EAttribute must be of type EDataType"
+				raise exception
+			end
+		end
+}
+
+aspect class EClass 
+{
+
+	/**
+	 * In Ecore, eGenericSuperTypes and eSuperTypes must be synchronized, 
+	 * so each eSuperTypes must have a corresponding eGenericSuperTypes and vice 
+	 * versa
+	 */
+	inv eGenericSuperTypes_Matches_eSuperTypes is do
+		// verifies that all eGenericSuperTypes have their counterpart in eSuperTypes and vice versa
+		self.eGenericSuperTypes.forAll{eGST | self.eSuperTypes.exists{eST | eST == eGST.eClassifier}}
+		and
+		self.eSuperTypes.forAll{eST | self.eGenericSuperTypes.exists{eGST | eST == eGST.eClassifier}}
+	end 
+	
+	property eAllAttributes : EAttribute[0..*]
+		getter is do
+	 		result := kermeta::standard::OrderedSet<EAttribute>.new
+			self.eAllSuperTypes.each{ t | result.addAll(t.eAttributes) }
+		end
+	property eAllReferences : EReference[0..*]
+		getter is do
+	 		result := kermeta::standard::OrderedSet<EReference>.new 
+			self.eAllSuperTypes.each{ t | result.addAll(t.eReferences) }
+		end
+	property eReferences : EReference[0..*]
+		getter is do
+			result := kermeta::standard::OrderedSet<EReference>.new
+			self.eStructuralFeatures.each { f | if EReference.isInstance(f) then var a : EReference a ?= f result.add(a) end }
+		end
+	property eAttributes : EAttribute[0..*]
+		getter is do
+			result := kermeta::standard::OrderedSet<EAttribute>.new
+			self.eStructuralFeatures.each { f | if EAttribute.isInstance(f) then var a : EAttribute a ?= f result.add(a) end }
+		end
+	property eAllContainments : EReference[0..*]
+		getter is do
+	 		result := kermeta::standard::OrderedSet<EReference>.new 
+	 		//stdio.writeln("containment : " + self.eAllReferences.one.containment.toString)
+	 		result.addAll(self.eAllReferences.select { r | r.containment == true } )
+		end
+	property eAllOperations : EOperation[0..*]
+		getter is do
+	 		result := kermeta::standard::OrderedSet<EOperation>.new 
+	 		result.addAll(eOperations)
+			self.eAllSuperTypes.each{ t | result.addAll(t.eOperations) }
+		end
+
+	
+	property eAllStructuralFeatures : EStructuralFeature[0..*]
+		getter is do
+	 		result := kermeta::standard::OrderedSet<EStructuralFeature>.new
+	 		if (eStructuralFeatures != void) then result.addAll(eStructuralFeatures) end
+			self.eAllSuperTypes.each{ t | result.addAll(t.eStructuralFeatures) }
+		end
+
+	
+	property eAllSuperTypes : EClass[0..*]
+		getter is do
+			result := kermeta::standard::OrderedSet<EClass>.new 
+			result.addAll(self.eSuperTypes)
+			self.eSuperTypes.each { t | result.addAll(t.eAllSuperTypes) }
+			
+		end
+	property eIDAttribute : EAttribute
+		getter is do
+			//TODO: implement getter for derived property eIDAttribute
+			raise kermeta::exceptions::NotImplementedException.new 
+		end
+		setter is do
+			//TODO: implement setter for derived property eIDAttribute
+			raise kermeta::exceptions::NotImplementedException.new 
+		end
+
+	operation isSuperTypeOf(someClass : EClass) : EBoolean is do
+		result := someClass.eAllSuperTypes.detect { t | t == self } != void
+	end
+	
+	operation getFeatureCount() : EInt is do
+		result := self.eAllStructuralFeatures.size
+	end
+	
+	/** Get a structural feature among AllStructuralFeatures */
+	operation op_getEStructuralFeature(featureID : EInt) : EStructuralFeature is do
+		result := self.eAllStructuralFeatures.detect{ e | e.getFeatureID() == featureID }
+	end
+	
+	/** Return the Id of the feature
+	 * This Id is NOT the same as the one used by EMF because it ensures that the Id doesn't change
+	 * even if the model is modified. In order to achieve that, this Id is based on Kermeta oid 
+     */
+	operation getFeatureID(feature : EStructuralFeature) : EInt is do
+		result := feature.getFeatureID()		
+	end
+	
+	operation getEStructuralFeature(featureName : EString) : EStructuralFeature is do
+		result := self.eAllStructuralFeatures.detect{ e | e.name == featureName }
+	end
+}
+aspect abstract class EClassifier
+{
+	property instanceClass : EJavaClass
+		getter is do
+			//TODO: implement getter for derived property instanceClass
+			raise kermeta::exceptions::NotImplementedException.new 
+		end
+		setter is do
+			//TODO: implement setter for derived property instanceClass
+			raise kermeta::exceptions::NotImplementedException.new 
+		end
+	property defaultValue : EJavaObject
+		getter is do
+			//TODO: implement getter for derived property defaultValue
+			raise kermeta::exceptions::NotImplementedException.new 
+		end
+		setter is do
+			//TODO: implement setter for derived property defaultValue
+			raise kermeta::exceptions::NotImplementedException.new 
+		end
+	//reference ePackage : EPackage#eClassifiers
+	operation isInstance(object : EJavaObject) : EBoolean is do
+		raise kermeta::exceptions::NotImplementedException.new
+	end
+	operation getClassifierID() : EInt is do
+		raise kermeta::exceptions::NotImplementedException.new
+	end
+}
+
+aspect class EOperation
+{
+	/**
+	 * In Ecore, eGenericExceptions and eExceptions must be synchronized, 
+	 * so each eExceptions must have a corresponding eGenericExceptions and vice 
+	 * versa
+	 */
+	inv eGenericExceptions_Matches_eExceptions is do
+		// verifies that all eGenericSuperTypes have their counterpart in eSuperTypes and vice versa
+		self.eGenericExceptions.forAll{eGST | self.eExceptions.exists{eST | eST == eGST.eClassifier}}
+		and
+		self.eExceptions.forAll{eST | self.eGenericExceptions.exists{eGST | eST == eGST.eClassifier}}
+	end 
+}
+
+
+aspect class EEnum 
+{
+	/** returns the enum literal which name is name */
+	operation op_getEEnumLiteral(name : EString) : EEnumLiteral is do
+		result := eLiterals.detect { e | e.name == name }
+	end
+	
+	/** returns the enum literal which value is value */
+	operation getEEnumLiteral(~value : EInt) : EEnumLiteral is do
+		result := eLiterals.detect { e | e.~value == ~value } 
+	end
+}
+
+aspect class EFactory 
+{
+	operation create(eClass : EClass) : EObject is do
+		raise kermeta::exceptions::NotImplementedException.new
+	end
+
+	/*operation createFromString(eDataType : EDataType, literalValue : EString) : EJavaObject is do
+		raise kermeta::exceptions::NotImplementedException.new
+	end*/
+
+	/*operation convertToString(eDataType : EDataType, instanceValue : EJavaObject) : EString is do
+		raise kermeta::exceptions::NotImplementedException.new
+	end*/
+}
+
+aspect abstract class EModelElement 
+{
+	operation getEAnnotation(source : EString) : EAnnotation is do
+		result := eAnnotations.detect { a | a.source == source }
+	end
+}
+
+
+aspect class EObject
+{
+	operation eClass() : EClass is do
+		result ?= extern fr::irisa::triskell::kermeta::ecore::wrapper::EObjectWrapper.eClass(self)
+	end
+	operation eIsProxy() : EBoolean is do
+		raise kermeta::exceptions::NotImplementedException.new 
+	end
+	operation eResource() : EResource is do
+		raise kermeta::exceptions::NotImplementedException.new 
+	end
+	operation eContainer() : EObject is do
+		result ?= self.container
+	end
+	
+	operation eContainingFeature() : EStructuralFeature is do
+		raise kermeta::exceptions::NotImplementedException.new
+	end
+
+	operation eContainmentFeature() : EReference is do
+		raise kermeta::exceptions::NotImplementedException.new
+	end
+
+	operation eContents() : EEList is do
+		raise kermeta::exceptions::NotImplementedException.new
+	end
+
+	operation eAllContents() : ETreeIterator is do
+		raise kermeta::exceptions::NotImplementedException.new
+	end
+
+	operation eCrossReferences() : EEList is do
+		raise kermeta::exceptions::NotImplementedException.new
+	end
+
+	operation op_eGet(feature : EStructuralFeature) : EJavaObject is do
+		raise kermeta::exceptions::NotImplementedException.new
+	end
+
+/*	operation eGet(feature : EStructuralFeature, resolve : EBoolean) : EJavaObject is do
+		raise kermeta::exceptions::NotImplementedException.new
+	end
+
+	operation eSet(feature : EStructuralFeature, newValue : EJavaObject) : kermeta::standard::~Void is do
+		raise kermeta::exceptions::NotImplementedException.new
+	end*/
+
+	operation eIsSet(feature : EStructuralFeature) : EBoolean is do
+		raise kermeta::exceptions::NotImplementedException.new
+	end
+
+/*	operation eUnset(feature : EStructuralFeature) : kermeta::standard::~Void is do
+		raise kermeta::exceptions::NotImplementedException.new
+	end*/
+}
+
+aspect class EPackage
+{
+	operation getEClassifier(name : EString) : EClassifier is do
+		result := eClassifiers.select{c | c.name == name}.one
+	end
+}
+aspect class EReference 
+{
+	property eReferenceType : EClass[1..1]
+		getter is do
+ 			if eType.getMetaClass == EClass then
+				result ?= eType
+			else
+				var exception : kermeta::exceptions::Exception init kermeta::exceptions::Exception.new
+				exception.message := "The EClassifer pointed by this EReference must be of type EClass"
+				raise exception
+			end
+		end
+		setter is do
+			if eType.getMetaClass == EClass then				
+				//eType := value
+				var generic : EGenericType init EGenericType.new
+				generic.eClassifier := value
+				self.eType := value
+				self.eGenericType := generic
+			else
+				var exception : kermeta::exceptions::Exception init kermeta::exceptions::Exception.new
+				exception.message := "The EClassifer pointed by this EReference must be of type EClass"
+				raise exception
+			end
+		end
+    
+    // due to inner reflection problems with Object.container(), the
+    // 'container' property can only be accessed through a getter
+	operation getContainerValue() : EBoolean is do
+		var cls : kermeta::language::structure::ClassDefinition
+		cls ?= self.getMetaClass.typeDefinition
+		
+		// FIXME CF 08-09-10, the following source code has been re-written for the compiler
+		// Initial code:
+		//result ?= self.get(cls.ownedAttribute.detect{p | p.name == "container"})
+		var attr : kermeta::language::structure::Property init cls.ownedAttribute.detect{p | p.name == "container"}
+		result ?= self.get(attr)
+	end
+
+}
+
+aspect abstract class EStructuralFeature 
+{
+	property defaultValue : EJavaObject
+		getter is do
+			//TODO: implement getter for derived property defaultValue
+			raise kermeta::exceptions::NotImplementedException.new 
+		end
+		setter is do
+			//TODO: implement setter for derived property defaultValue
+			raise kermeta::exceptions::NotImplementedException.new 
+		end
+	/**
+	 * The Kermeta implementation of getFeatureID relies on its internal OId.
+	 * this means that this Id can be safely used even if the model changes.
+	 * but, ss a drawback, this Id is NOT the same as the one generated by EMF 
+	 */
+	operation getFeatureID() : EInt is do
+		result := self.oid
+	end
+
+	operation getContainerClass() : EJavaClass is do
+		raise kermeta::exceptions::NotImplementedException.new
+	end
+}
+aspect abstract class ETypedElement
+{
+	/**
+	 * In Ecore, eGenericType and eType must be synchronized
+	 */
+	inv eGenericType_Matches_eType is do
+		// verifies that eGenericType has its counterpart in eType and vice versa
+		if self.eGenericType.isVoid and self.eType.isVoid then
+			true
+		else
+			if not self.eGenericType.isVoid then
+				if not self.eType.isVoid then
+					self.eGenericType.eClassifier == self.eType
+				else 
+					false
+				end
+			else
+				false
+			end
+		end
+	end
+	
+	property many : EBoolean
+		getter is do
+			//TODO: implement getter for derived property many
+			if (self.upperBound >1 or self.upperBound == -1 ) then
+		 			result := true
+		 		else
+		 			result:= false
+			 	end	
+		end
+		setter is do
+			//TODO: implement setter for derived property many
+			raise kermeta::exceptions::NotImplementedException.new 
+		end
+	property required : EBoolean
+		getter is do
+			//TODO: implement getter for derived property required
+			raise kermeta::exceptions::NotImplementedException.new 
+		end
+		setter is do
+			//TODO: implement setter for derived property required
+			raise kermeta::exceptions::NotImplementedException.new 
+		end
+}
