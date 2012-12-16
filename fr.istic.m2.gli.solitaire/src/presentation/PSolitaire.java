@@ -64,7 +64,7 @@ public class PSolitaire extends JFrame {
 		f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		f.setTitle("Solitaire - Destouches Lacroix");
 		
-		JLabel board = new JLabel(new ImageIcon("W:\\ISTIC_M2GL\\fr.istic.m2.gli.solitaire\\bin\\backgroundImage\\back.png"));
+		JLabel board = new JLabel(new ImageIcon(ClassLoader.getSystemResource("backgroundImage/back.png")));
 		
 		
 
