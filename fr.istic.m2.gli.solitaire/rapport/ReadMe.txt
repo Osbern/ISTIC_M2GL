@@ -39,6 +39,10 @@
 N’ayant pas accès aux sources de l’API Solitaire, et devant implémenter uniquement la partie Interface Homme-Machine, nous avons appliqué le patron de conception PAC-Amodeus.
 Nous avons donc fait hériter nos classes de contrôles de celles de l’API (par exemple CTasDeCartes (pour le Contrôleur) hérite de TasDeCartes), ce qui nous a permis de rajouter de nouvelles fonctionnalités tout en gardant les anciennes par délégation.
 
+## Tests ##
+
+	Les tests de chacun des éléments de l'application est disponible dans chacune des classes "Pcomposant" sous forme d'un main.
+
 ## Choix ##
 
 Pour le Drag and Drop nous avons choisis de ne pouvoir déplacer que des TasDeCartes (si il n’y a q’une seule carte à déplacer, c’est un Tas d’une seule carte), ainsi la classe PTasDeCartes implémente l’interface Transferable, ce qui lui permet d’être déplacer. Ensuite la possibilité de Dragger n’a été implémenté que sur les composants pouvant “donner” des cartes (Sabot, Colonne et TasDeCartesColorees), et la fonction Drop que sur les composants pouvant “recevoir des cartes” (Colonne et TasDeCartesColorees).
