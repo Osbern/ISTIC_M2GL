@@ -7,9 +7,14 @@ import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
 
+import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.WindowConstants;
 
+import controller.CCarte;
 import controller.CTasDeCartes;
+import controller.CTasDeCartesAlternees;
+import controller.CUsine;
 import controller.ICTasDeCartes;
 
 public class PTasDeCartes extends JPanel implements Transferable {
@@ -84,5 +89,27 @@ this.setOpaque(false);
 	public Object getTransferData(DataFlavor flavor)
 			throws UnsupportedFlavorException, IOException {
 		return this;
+	}
+	
+	public static void main(String[] args) {
+		CUsine u = new CUsine();
+		JFrame frame = new JFrame();
+		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		
+		CTasDeCartesAlternees tas = new CTasDeCartesAlternees("toto", u);
+		tas.getPresentation().setDelta(0, 25);
+
+		CCarte c = new CCarte(13, 4);
+		tas.empiler(c);
+		c = new CCarte(12, 3);
+		tas.empiler(c);
+		c = new CCarte(11, 2);
+		tas.empiler(c);
+
+		frame.add(tas.getPresentation());
+		
+		frame.setVisible(true);
+		frame.pack();
+		
 	}
 }

@@ -20,12 +20,16 @@ import java.awt.dnd.DropTargetEvent;
 import java.awt.dnd.DropTargetListener;
 import java.io.IOException;
 
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
+import javax.swing.WindowConstants;
 
 import controller.CCarte;
 import controller.CColonne;
+import controller.CSabot;
 import controller.CTasDeCartes;
+import controller.CUsine;
 
 public class PColonne extends JPanel {
 
@@ -247,5 +251,36 @@ public class PColonne extends JPanel {
 	public void initCachees() {
 		cachees.initialiser();
 		visibles.setLocation(cachees.getX(), cachees.getHeight() - 100);
+	}
+	
+	
+	// TEST
+	public static void main(String[] args) {
+		CUsine u = new CUsine();
+		
+		JFrame frame = new JFrame();
+		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+	
+		CTasDeCartes pastas = new CTasDeCartes("toto", u);
+		pastas.getPresentation().setDelta(0, 25);
+
+		CCarte c = new CCarte(13, 4);
+		pastas.empiler(c);
+		c = new CCarte(12, 3);
+		pastas.empiler(c);
+		c = new CCarte(11, 2);
+		pastas.empiler(c);
+
+		CColonne col = new CColonne("toto", u);
+		col.getPresentation().initCachees();
+		col.setReserve(pastas);
+		col.empiler(new CCarte(6, 2));
+		col.empiler(new CCarte(5, 3));
+		col.empiler(new CCarte(4, 4));
+
+		frame.add(col.getPresentation());
+		
+		frame.setVisible(true);
+		frame.pack();
 	}
 }

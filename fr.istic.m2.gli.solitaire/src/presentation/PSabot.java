@@ -16,11 +16,15 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
+import javax.swing.WindowConstants;
 
 import controller.CCarte;
 import controller.CSabot;
+import controller.CTasDeCartes;
+import controller.CUsine;
 
 public class PSabot extends JPanel {
 	
@@ -156,4 +160,28 @@ public class PSabot extends JPanel {
 		
 	}
 
+
+	// TEST
+	// TEST
+	public static void main(String[] args) {
+		CUsine u = new CUsine();
+		
+		JFrame frame = new JFrame();
+		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+	
+		CSabot cs = new CSabot("Sabot", u);
+	
+		CTasDeCartes ctdc = new CTasDeCartes("toto", u);
+		for (int i = 1; i < 14; i++) {
+			CCarte cc = new CCarte(i, 1);
+			ctdc.empiler(cc);
+		}
+		ctdc.getPresentation().setDelta(0, 25);
+		cs.setReserve(ctdc);
+		
+		frame.add(cs.getPresentation());
+		
+		frame.setVisible(true);
+		frame.pack();
+	}
 }
