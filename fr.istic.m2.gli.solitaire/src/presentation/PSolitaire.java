@@ -7,6 +7,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Point;
 import java.awt.TrayIcon.MessageType;
 import java.io.File;
 import java.io.IOException;
@@ -32,7 +33,7 @@ public class PSolitaire extends JFrame {
 		CUsine u = new CUsine();
 		CSolitaire jeu = new CSolitaire("Solitaire", u);
 		jeu.initialiser();
-		// jeu.jouer();
+		jeu.jouer();
 
 		while (!jeu.termine()) {
 		}
@@ -125,6 +126,7 @@ public class PSolitaire extends JFrame {
 		f.setMinimumSize(f.getSize());
 		f.setPreferredSize(f.getSize());
 		f.setResizable(false);
-	}
+		f.setLocationRelativeTo(null);
+		}
 
 }
