@@ -91,6 +91,7 @@ this.setOpaque(false);
 		return this;
 	}
 	
+	// TEST
 	public static void main(String[] args) {
 		CUsine u = new CUsine();
 		JFrame frame = new JFrame();

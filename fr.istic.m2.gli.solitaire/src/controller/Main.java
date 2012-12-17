@@ -1,8 +1,6 @@
 package controller;
 
-import javax.swing.JFrame;
-import javax.swing.WindowConstants;
-import solitaire.application.Solitaire;
+import javax.swing.JOptionPane;
 
 public class Main {
 
@@ -12,94 +10,13 @@ public class Main {
 	public static void main(String[] args) {
 
 		CUsine u = new CUsine();
-		
-		JFrame frame = new JFrame();
-		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		//frame.setLayout(new FlowLayout()); // au lieu de BorderLayout par
-		// dï¿½faut
+		CSolitaire jeu = new CSolitaire("Solitaire", u);
+		jeu.initialiser();
+		jeu.jouer();
 
-		CSabot cs = new CSabot("Sabot", u);
-
-		CTasDeCartes ctdc = new CTasDeCartes("toto", u);
-		for (int c = 1; c < 14; c++) {
-			CCarte cc = new CCarte(c, 1);
-			ctdc.empiler(cc);
+		while (!jeu.termine()) {
 		}
-		ctdc.getPresentation().setDelta(0, 25);
-		cs.setReserve(ctdc);
-
-		// frame.add(cs.getPresentation());
-
-		/*
-		 * test des PTasDeCartes on affiche un tas alternees vertical
-		 */
-		CTasDeCartesAlternees tas = new CTasDeCartesAlternees("toto", u);
-		tas.getPresentation().setDelta(0, 25);
-
-		CCarte c = new CCarte(13, 4);
-		tas.empiler(c);
-		c = new CCarte(12, 3);
-		tas.empiler(c);
-		c = new CCarte(11, 2);
-		tas.empiler(c);
-
-		// frame.add(tas.getPresentation());
-
-		/*
-		 * test des PTasDeCartes on affiche un tas colorÃ© vertical
-		 */
-		CTasDeCartesColorees tasc = new CTasDeCartesColorees("titi", 4, u);
-		tasc.getPresentation().setDelta(0, 0);
-		tasc.getPresentation().setLocation(200, 0);
-
-		c = new CCarte(1, 4);
-		tasc.empiler(c);
-		c = new CCarte(2, 4);
-		tasc.empiler(c);
-		c = new CCarte(3, 4);
-		tasc.empiler(c);
-
-		frame.add(tasc.getPresentation());
-
-		/*
-		 * test des PColonne
-		 */
-		CTasDeCartes pastas = new CTasDeCartes("toto", u);
-		pastas.getPresentation().setDelta(0, 25);
-
-		c = new CCarte(13, 4);
-		pastas.empiler(c);
-		c = new CCarte(12, 3);
-		pastas.empiler(c);
-		c = new CCarte(11, 2);
-		pastas.empiler(c);
-
-		CColonne col = new CColonne("toto", u);
-		col.setReserve(pastas);
-		col.empiler(new CCarte(6, 2));
-		col.empiler(new CCarte(5, 3));
-		col.empiler(new CCarte(4, 4));
-
-		frame.add(col.getPresentation());
-
-		/*
-		 * tests de PCarte on affiche toutes les cartes dont certaines face
-		 * cachï¿½e!
-		 */
-		// CCarte pc;
-		// for (int c = 1; c < 5; c++) {
-		// for (int i = 1; i < 14; i++) {
-		// pc = new CCarte(i, c);
-		// pc.setFaceVisible(true);
-		// pc.getPresentation().setLocation(i, c);
-		// frame.add(pc.getPresentation());
-		// if ((i%4) == 0)
-		// pc.setFaceVisible(false);
-		// }
-		// }
-
-		frame.setVisible(true);
-		frame.pack();
+		JOptionPane.showMessageDialog(jeu.getPS(), new String("Bien joué Bob !"), "Gagné !", 1);
+		System.exit(0);
 	}
-
 }

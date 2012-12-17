@@ -3,21 +3,11 @@ package presentation;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.Point;
-import java.awt.TrayIcon.MessageType;
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
 
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
@@ -25,21 +15,8 @@ import controller.CColonne;
 import controller.CSabot;
 import controller.CSolitaire;
 import controller.CTasDeCartesColorees;
-import controller.CUsine;
 
 public class PSolitaire extends JFrame {
-	public static void main(String[] args) {
-
-		CUsine u = new CUsine();
-		CSolitaire jeu = new CSolitaire("Solitaire", u);
-		jeu.initialiser();
-		jeu.jouer();
-
-		while (!jeu.termine()) {
-		}
-		JOptionPane.showMessageDialog(jeu.getPS(), new String("Bien joué Bob !"), "Gagné !", 1);
-		System.exit(0);
-	}
 
 	/**
 	 * 
@@ -65,10 +42,8 @@ public class PSolitaire extends JFrame {
 		f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		f.setTitle("Solitaire - Destouches Lacroix");
 		
-		JLabel board = new JLabel(new ImageIcon(ClassLoader.getSystemResource("backgroundImage/back.png")));
+		JLabel board = new JLabel(new ImageIcon(ClassLoader.getSystemResource("images/back.png")));
 		
-		
-
 
 		board.setLayout(new BorderLayout());
 
