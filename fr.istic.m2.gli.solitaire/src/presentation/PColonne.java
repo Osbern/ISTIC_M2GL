@@ -120,8 +120,13 @@ public class PColonne extends JPanel {
 		dsml = new DragSourceMotionListener() {
 			@Override
 			public void dragMouseMoved(DragSourceDragEvent dsde) {
-				int x = dsde.getLocation().x - 5 - initialEvent.getDragOrigin().x - getWindowX();
-				int y = dsde.getLocation().y - 100 + /* - initialEvent.getDragOrigin().y -*/ ((transfer.getControle().getSize() -1 ) * 10) - getWindowY();
+				int x = dsde.getLocation().x - 5
+						- initialEvent.getDragOrigin().x - getWindowX();
+				int y = dsde.getLocation().y
+						- 100
+						+ /* - initialEvent.getDragOrigin().y - */((transfer
+								.getControle().getSize() - 1) * 10)
+						- getWindowY();
 				transfer.setLocation(x, y);
 				repaint();
 			}
@@ -177,11 +182,11 @@ public class PColonne extends JPanel {
 		};
 		dt = new DropTarget(this, dtl);
 	}
-	
+
 	private int getWindowX() {
 		return SwingUtilities.getWindowAncestor(this).getX();
 	}
-	
+
 	private int getWindowY() {
 		return SwingUtilities.getWindowAncestor(this).getY();
 	}
@@ -252,15 +257,14 @@ public class PColonne extends JPanel {
 		cachees.initialiser();
 		visibles.setLocation(cachees.getX(), cachees.getHeight() - 100);
 	}
-	
-	
+
 	// TEST
 	public static void main(String[] args) {
 		CUsine u = new CUsine();
-		
+
 		JFrame frame = new JFrame();
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-	
+
 		CTasDeCartes pastas = new CTasDeCartes("toto", u);
 		pastas.getPresentation().setDelta(0, 25);
 
@@ -272,14 +276,13 @@ public class PColonne extends JPanel {
 		pastas.empiler(c);
 
 		CColonne col = new CColonne("toto", u);
-		col.getPresentation().initCachees();
 		col.setReserve(pastas);
 		col.empiler(new CCarte(6, 2));
 		col.empiler(new CCarte(5, 3));
 		col.empiler(new CCarte(4, 4));
-
+		col.getPresentation().initCachees();
 		frame.add(col.getPresentation());
-		
+
 		frame.setVisible(true);
 		frame.pack();
 	}
