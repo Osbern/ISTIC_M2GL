@@ -123,6 +123,7 @@ public class IHM extends JFrame {
 	public void stop() {
 		ctl.stop();
 		stopBtn.setEnabled(false);
+		md.reset();
 	}
 
 	public void incMesure() {

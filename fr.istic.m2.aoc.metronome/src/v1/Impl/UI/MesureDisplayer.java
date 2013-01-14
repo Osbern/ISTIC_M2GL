@@ -54,5 +54,11 @@ public class MesureDisplayer extends JPanel {
 		btns[mesure].setVisible(false);
 		mesure--;
 	}
+	public void reset(){
+		cpt = 0;
+		for (int i = 0; i < btns.length; i++) {
+			btns[i].setEnabled(false);
+		}
+	}
 
 }
