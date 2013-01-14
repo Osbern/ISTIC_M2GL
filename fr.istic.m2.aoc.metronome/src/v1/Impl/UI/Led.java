@@ -11,8 +11,8 @@ import v2.Adaptor.Horloge;
 
 public class Led extends JPanel {
 	
-	public static final int LEDTEMPS = 0;
-	public static final int LEDMESURE = 1;
+	public static final int LED_TEMPS = 0;
+	public static final int LED_MESURE = 1;
 	
 	private Horloge h;
 	private Color c;
@@ -37,7 +37,7 @@ public class Led extends JPanel {
 	}
 	
 	public void update(int i) {
-		if (i == LEDTEMPS)
+		if (i == LED_TEMPS)
 			h.desactiver();
 		this.setBackground(c);
 		h.activerApresDelai(new EteindreLed(this), 150);

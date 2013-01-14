@@ -10,15 +10,26 @@ import javax.swing.JButton;
  */
 
 public class StartButton extends JButton {
+	
+	private boolean etat;
 
-	public StartButton(final IHM ihm) {
+	public StartButton() {
 		super("Start");
+		etat = false;
 		
 		addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ihm.start();
+				etat = true;
 			}
 		});
+	}
+	
+	public boolean isEtat() {
+		return etat;
+	}
+
+	public void setEtat(boolean etat) {
+		this.etat = etat;
 	}
 }
