@@ -1,8 +1,8 @@
 package v1.Impl;
 
-import v1.Impl.UI.IHM;
 import v1.Interface.Command;
 import v2.Adaptor.Materiel;
+import v2.Adaptor.Impl.Adaptor;
 
 public class Metronome {
 	
@@ -10,9 +10,10 @@ public class Metronome {
 		Controller ctl = new Controller();
 		Moteur mot = new Moteur();
 		Materiel mat = new Materiel();
+		Adaptor adapt = new Adaptor(mat, ctl);
 		
 		ctl.setMoteur(mot);
-		ctl.setMateriel(mat);
+		ctl.setAdaptor(adapt);
 		
 		Command tocTemps = new TocTemps(ctl);
 		Command tocMesure = new TocMesure(ctl);
@@ -24,8 +25,7 @@ public class Metronome {
 		mot.setMesure(4);
 		mot.setEnMarche(false);
 		
-//		IHM ihm = new IHM(ctl);
-//		ctl.setIHM(ihm);
+		(new HorlogeImpl()).activerPeriodiquement(adapt, 100);
 	}
 
 }

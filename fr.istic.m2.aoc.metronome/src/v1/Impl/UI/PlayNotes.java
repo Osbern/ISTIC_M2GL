@@ -4,6 +4,8 @@ import com.jsyn.JSyn;
 import com.jsyn.Synthesizer;
 import com.jsyn.instruments.SubtractiveSynthVoice;
 import com.jsyn.unitgen.LineOut;
+import com.jsyn.unitgen.SawtoothOscillator;
+import com.jsyn.unitgen.SineOscillator;
 import com.jsyn.unitgen.UnitGenerator;
 import com.jsyn.unitgen.UnitVoice;
 import com.softsynth.shared.time.TimeStamp;
@@ -20,7 +22,7 @@ public class PlayNotes {
 	private UnitVoice voice;
 	private LineOut lineOut;
 
-	public PlayNotes() {
+	public void play(double freq) {
 		// Create a context for the synthesizer.
 		synth = JSyn.createSynthesizer();
 		synth.getAudioDeviceManager().setSuggestedOutputLatency(0.123);
@@ -39,9 +41,7 @@ public class PlayNotes {
 
 		// Start synthesizer using default stereo output at 44100 Hz.
 		synth.start();
-	}
 
-	public void play(double freq) {
 		// Get synthesizer time in seconds.
 		double timeNow = synth.getCurrentTime();
 

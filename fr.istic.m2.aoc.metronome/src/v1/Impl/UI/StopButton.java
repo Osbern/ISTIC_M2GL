@@ -10,27 +10,17 @@ import javax.swing.JButton;
  */
 
 public class StopButton extends JButton {
-	
-	private boolean etat;
 
-	public StopButton(){
+	public StopButton(final IHM ihm){
 		super("Stop");
-		etat = false;
 		
 		addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				etat = true;
+				ihm.stop();
+				
 			}
 		});
-	}
-	
-	public boolean isEtat() {
-		return etat;
-	}
-
-	public void setEtat(boolean etat) {
-		this.etat = etat;
 	}
 
 }

@@ -12,26 +12,16 @@ import javax.swing.JButton;
 public class DecButton extends JButton {
 
 	private IHM ihm;
-	private boolean etat;
-
-	public DecButton(){
+	
+	public DecButton(final IHM ihm){
 		super("Dec");
-		etat = false;
 		
 		addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				etat = true;
+				ihm.decMesure();
 			}
 		});
-	}	
-	
-	public boolean isEtat() {
-		return etat;
-	}
-
-	public void setEtat(boolean etat) {
-		this.etat = etat;
 	}
 
 }

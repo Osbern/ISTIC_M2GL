@@ -10,26 +10,15 @@ import javax.swing.JButton;
  */
 
 public class IncButton extends JButton {
-	
-	private boolean etat;
 
-	public IncButton(){
+	public IncButton(final IHM ihm){
 		super("Inc");
-		etat = false;
 		
 		addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				etat = true;
+				ihm.incMesure();
 			}
 		});
-	}
-	
-	public boolean isEtat() {
-		return etat;
-	}
-
-	public void setEtat(boolean etat) {
-		this.etat = etat;
 	}
 }

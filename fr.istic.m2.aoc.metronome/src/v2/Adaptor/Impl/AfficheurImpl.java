@@ -1,24 +1,38 @@
 package v2.Adaptor.Impl;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+
 import v1.Impl.UI.Led;
 import v2.Adaptor.Afficheur;
+import v2.Adaptor.Materiel;
 
-public class AfficheurImpl implements Afficheur {
+public class AfficheurImpl extends JPanel implements Afficheur {
 	
+	private JLabel tempo;
 	private Led ledTemps, ledMesure;
 	
-	public AfficheurImpl(Led ledTemps, Led ledMesure) {
-		this.ledTemps = ledTemps;
-		this.ledMesure = ledMesure;
+	public AfficheurImpl(Materiel mat) {
+		tempo = new JLabel("120 bpm", SwingConstants.CENTER);
+		ledTemps = new Led(Color.GREEN, mat.getHorloge());
+		ledMesure = new Led(Color.RED, mat.getHorloge());
+		
+		this.setLayout(new BorderLayout());
+		this.add(ledTemps,BorderLayout.WEST);
+		this.add(tempo ,BorderLayout.CENTER);
+		this.add(ledMesure, BorderLayout.EAST);
 	}
 
 	@Override
 	public void allumerLed(int numLED) {
-		if (numLED == Led.LED_TEMPS) {
-			ledTemps.update(numLED);
-		} else {
+		if (numLED == Led.LEDMESURE)
 			ledMesure.update(numLED);
-		}
+		else
+			ledTemps.update(numLED);
 	}
 
 	@Override
@@ -27,7 +41,7 @@ public class AfficheurImpl implements Afficheur {
 
 	@Override
 	public void afficherTempo(int valeurTempo) {
-		
+		tempo.setText(valeurTempo + " bpm");
 	}
 
 }

@@ -1,48 +1,93 @@
 package v2.Adaptor.Impl;
 
-import v1.Impl.UI.DecButton;
-import v1.Impl.UI.IncButton;
-import v1.Impl.UI.StartButton;
-import v1.Impl.UI.StopButton;
-import v2.Adaptor.Clavier;
+import java.awt.ComponentOrientation;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class ClavierImpl implements Clavier {
+import javax.swing.JButton;
+import javax.swing.JPanel;
+
+import v2.Adaptor.Clavier;
+import v2.Adaptor.Materiel;
+
+public class ClavierImpl extends JPanel implements Clavier {
 	
-	public static final int DEC = 0, INC = 1, START = 2, STOP = 3;
+	private boolean decE, incE, startE, stopE;
 	
-	private DecButton dec;
-	private IncButton inc;
-	private StartButton start;
-	private StopButton stop;
+	private JButton decBtn;
+	private JButton incBtn;
+	private JButton startBtn;
+	private JButton stopBtn;
 	
-	public ClavierImpl(DecButton dec, IncButton inc, StartButton start, StopButton stop) {
-		this.dec = dec;
-		this.inc = inc;
-		this.start = start;
-		this.stop = stop;
+	public ClavierImpl() {
+		decBtn = new JButton("Dec");
+		incBtn = new JButton("Inc");
+		startBtn = new JButton("Start");
+		stopBtn = new JButton("Stop");
+		
+		decE = incE = startE = stopE = false;
+		
+		
+		decBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				decE = true;
+			}
+		});
+		
+		incBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				incE = true;
+			}
+		});
+		
+		startBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				startE = true;
+			}
+		});
+		
+		stopBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				stopE = true;
+			}
+		});
+		
+		this.setLayout(new FlowLayout());
+		this.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+		this.add(startBtn);
+		this.add(stopBtn);
+		this.add(incBtn);
+		this.add(decBtn);
 	}
 
 	@Override
 	public boolean touchePressee(int i) {
 		boolean res = false;
 		switch (i) {
-		case DEC:
-			res = dec.isEtat();
-			dec.setEtat(false);
+		case Materiel.DEC:
+			res = decE;
+			decE = false;
 			break;
-		case INC:
-			res = inc.isEtat();
-			inc.setEtat(false);
+		case Materiel.INC:
+			res = incE;
+			incE = false;
 			break;
-		case START:
-			res = start.isEtat();
-			start.setEtat(false);
+		case Materiel.START:
+			res = startE;
+			startE = false;
 			break;
-		case STOP:
-			res = stop.isEtat();
-			stop.setEtat(false);
+		case Materiel.STOP:
+			res = stopE;
+			stopE = false;
 			break;
 		}
+		
 		return res;
 	}
+
 }

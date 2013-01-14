@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.ComponentOrientation;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -13,10 +14,7 @@ import javax.swing.JPanel;
 
 import v1.Impl.Controller;
 import v1.Impl.HorlogeImpl;
-import v2.Adaptor.Clavier;
 import v2.Adaptor.Horloge;
-import v2.Adaptor.Materiel;
-import v2.Adaptor.Impl.ClavierImpl;
 
 /**
  * @(#) IHM.java
@@ -24,12 +22,12 @@ import v2.Adaptor.Impl.ClavierImpl;
 
 public class IHM extends JFrame {
 
-	private Materiel mat;
-	
+	private Controller ctl;
 	private Buzzer bzzr;
 
 	private StartButton startBtn;
 	private StopButton stopBtn;
+
 	private DecButton decBtn;
 	private IncButton incBtn;
 
@@ -47,27 +45,26 @@ public class IHM extends JFrame {
 	private JPanel zoneDuCentre;
 	private Afficheur affMesure;
 
-	public IHM() {
+	public IHM(final Controller ctl) {
+		this.ctl = ctl;
 		bzzr = new Buzzer();
-		
-		stopBtn = new StopButton();
-		startBtn = new StartButton();
-		decBtn = new DecButton();
-		incBtn = new IncButton();
-		
+		stopBtn = new StopButton(this);
+		startBtn = new StartButton(this);
+		decBtn = new DecButton(this);
+		incBtn = new IncButton(this);
 		moletteSldr = new MoletteSlider(this);
 		aff = new Afficheur(this);
-		//md = new MesureDisplayer(this, ctl.getMesure());
+		md = new MesureDisplayer(this, ctl.getMesure());
 		
 		h = new HorlogeImpl();
 		ledTemps = new Led(Color.GREEN, h);
 		ledMesure = new Led(Color.RED,h );
 		
 		affMesure = new Afficheur(this);
-		//affMesure.setText(""+ctl.getMesure());
+		affMesure.setText(""+ctl.getMesure());
 
 
-		//tempoHasChanged(moletteSldr.getValue());
+		tempoHasChanged(moletteSldr.getValue());
 
 		this.setPreferredSize(new Dimension(300, 150));
 		this.setVisible(true);
@@ -106,70 +103,46 @@ public class IHM extends JFrame {
 
 		this.pack();
 	}
-	
-	public StartButton getStartBtn() {
-		return startBtn;
-	}
-
-	public StopButton getStopBtn() {
-		return stopBtn;
-	}
-
-	public DecButton getDecBtn() {
-		return decBtn;
-	}
-
-	public IncButton getIncBtn() {
-		return incBtn;
-	}
-
-	public Led getLedTemps() {
-		return ledTemps;
-	}
-
-	public Led getLedMesure() {
-		return ledMesure;
-	}
 
 	public void notifyTemps() {
 		md.temps();
-		ledTemps.update(Led.LED_TEMPS);
+		ledTemps.update(Led.LEDTEMPS);
 		bzzr.update();
 	}
 
 	public void notifyMesure() {
 		md.mesure();
-		ledMesure.update(Led.LED_MESURE);
+		ledMesure.update(Led.LEDMESURE);
 	}
 
-//	public void start() {
-//		ctl.start();
-//		stopBtn.setEnabled(true);
-//	}
-//
-//	public void stop() {
-//		ctl.stop();
-//		stopBtn.setEnabled(false);
-//		md.reset();
-//	}
-//
-//	public void incMesure() {
-//		ctl.inc();
-//		md.inc();
-//		affMesure.setText("" + ctl.getMesure());
-//	}
-//
-//	public void decMesure() {
-//		ctl.dec();
-//		md.dec();
-//		affMesure.setText("" + ctl.getMesure());
-//	}
-//
-//	public void tempoHasChanged(int newTempo) {
-//		tempo = newTempo;
-//		aff.setText(tempo + " bpm");
-//		ctl.setTempo(tempo);
-//	}
+	public void start() {
+		ctl.start();
+		stopBtn.setEnabled(true);
+	}
+
+	public void stop() {
+		ctl.stop();
+		stopBtn.setEnabled(false);
+		md.reset();
+	}
+
+	public void incMesure() {
+		ctl.inc();
+		md.inc();
+		affMesure.setText("" + ctl.getMesure());
+	}
+
+	public void decMesure() {
+		ctl.dec();
+		md.dec();
+		affMesure.setText("" + ctl.getMesure());
+	}
+
+	public void tempoHasChanged(int newTempo) {
+		tempo = newTempo;
+		aff.setText(tempo + " bpm");
+		ctl.setTempo(tempo);
+	}
 
 	public int getTempo() {
 		return tempo;
