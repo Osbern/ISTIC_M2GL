@@ -5,13 +5,14 @@
 \usepackage[french]{babel}
 \usepackage{tabularx}
 \usepackage{graphicx}
+\usepackage{fullpage}
 
-\title{Module --
+\title{Module AOC
 \\
-AOC
+--
 \\
---}
-\author{Thibaud Destouches, Marceau Lacroix}
+Métronome}
+\author{Thibaud Destouches \& Marceau Lacroix}
 \date{2012 - 2013}
 
 \begin{document}
@@ -28,29 +29,11 @@ Le projet de métronome consiste en la conception et l'implémentation d'une arc
 \section{Architecture}
 \subsection{Version 1}
 Cette première version du métronome utilise une IHM java "standard" (swing). Il s'agit d'une interface active, c'est à dire que l'interface notifie le controler lorsque l'un des composant impliquant un changement pour le métronome est utilisé. (changement de tempo, de taille de mesure, marche/arret)
-\begin{figure}[h]
-   \caption{diagramme de classes de la V1}
-   \includegraphics{class_diagram_v1}
-\end{figure}
-\begin{figure}[h]
-   \caption{diagramme de séquence de la V1: démarage du métronome}
-   \includegraphics{seq_diagram_v1}
-\end{figure}
+
 
 \subsection{Version 2}
 Pour cette deuxième version, l'interface devient complètement passive. Elle ne peut donc plus notifier le controleur des changements, c'est à lui de venir vérifier qu'un changement à eu lieu.
-\begin{figure}[h]
-   \caption{diagramme de classes de la V2}
-   \includegraphics{class_diagram_v2}
-\end{figure}
-\begin{figure}[h]
-   \caption{diagramme de séquence de la V2: diminution de la mesure}
-   \includegraphics{seq_diagram_v2}
-\end{figure}
-\begin{figure}[h]
-   \caption{diagramme de séquence de la V2: "toc temps"}
-   \includegraphics{seq_diagram_v2_2}
-\end{figure}
+
 
 
 
@@ -67,14 +50,36 @@ TODO
 \item \textbf{Compteur de mesure}: toujours dans le but d'améliorer l'experience utilisateur, nous avons choisi d'afficher le nombre de temps que comporte la mesure. L'ajout de cette fonctionnalité est quasiment "gratuite" en terme de temps de développement et apporte une information importante pour l'utilisateur.
 \end{itemize}
 
-\section{tests}
+\section{Tests}
 
 
-\section{conclusion}
+\section{Conclusion}
 L'utilisation d'une interface passive pour la V2 nous à obligé à rennoncer aux fonctionnalités "bonus" que nous avions dévoloppé pour la première version (notament l'afficheur de mesure) mais le sujet était clair à ce sujet.
 Contrairement au projet de Master 1 (mini éditeur de texte) le métronome nous aura permis de réaliser que java est rapidement limité lorsque l'on essaye de jouer du son en "temps réel". On notera aussi que, contrairement à la plupart des autres projets que nous avons à réaliser cette année, les spécifications du métronomes étaient très claires.
 
+\newpage
+\section*{Annexes}
+\begin{figure}[h]
+   \caption{Diagramme de classes de la V1}
+   \includegraphics[scale=0.75]{class_diagram_v1}
+\end{figure}
+\begin{figure}[h]
+   \caption{Diagramme de séquence de la V1: démarage du métronome}
+   \includegraphics[scale=0.55]{seq_diagram_v1}
+\end{figure}
 
+\begin{figure}[h]
+   \caption{Diagramme de classes de la V2}
+   \includegraphics[scale=0.75]{class_diagram_v2}
+\end{figure}
+\begin{figure}[h]
+   \caption{Diagramme de séquence de la V2: diminution de la mesure}
+   \includegraphics[scale=0.5]{seq_diagram_v2}
+\end{figure}
+\begin{figure}[h]
+   \caption{Diagramme de séquence de la V2: "toc temps"}
+   \includegraphics[scale=0.48]{seq_diagram_v2_2}
+\end{figure}
 
 
 \end{document}
