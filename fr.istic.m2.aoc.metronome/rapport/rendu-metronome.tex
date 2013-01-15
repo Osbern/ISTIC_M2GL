@@ -50,15 +50,17 @@ TODO
 \item \textbf{Compteur de mesure}: toujours dans le but d'améliorer l'experience utilisateur, nous avons choisi d'afficher le nombre de temps que comporte la mesure. L'ajout de cette fonctionnalité est quasiment "gratuite" en terme de temps de développement et apporte une information importante pour l'utilisateur.
 \end{itemize}
 
+\section{JavaDoc}
+Comme vous pourrez le constater, la javadoc que nous fournissons est relativement succinte; en effet les méthodes sont pour la plupart très simples (getters/setters ou appels en cascade) et ne nécessitent pas d'explications supplémentaires. 
 \section{Tests}
-
+Les tests que nous avons réalisés sont globalement des tests "en fonctionnement"; en effet la simplicité des méthodes (getters et setters) nous a poussé à réaliser des tests fonctionnels plutôt que des tests unitaires. Vous trouverez néanmoins quelques tests que nous avons réalisé sur le changement de mesure, et le changement d'état (allumé ou eteind) du métronome.
 
 \section{Conclusion}
 L'utilisation d'une interface passive pour la V2 nous à obligé à rennoncer aux fonctionnalités "bonus" que nous avions dévoloppé pour la première version (notament l'afficheur de mesure) mais le sujet était clair à ce sujet.
 Contrairement au projet de Master 1 (mini éditeur de texte) le métronome nous aura permis de réaliser que java est rapidement limité lorsque l'on essaye de jouer du son en "temps réel". On notera aussi que, contrairement à la plupart des autres projets que nous avons à réaliser cette année, les spécifications du métronomes étaient très claires.
 
 \newpage
-\section*{Annexes}
+\section*{Annexe}
 \begin{figure}[h]
    \caption{Diagramme de classes de la V1}
    \includegraphics[scale=0.75]{class_diagram_v1}
@@ -83,3 +85,4 @@ Contrairement au projet de Master 1 (mini éditeur de texte) le métronome nous 
 
 
 \end{document}
+   
