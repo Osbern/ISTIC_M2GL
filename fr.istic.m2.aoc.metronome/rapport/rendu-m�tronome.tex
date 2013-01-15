@@ -1,0 +1,56 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{tabularx}
+
+\title{Module --
+\\
+AOC
+\\
+--}
+\author{Thibaud Destouches, Marceau Lacroix}
+\date{2012 - 2013}
+
+\begin{document}
+
+\begin{titlepage}
+\maketitle
+\tableofcontents
+\end{titlepage}
+
+\newpage
+\section{Introduction}
+Le projet de métronome consiste en la conception et l'implémentation d'une architecture pour l'application métronome. Le métronome est décrit comme "un appareil qui emet un signal sonore ou lumineux à une fréquence donnée". La première version de cette application est d'une part un moteur de métronome et d'autre part une Interface Homme-Machine (IHM) pour ce moteur. La deuxième version vide au développement d'un adaptateur pour le métronome afin de "brancher" celui-ci sur une interface materielle (simulée) tout en continuant de visualiser l'éxécution du métronome sur l'IHM développée pour la V1. La troisième version (que nous ne devons pas réaliser) est l'utilisation de l'interface matérielle. La réalisation de ce projet nous a confronté à la mise en oeuvre de plusieurs patrons de conception de manière simultannée et coopérative (TODO liste des patrons utilisés). 
+
+\section{Architecture}
+\subsection{Version 1}
+Cette première version du métronome utilise une IHM java "standard" (swing). Il s'agit d'une interface active, c'est à dire que l'interface notifie le controler lorsque l'un des composant impliquant un changement pour le métronome (changement de tempo, de taille de mesure, marche/arret) est utilisé.
+
+diagramme UML de la V1 (au moins diagramme de classes)
+
+\subsection{Version 2}
+
+\section{Choix techniques et Ajouts}
+\subsection{Choix techniques}
+TODO
+
+
+\subsection{Ajouts/Améliorations}
+\begin{itemize}
+\item \textbf{Afficheur de mesure}: Ayant tous les deux déjà utilisé un métronome, nous avons décidé d'ajouter un "compteur" pour les mesures; ce compteur permet à l'utilisateur de savoir où en est la mesure en cours grâce à une barre de progression des temps dans la mesure. Au niveau de l'architecture, cet ajout à été très simple, nous avons juste ajouté deux appels de méthode dans l'IHM "de base": un dans le toc temps (pour remplir la barre d'un cran) et un dans toc mesure (pour vider la barre)
+\item TODO
+\end{itemize}
+
+\section{tests}
+
+
+\section{conclusion}
+L'utilisation d'une interface passive pour la V2 nous à obligé à rennoncer aux fonctionnalités "bonus" que nous avions dévoloppé pour la première version (notament l'afficheur de mesure) mais le sujet était clair àa ce sujet.
+Contrairement au projet de Master 1 (mini éditeur de texte) le métronome nous aura permis de réaliser que java est rapidement limité lorsque l'on essaye de jouer du son en "temps réel". On notera aussi que, contrairement à la plupart des autres projets que nous avons à réaliser cette année, les spécifications du métronomes étaient très claires.
+
+
+
+
+\end{document}
