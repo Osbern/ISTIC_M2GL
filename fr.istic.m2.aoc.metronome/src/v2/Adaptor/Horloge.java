@@ -1,6 +1,6 @@
 package v2.Adaptor;
 
-import v1.Interface.Command;
+import v2.Command.Command;
 
 public interface Horloge {
 	

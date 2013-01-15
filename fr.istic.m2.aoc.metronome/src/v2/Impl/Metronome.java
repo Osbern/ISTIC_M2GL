@@ -1,8 +1,11 @@
-package v1.Impl;
+package v2.Impl;
 
-import v1.Interface.Command;
 import v2.Adaptor.Materiel;
 import v2.Adaptor.Impl.Adaptor;
+import v2.Adaptor.Impl.HorlogeImpl;
+import v2.Command.Command;
+import v2.Command.TocMesure;
+import v2.Command.TocTemps;
 
 public class Metronome {
 	

@@ -1,7 +1,7 @@
 package v2.Adaptor.Impl;
 
-import v1.Impl.UI.PlayNotes;
 import v2.Adaptor.EmetteurSonore;
+import v2.Impl.UI.PlayNotes;
 
 public class EmetteurSonoreImpl implements EmetteurSonore {
 

@@ -7,9 +7,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import v1.Impl.UI.Led;
 import v2.Adaptor.Afficheur;
 import v2.Adaptor.Materiel;
+import v2.Impl.UI.Led;
 
 public class AfficheurImpl extends JPanel implements Afficheur {
 	

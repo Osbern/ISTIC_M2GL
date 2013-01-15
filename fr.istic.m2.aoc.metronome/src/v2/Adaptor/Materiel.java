@@ -8,10 +8,10 @@ import java.awt.event.WindowEvent;
 
 import javax.swing.JFrame;
 
-import v1.Impl.HorlogeImpl;
 import v2.Adaptor.Impl.AfficheurImpl;
 import v2.Adaptor.Impl.ClavierImpl;
 import v2.Adaptor.Impl.EmetteurSonoreImpl;
+import v2.Adaptor.Impl.HorlogeImpl;
 import v2.Adaptor.Impl.MoletteImpl;
 
 public class Materiel extends JFrame {

@@ -1,10 +1,10 @@
 package v2.Adaptor.Impl;
 
-import v1.Impl.Controller;
-import v1.Impl.UI.Led;
-import v1.Interface.Command;
 import v2.Adaptor.Clavier;
 import v2.Adaptor.Materiel;
+import v2.Command.Command;
+import v2.Impl.Controller;
+import v2.Impl.UI.Led;
 
 public class Adaptor implements Command {
 	

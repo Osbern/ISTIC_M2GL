@@ -1,4 +1,4 @@
-package v1.Interface;
+package v2.Command;
 
 /**
  * @(#) Command.java

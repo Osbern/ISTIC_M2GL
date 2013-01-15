@@ -1,6 +1,6 @@
-package v1.Impl;
+package v2.Command;
 
-import v1.Interface.Command;
+import v2.Impl.Controller;
 
 /**
  * @(#) TocMesure.java

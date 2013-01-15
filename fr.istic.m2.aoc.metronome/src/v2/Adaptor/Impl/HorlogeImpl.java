@@ -1,12 +1,12 @@
-package v1.Impl;
+package v2.Adaptor.Impl;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.Timer;
 
-import v1.Interface.Command;
 import v2.Adaptor.Horloge;
+import v2.Command.Command;
 
 public class HorlogeImpl implements Horloge {
 	
