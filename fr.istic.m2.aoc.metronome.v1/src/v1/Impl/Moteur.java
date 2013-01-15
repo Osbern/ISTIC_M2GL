@@ -43,6 +43,9 @@ public class Moteur {
 		calcMesure();
 	}
 	
+	/**
+	 * Appel TocTemps et calcul si le moteur doit appeler la Command TocMesure
+	 */
 	private void calcMesure() {
 		tocTemps.execute();
 		if (t >= mesure) {
@@ -55,6 +58,10 @@ public class Moteur {
 		return enMarche;
 	}
 
+	/**
+	 * Démarre ou arrète le Moteur et calcul le delay en ms selon le tempo
+	 * @param actif : Etat du Moteur
+	 */
 	public void setEnMarche(boolean actif) {
 		enMarche = actif;
 		
@@ -67,16 +74,26 @@ public class Moteur {
 		}
 	}
 
+	/**
+	 * Incrémente la mesure de 1
+	 */
 	public void inc() {
 		if (mesure < Constantes.MAX_MESURE)
 			mesure++;
 	}
 
+	/**
+	 * Décrémente la mesure de 1
+	 */
 	public void dec() {
 		if (mesure > Constantes.MIN_MESURE)
 			mesure--;
 	}
 
+	/**
+	 * Change le tempo actif du Moteur si selui-ci est en marche
+	 * @param tempo (float) : nouvelle valeur du tempo
+	 */
 	public void setTempo(float tempo) {
 		this.tempo = tempo;
 		if (enMarche) {
@@ -90,6 +107,10 @@ public class Moteur {
 		return tempo;
 	}
 	
+	/**
+	 * Change la valeur de la mesure actif par la nouvelle
+	 * @param mesure (int) : nouvelle valeur de la mesure
+	 */
 	public void setMesure(int mesure) {
 		if (mesure >= Constantes.MIN_MESURE && mesure <= Constantes.MAX_MESURE)
 			this.mesure = mesure;
