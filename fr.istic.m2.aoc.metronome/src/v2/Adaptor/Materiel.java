@@ -37,7 +37,9 @@ public class Materiel extends JFrame {
 		emetteurSonore = new EmetteurSonoreImpl();
 		afficheur = new AfficheurImpl(this);
 		
-		this.setPreferredSize(new Dimension(300, 150));
+		this.setPreferredSize(new Dimension(400, 150));
+		this.setSize(getPreferredSize());
+
 		this.setVisible(true);
 		this.setLayout(new BorderLayout());
 		

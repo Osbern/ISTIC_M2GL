@@ -63,7 +63,8 @@ public class IHM extends JFrame {
 
 		tempoHasChanged(moletteSldr.getValue());
 
-		this.setPreferredSize(new Dimension(300, 150));
+		this.setPreferredSize(new Dimension(400, 150));
+		this.setSize(getPreferredSize());
 		this.setVisible(true);
 		this.setLayout(new BorderLayout());
 
