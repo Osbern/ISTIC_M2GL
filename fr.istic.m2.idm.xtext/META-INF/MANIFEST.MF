@@ -12,6 +12,16 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.eclipse.emf.codegen.ecore;resolution:=optional,
  org.eclipse.emf.mwe.utils;resolution:=optional,
  org.eclipse.emf.mwe2.launch;resolution:=optional,
- fr.istic.m2.idm.CellAutomata
+ fr.istic.m2.idm.CellAutomata,
+ org.eclipse.xtext.util,
+ org.antlr.runtime
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: fr.istic.m2.idm.xtext,
+ fr.istic.m2.idm.xtext.services,
+ fr.istic.m2.idm.xtext.parseTreeConstruction,
+ fr.istic.m2.idm.xtext.parser.antlr,
+ fr.istic.m2.idm.xtext.parser.antlr.internal,
+ fr.istic.m2.idm.xtext.validation,
+ fr.istic.m2.idm.xtext.scoping,
+ fr.istic.m2.idm.xtext.formatting

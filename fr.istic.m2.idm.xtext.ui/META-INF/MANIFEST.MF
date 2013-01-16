@@ -8,6 +8,14 @@ Bundle-ActivationPolicy: lazy
 Require-Bundle: fr.istic.m2.idm.xtext;visibility:=reexport,
  org.eclipse.xtext.ui,
  org.eclipse.ui.editors;bundle-version="3.5.0",
- org.eclipse.ui.ide;bundle-version="3.5.0"
+ org.eclipse.ui.ide;bundle-version="3.5.0",
+ org.eclipse.xtext.ui.shared,
+ org.eclipse.ui,
+ org.antlr.runtime,
+ org.eclipse.compare,
+ org.eclipse.xtext.builder
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: fr.istic.m2.idm.xtext.ui.contentassist,
+ fr.istic.m2.idm.xtext.ui.contentassist.antlr
+Bundle-Activator: fr.istic.m2.idm.xtext.ui.internal.TopanlActivator

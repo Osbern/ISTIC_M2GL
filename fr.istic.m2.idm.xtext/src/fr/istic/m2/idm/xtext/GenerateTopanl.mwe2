@@ -13,7 +13,7 @@ Workflow {
 	bean = StandaloneSetup {
 		scanClassPath  = true
 		platformUri = "${runtimeProject}/.."
-	registerGeneratedEPackage = "Topology.TopologyPackage"
+	//registerGeneratedEPackage = "Topology.TopologyPackage"
 	registerGenModelFile = "platform:/resource/fr.istic.m2.idm.CellAutomata/model/Topology.genmodel"
 	
 	}
