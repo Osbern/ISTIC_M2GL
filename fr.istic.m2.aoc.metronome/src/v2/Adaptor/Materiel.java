@@ -14,8 +14,14 @@ import v2.Adaptor.Impl.EmetteurSonoreImpl;
 import v2.Adaptor.Impl.HorlogeImpl;
 import v2.Adaptor.Impl.MoletteImpl;
 
+/**
+ * Cette classe simule le Matériel définit selon les interfaces de v2.Adaptor
+ *
+ */
 public class Materiel extends JFrame {
 	
+	private static final long serialVersionUID = -5192156375496015580L;
+
 	public static final int DEC = 0, INC = 1, START = 2, STOP = 3;
 
 	private static Horloge horloge;

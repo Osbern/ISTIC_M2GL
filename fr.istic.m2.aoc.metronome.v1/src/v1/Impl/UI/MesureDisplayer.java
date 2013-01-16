@@ -9,13 +9,16 @@ import v1.Impl.Constantes;
 
 public class MesureDisplayer extends JPanel {
 
-	private IHM ihm;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2358904138302468734L;
+
 	private int mesure, cpt;
 	private JButton[] btns;
 
 	public MesureDisplayer(IHM ihm, int mesure) {
 		super();
-		this.ihm = ihm;
 		this.mesure = mesure-1;
 		this.cpt = 0;
 		btns = new JButton[Constantes.MAX_MESURE];

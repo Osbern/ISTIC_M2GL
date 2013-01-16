@@ -10,6 +10,8 @@ import v1.Interface.Horloge;
 
 public class Led extends JPanel {
 	
+	private static final long serialVersionUID = 855214273704978862L;
+	
 	public static final int LEDTEMPS = 0;
 	public static final int LEDMESURE = 1;
 	

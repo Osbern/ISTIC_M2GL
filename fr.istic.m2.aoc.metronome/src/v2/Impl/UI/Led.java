@@ -6,10 +6,11 @@ import java.awt.Dimension;
 import javax.swing.JPanel;
 
 import v2.Adaptor.Horloge;
-import v2.Adaptor.Impl.HorlogeImpl;
 import v2.Impl.EteindreLed;
 
 public class Led extends JPanel {
+
+	private static final long serialVersionUID = -6091974581548617909L;
 	
 	public static final int LEDTEMPS = 0;
 	public static final int LEDMESURE = 1;

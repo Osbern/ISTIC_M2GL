@@ -21,7 +21,6 @@ public class Metronome {
 		Command tocTemps = new TocTemps(ctl);
 		Command tocMesure = new TocMesure(ctl);
 		
-		mot.setController(ctl);
 		mot.setTocTemps(tocTemps);
 		mot.setTocMesure(tocMesure);
 		mot.setTempo(120);

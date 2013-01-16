@@ -12,7 +12,9 @@ import v2.Adaptor.Clavier;
 import v2.Adaptor.Materiel;
 
 public class ClavierImpl extends JPanel implements Clavier {
-	
+
+	private static final long serialVersionUID = 6878529534766746151L;
+
 	private boolean decE, incE, startE, stopE;
 	
 	private JButton decBtn;

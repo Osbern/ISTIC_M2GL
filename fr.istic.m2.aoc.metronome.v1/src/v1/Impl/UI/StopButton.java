@@ -5,11 +5,9 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
-/**
- * @(#) StopButton.java
- */
-
 public class StopButton extends JButton {
+
+	private static final long serialVersionUID = -8067106469400038413L;
 
 	public StopButton(final IHM ihm){
 		super("Stop");

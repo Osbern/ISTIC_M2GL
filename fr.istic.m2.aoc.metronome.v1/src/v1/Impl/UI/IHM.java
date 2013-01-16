@@ -15,12 +15,10 @@ import v1.Impl.Controller;
 import v1.Impl.HorlogeImpl;
 import v1.Interface.Horloge;
 
-/**
- * @(#) IHM.java
- */
-
 public class IHM extends JFrame {
 
+	private static final long serialVersionUID = -6549382161315113036L;
+	
 	private Controller ctl;
 	private Buzzer bzzr;
 

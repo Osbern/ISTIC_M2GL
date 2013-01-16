@@ -13,6 +13,8 @@ import v2.Impl.UI.Led;
 
 public class AfficheurImpl extends JPanel implements Afficheur {
 	
+	private static final long serialVersionUID = -5772820268148350176L;
+	
 	private JLabel tempo;
 	private Led ledTemps, ledMesure;
 	

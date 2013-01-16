@@ -5,13 +5,9 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
-/**
- * @(#) DecButton.java
- */
-
 public class DecButton extends JButton {
 
-	private IHM ihm;
+	private static final long serialVersionUID = 1829252068920158548L;
 	
 	public DecButton(final IHM ihm){
 		super("Dec");

@@ -5,11 +5,9 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
-/**
- * @(#) StartButton.java
- */
-
 public class StartButton extends JButton {
+
+	private static final long serialVersionUID = -1806096107641327562L;
 
 	public StartButton(final IHM ihm) {
 		super("Start");

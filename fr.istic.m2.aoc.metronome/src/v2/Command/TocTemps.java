@@ -2,10 +2,6 @@ package v2.Command;
 
 import v2.Impl.Controller;
 
-/**
- * @(#) TocTemps.java
- */
-
 public class TocTemps implements Command {
 	private Controller ctl;
 	

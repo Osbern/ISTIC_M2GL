@@ -9,6 +9,8 @@ import v2.Adaptor.Molette;
 
 public class MoletteImpl extends JSlider implements Molette {
 
+	private static final long serialVersionUID = 8638819685686085952L;
+	
 	private int tempo;
 
 	public MoletteImpl() {

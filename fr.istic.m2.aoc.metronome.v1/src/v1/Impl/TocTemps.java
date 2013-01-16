@@ -2,10 +2,6 @@ package v1.Impl;
 
 import v1.Interface.Command;
 
-/**
- * @(#) TocTemps.java
- */
-
 public class TocTemps implements Command {
 	private Controller ctl;
 	

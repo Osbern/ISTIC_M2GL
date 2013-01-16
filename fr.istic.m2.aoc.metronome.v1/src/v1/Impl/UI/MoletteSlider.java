@@ -7,11 +7,9 @@ import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-/**
- * @(#) MoletteSlider.java
- */
-
 public class MoletteSlider extends JSlider {
+
+	private static final long serialVersionUID = 6659565017126617191L;
 
 	public MoletteSlider(final IHM ihm){
 		super();
@@ -23,7 +21,6 @@ public class MoletteSlider extends JSlider {
 		this.addMouseListener(new MouseAdapter() {
 		@Override
 		public void mouseReleased(MouseEvent e) {
-			// TODO Auto-generated method stub
 			super.mouseReleased(e);
 			ihm.tempoHasChanged(getValue());
 

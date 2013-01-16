@@ -3,8 +3,9 @@ package v1.Impl;
 import v1.Impl.UI.IHM;
 
 /**
-* Cette classe dŽcrit le controleur de l'application; <br />il s'agit ici de mettre en oeuvre la liaison <b>Moteur</b><--><b>IHM</b>
-*/
+ * Cette classe décrit le controleur de l'application; <br />
+ * il s'agit ici de mettre en oeuvre la liaison <b>Moteur</b><--><b>IHM</b>
+ */
 
 public class Controller {
 
@@ -30,7 +31,7 @@ public class Controller {
 	}
 
 	/**
-	 * Informe l'IHM qu'un temps est passŽ
+	 * Informe l'IHM qu'un temps est passé
 	 */
 	public void tocTemps() {
 		ihm.notifyTemps();
@@ -46,7 +47,7 @@ public class Controller {
 	}
 
 	/**
-	 * Arrete le moteur
+	 * Arreter le moteur
 	 */
 	public void stop() {
 		if (mot.getEtatMarche()) {

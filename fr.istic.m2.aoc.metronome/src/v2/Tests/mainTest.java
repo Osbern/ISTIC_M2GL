@@ -7,12 +7,6 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-import v2.Adaptor.Materiel;
-import v2.Adaptor.Impl.Adaptor;
-import v2.Adaptor.Impl.HorlogeImpl;
-import v2.Command.Command;
-import v2.Command.TocMesure;
-import v2.Command.TocTemps;
 import v2.Impl.Constantes;
 import v2.Impl.Controller;
 import v2.Impl.Moteur;
@@ -28,7 +22,6 @@ public class mainTest {
 		mot = new Moteur();
 		
 		ctl.setMoteur(mot);
-		mot.setController(ctl);
 	}
 
 	@Test

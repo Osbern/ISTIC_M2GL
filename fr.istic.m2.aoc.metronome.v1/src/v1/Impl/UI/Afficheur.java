@@ -5,11 +5,9 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
-/**
- * @(#) Afficheur.java
- */
-
 public class Afficheur extends JLabel {
+
+	private static final long serialVersionUID = 1615754008384780977L;
 
 	public Afficheur(IHM ihm) {
 		super("", SwingConstants.CENTER);

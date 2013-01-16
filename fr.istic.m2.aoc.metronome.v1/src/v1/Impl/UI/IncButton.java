@@ -5,11 +5,9 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
-/**
- * @(#) IncButton.java
- */
-
 public class IncButton extends JButton {
+
+	private static final long serialVersionUID = 8503568033048939954L;
 
 	public IncButton(final IHM ihm){
 		super("Inc");
