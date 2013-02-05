@@ -35,8 +35,15 @@
   \includegraphics[scale=0.9]{segm}
 \end{frame}
 
-\subsection{Enjeux}
+\begin{frame}{Solution}
+\begin{center}
+  Une solution ?
+  \\ ~ \\
+  \textbf{Frameworks de développement cross-platform mobile}
+\end{center}
+\end{frame}
 
+\subsection{Enjeux}
 \begin{frame}
 \textbf{Un secteur en grande progression...}
 \\ ~ \\
@@ -60,20 +67,43 @@
 
 
 \section{Etat de l'art}
+\begin{frame}
+\setcounter{tocdepth}{2}
+\tableofcontents[currentsection]
+\end{frame}
 
 \subsection{Compilation Web}
 \begin{frame}
 \begin{columns}[c]
   \begin{column}{0.5\textwidth}
+    \begin{center}
+      \includegraphics[scale=0.3]{sencha}
+    \end{center}
+  \end{column}
+  \begin{column}{0.5\textwidth}
     \begin{itemize}
-      \item
+      \item Requiert uniquement des connaissance en HTML/JavaScript.
+\item Faibles performances.
+\item Pas d'accès au materiel.
+    \end{itemize}
+  \end{column}
+\end{columns}
+\end{frame}
+
+\subsection{Compilation hybride}
+\begin{frame}
+\begin{columns}[c]
+  \begin{column}{0.5\textwidth}
+    \begin{itemize}
+      \item Requiert l'apprentissage d'un DSL ou d'APIs.
+	\item Performances correctes.
+	\item accès au materiel courant (GPS, Contacts, accéléromètre, ...)
     \end{itemize}
   \end{column}
   \begin{column}{0.5\textwidth}
     \begin{center}
-      \includegraphics[scale=0.3]{titanium}
-      \\ ~ \\
-      \includegraphics[scale=0.3]{sencha}
+      \includegraphics[scale=0.4]{titanium} \\
+	\textbf{Titanium, PhoneGap, Rhodes}
     \end{center}
   \end{column}
 \end{columns}
@@ -84,14 +114,45 @@
 \begin{columns}[c]
   \begin{column}{0.5\textwidth}
     \includegraphics[scale=0.7]{corona}
+\textbf{Corona}
   \end{column}
   \begin{column}{0.5\textwidth}
     \begin{itemize}
-      \item
+\item Requiert l'apprentissage d'un DSL.
+      \item Performances élevées.
+\item Emploi pour une utilisation  spécifique.
     \end{itemize}
   \end{column}
 \end{columns}
 \end{frame}
+
+\subsection{Voind}
+\begin{frame}
+\begin{columns}[c]
+  \begin{column}{0.5\textwidth}
+    \begin{itemize}
+      \item Requiert l'apprentissage d'un DSL.
+	\item Performances élevées.
+	\item accès au materiel total.
+\item requiert des connaissances sur chaque plateforme
+\item peu de code généré (50\%)
+    \end{itemize}
+  \end{column}
+  \begin{column}{0.5\textwidth}
+    \begin{center}
+      \includegraphics[scale=0.4]{voind} \\
+	\textbf{Voind}, pas vraiment un un framework cross-platform
+    \end{center}
+  \end{column}
+\end{columns}
+\end{frame}
+
+\section{Conclusion}
+\begin{frame}
+\setcounter{tocdepth}{2}
+\tableofcontents[currentsection]
+\end{frame}
+
 
 \subsection{Avantages / Inconvénients}
 \begin{frame}
@@ -116,8 +177,8 @@
 \end{columns}
 \end{frame}
 
-\section{Conclusion}
-\begin{frame}{Conclusion}
+\subsection{Conclusion}
+\begin{frame}
 \begin{center}
   \textbf{Ces Frameworks sont-ils viables ?}
   \\ ~ \\ ~
@@ -127,7 +188,8 @@
 \end{center}
 \end{frame}
 
-\begin{frame}{Bibliograhpie}
+\subsection{Bibliographie}
+\begin{frame}
 \begin{thebibliography}{9}
    \bibitem{timo11}
           Timo Paananen,
