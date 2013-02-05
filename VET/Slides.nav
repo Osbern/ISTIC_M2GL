@@ -1,4 +1,4 @@
-\beamer@endinputifotherversion {3.11pt}
+\beamer@endinputifotherversion {3.07pt}
 \headcommand {\slideentry {0}{0}{1}{1/1}{}{0}}
 \headcommand {\beamer@framepages {1}{1}}
 \headcommand {\slideentry {0}{0}{2}{2/2}{}{0}}
@@ -21,17 +21,20 @@
 \headcommand {\beamer@subsectionentry {0}{2}{2}{6}{Compilation native}}\headcommand {\beamer@subsectionpages {5}{5}}
 \headcommand {\slideentry {2}{2}{1}{6/6}{Compilation native}{0}}
 \headcommand {\beamer@framepages {6}{6}}
-\headcommand {\sectionentry {3}{Conclusion}{7}{Conclusion}{0}}
-\headcommand {\beamer@sectionpages {5}{6}}
-\headcommand {\beamer@subsectionpages {6}{6}}
-\headcommand {\slideentry {3}{0}{2}{7/7}{}{0}}
+\headcommand {\beamer@subsectionentry {0}{2}{3}{7}{Avantages / Inconv\IeC {\'e}nients}}\headcommand {\beamer@subsectionpages {6}{6}}
+\headcommand {\slideentry {2}{3}{1}{7/7}{Avantages / Inconv\IeC {\'e}nients}{0}}
 \headcommand {\beamer@framepages {7}{7}}
-\headcommand {\slideentry {3}{0}{3}{8/8}{}{0}}
+\headcommand {\sectionentry {3}{Conclusion}{8}{Conclusion}{0}}
+\headcommand {\beamer@sectionpages {5}{7}}
+\headcommand {\beamer@subsectionpages {7}{7}}
+\headcommand {\slideentry {3}{0}{2}{8/8}{}{0}}
 \headcommand {\beamer@framepages {8}{8}}
-\headcommand {\slideentry {3}{0}{4}{9/9}{}{0}}
+\headcommand {\slideentry {3}{0}{3}{9/9}{}{0}}
 \headcommand {\beamer@framepages {9}{9}}
-\headcommand {\beamer@partpages {1}{9}}
-\headcommand {\beamer@subsectionpages {7}{9}}
-\headcommand {\beamer@sectionpages {7}{9}}
-\headcommand {\beamer@documentpages {9}}
-\headcommand {\def \inserttotalframenumber {9}}
+\headcommand {\slideentry {3}{0}{4}{10/10}{}{0}}
+\headcommand {\beamer@framepages {10}{10}}
+\headcommand {\beamer@partpages {1}{10}}
+\headcommand {\beamer@subsectionpages {8}{10}}
+\headcommand {\beamer@sectionpages {8}{10}}
+\headcommand {\beamer@documentpages {10}}
+\headcommand {\def \inserttotalframenumber {10}}
