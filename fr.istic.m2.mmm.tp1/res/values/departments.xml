@@ -1,0 +1,8 @@
+
+    <resources>
+        <string-array name="departments">
+            <item >Ille-et-Villaine</item>
+            <item >Indre-et-Loire</item>
+            <item >Finistère</item>
+        </string-array>
+    </resources>

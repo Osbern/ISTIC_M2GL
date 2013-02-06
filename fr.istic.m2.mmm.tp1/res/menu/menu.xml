@@ -1,0 +1,9 @@
+
+    <menu xmlns:android="http://schemas.android.com/apk/res/android">
+        <item android:id="@+id/reset"
+              android:title="RESET"/>
+        <item android:id="@+id/add"
+              android:title="ADD"/>
+        <item android:id="@+id/web"
+              android:title="WEB"/>
+    </menu>

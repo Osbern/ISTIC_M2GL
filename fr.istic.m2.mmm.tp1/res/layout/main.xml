@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" android:id="@+id/layout">
+
+    <EditText
+        android:id="@+id/editNames"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName" android:hint="Names">
+
+        <requestFocus />
+    </EditText>
+
+    <DatePicker
+        android:id="@+id/pickDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/editTown"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:hint="Town de naissance"/>
+
+    <Spinner
+        android:id="@+id/spinnerDep"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:entries="@array/departments"/>
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Valider"/>
+
+</LinearLayout>
