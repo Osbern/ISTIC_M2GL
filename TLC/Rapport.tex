@@ -1,0 +1,45 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{tabularx}
+
+\title{Module TLC
+\\
+--
+\\
+Google App Engine}
+\author{Thibaud Destouches - Lacroix Marceau}
+\date{2012 - 2013}
+
+\begin{document}
+
+\begin{titlepage}
+\maketitle
+\tableofcontents
+\end{titlepage}
+
+\newpage
+\section{Introduction}
+
+Le but de ce TP est d’aborder le développement d'application pour le Google App Engine, nous allons donc créer une simple plateforme de publicité, avec des fonctionnalités simples tels que la création, la suppression, ou encore la recherche de publicité.
+
+\section{Implémentation}
+Avant de déployer notre application sur le Google App Engine, nous avons téléchager le SDK permettant de tester nos applications localement, cela permet ainsi un gain de temps conséquant pendant le développement.
+
+Nous avons fait le choix de programmer cette application en J2EE, en effet il est uniquement possible de développer pour le Google App Engine en Python ou en J2EE. Nous nous sommes donc basé sur des fichiers JSP pour la mise en forme, et avons implémenter des services qui s'occupe d'effectuer les opérations sur la base de données.
+
+\section{Mesure de performance}
+
+\section{Difficultées}
+La principale difficulté que nous avons rencontré est l'usage de JPA pour la gestion de la persistance. En effet, le Google App Engine n'implémente pas la totalité de la librairie JPA, nous contraignant ainsi à développer nos fonctionnalités différemment que si nous avions eu à le faire pour une application serveur standard. 
+
+
+\section{Conclusion}
+Grâce à ce TP nous avons pu constater la puissance du Google App Engine, en effet le fait de complètement s'abstraire de l'infrastructure sur laquelle est exécuté l'application permet de se concentrer sur le développement de celle-ci sans avoir à gérer tous les soucis innérent à la gestion d'un serveur. Mais nous avons pu également observer les limites de ce système, le support uniquement des langages Python et J2EE bride fortement la possibilité de développement sur cette plateforme, de plus la limitation même des librairies utilisables sur le Google App Engine empêche souvent le développeur de faire ce qu'il veut et doit donc se limiter à ce qui lui est fourni par Google.
+
+Pour conclure, nous pensons que Google App Engine n'est pas un mauvais système, mais qu'il doit se limiter aux petites infrastructure qui ont uniquement un besoin limité et ne souhaite pas passer du temps à installer et maintenir un serveur. Pour tous les autres, Google App Engine n'est pas a conseiller.
+
+
+\end{document}
