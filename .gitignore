@@ -7,3 +7,4 @@ bin/
 *.aux
 *.log
 *.toc
+*.gz
