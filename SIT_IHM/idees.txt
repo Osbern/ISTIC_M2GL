@@ -1,0 +1,14 @@
+vue principale: 	MapView
+			avec une icone en haut à gauche (qui affichera un menu avec les différents composants que l'on peut ajouter (par drag'n drop)
+			en bas à gauche un mode "vérouillé" (pour eviter de déplacer des éléments en bougeant sur la carte)
+			
+			en cas de déplacement d'élément l'icone du menu change en icone de poubelle (pour supprimer cet élément)
+			
+Menu:			le menu est soit masqué soit ouvert. (on passe de l'un à l'autre en appuyant sur le bouton "menu"
+			le bouton ouvert est organisé en catégories (dangers, vehicules, personnes, ...)
+
+
+			
+penser à la définition de "zones"
+double appui pour copie (? uniquement pour les dangers ?)
+possibilité de modifier les zones.
