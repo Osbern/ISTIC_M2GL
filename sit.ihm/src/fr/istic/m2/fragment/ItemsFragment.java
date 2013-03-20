@@ -1,9 +1,7 @@
 package fr.istic.m2.fragment;
 
-import fr.istic.m2.sit.ihm.MainActivity;
 import android.app.Fragment;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -27,12 +25,6 @@ public class ItemsFragment extends Fragment {
         btn.setText("FRAGMENT");
         btn.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
-            	Log.w("FRAGMENT", "desize");
-            	getActivity().findViewById(42).getLayoutParams().width = 2;
-            	getActivity().findViewById(42).invalidate();
-            	getActivity().findViewById(13).invalidate();
-            	getActivity().findViewById(1).invalidate();
-            	((MainActivity) getActivity()).map.mapView.invalidate();
             }
         });
         

@@ -5,14 +5,9 @@ import android.app.FragmentTransaction;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
+import android.widget.LinearLayout;
 
 import com.google.android.maps.MapActivity;
 
@@ -21,12 +16,16 @@ import fr.istic.m2.fragment.MapFragment;
 
 public class MainActivity extends MapActivity {
 	
+	public static final int ITEMS_ID = 1;
+	public static final int MAP_ID = 2;
+	
 	public static int height, width;
 	
 	private FragmentManager fm;
-	private FrameLayout flItems, flMap;
-	private ItemsFragment items;
+	public FrameLayout flItems, flMap;
+	public ItemsFragment items;
 	public MapFragment map;
+	public LinearLayout layout;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -38,22 +37,28 @@ public class MainActivity extends MapActivity {
 		width = size.y;
 		
 		fm = getFragmentManager();
-		RelativeLayout layout = new RelativeLayout(this);
+		layout = new LinearLayout(this);
 		items = new ItemsFragment();
 		map = new MapFragment();
 		
-		flMap = new FrameLayout(this);
-		flMap.setId(13);
 		flItems = new FrameLayout(this);
-		flItems.setId(42);
+		flItems.setId(ITEMS_ID);
 		flItems.setBackgroundColor(Color.CYAN);
-		layout.addView(flMap);
-		layout.addView(flItems, 400, height);
+		flMap = new FrameLayout(this);
+		flMap.setId(MAP_ID);
 		
 		FragmentTransaction tr = fm.beginTransaction();
-		tr.add(13, map);
-		tr.add(42, items);
+		tr.add(ITEMS_ID, items);
+		tr.add(MAP_ID, map);
 		tr.commit();
+
+		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.FILL_PARENT);
+		params.weight = 2;
+		layout.addView(flItems, params);
+		params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.FILL_PARENT);
+		params.weight = 1;
+		layout.addView(flMap, params);
+		
 		
 		setContentView(layout);
 	}
