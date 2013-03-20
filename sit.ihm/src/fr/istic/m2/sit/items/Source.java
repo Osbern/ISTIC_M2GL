@@ -5,8 +5,8 @@ import com.google.android.maps.OverlayItem;
 
 public class Source extends OverlayItem {
 
-	public Source(GeoPoint point, String title, String snippet) {
-		super(point, title, snippet);
+	public Source(double x, double y, String title, String snippet) {
+		super(new GeoPoint((int) x, (int) y), title, snippet);
 	}
 	
 	

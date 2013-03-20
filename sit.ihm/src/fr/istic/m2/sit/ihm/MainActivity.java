@@ -1,43 +1,60 @@
 package fr.istic.m2.sit.ihm;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.graphics.Color;
+import android.graphics.Point;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
-import android.widget.LinearLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
 
-import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
-import com.google.android.maps.MapView;
-import com.google.android.maps.OverlayItem;
 
-import fr.istic.m2.sit.overlays.PrimaryOverlay;
-import fr.istic.m2.sit.overlays.SourceOverlay;
+import fr.istic.m2.fragment.ItemsFragment;
+import fr.istic.m2.fragment.MapFragment;
 
 public class MainActivity extends MapActivity {
+	
+	public static int height, width;
+	
+	private FragmentManager fm;
+	private FrameLayout flItems, flMap;
+	private ItemsFragment items;
+	public MapFragment map;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		LinearLayout layout = new LinearLayout(this);
+		Point size = new Point();
+		getWindowManager().getDefaultDisplay().getSize(size);
+		height = size.x;
+		width = size.y;
 		
-		MapView mapView = new MapView(this, "map");
-		mapView.setBuiltInZoomControls(true);
-		mapView.setClickable(true);
-		mapView.setEnabled(true);
+		fm = getFragmentManager();
+		RelativeLayout layout = new RelativeLayout(this);
+		items = new ItemsFragment();
+		map = new MapFragment();
 		
-		PrimaryOverlay pov = new SourceOverlay(this);
-		pov.addOverlay(new OverlayItem(new GeoPoint((int) (48.11547 * 1000000),(int) (-1.63840 * 1000000)), "Ici c'est l'ISTIC Moujon", "I'm a super Moujon !"));
-		pov.addOverlay(new OverlayItem(new GeoPoint((int) (47.11507 * 1000000),(int) (-0.63801 * 1000000)), "Ici c'est pas l'ISTIC Moujon", "I'm a super Moujon !"));
-
-		mapView.getOverlays().add(pov);
+		flMap = new FrameLayout(this);
+		flMap.setId(13);
+		flItems = new FrameLayout(this);
+		flItems.setId(42);
+		flItems.setBackgroundColor(Color.CYAN);
+		layout.addView(flMap);
+		layout.addView(flItems, 400, height);
 		
-		PrimaryOverlay veh = new PrimaryOverlay(getResources().getDrawable(R.drawable.chief), this);
-		veh.addOverlay(new OverlayItem(new GeoPoint((int) (45.11547 * 1000000),(int) (-1.63840 * 1000000)), "Ici c'est l'ISTIC Moujon", "I'm a super Moujon !"));
-		veh.addOverlay(new OverlayItem(new GeoPoint((int) (48.11507 * 1000000),(int) (-0.63801 * 1000000)), "Ici c'est pas l'ISTIC Moujon", "I'm a super Moujon !"));
-
-		mapView.getOverlays().add(veh);
+		FragmentTransaction tr = fm.beginTransaction();
+		tr.add(13, map);
+		tr.add(42, items);
+		tr.commit();
 		
-		layout.addView(mapView);
 		setContentView(layout);
 	}
 
