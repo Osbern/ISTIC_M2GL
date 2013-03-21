@@ -1,35 +1,45 @@
 package fr.istic.m2.fragment;
 
-import android.app.Fragment;
+import android.app.Activity;
+import android.app.ListFragment;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.RelativeLayout;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
 
-public class ItemsFragment extends Fragment {
+public class ItemsFragment extends ListFragment {
+	
+	private Activity act;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        act = getActivity();
     }
-
+    
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        RelativeLayout layout = new RelativeLayout(getActivity());
-
-        // Watch for button clicks.
-        Button btn = new Button(getActivity());
-        btn.setText("FRAGMENT");
-        btn.setOnClickListener(new OnClickListener() {
-            public void onClick(View v) {
-            }
-        });
+    public void onActivityCreated(Bundle savedInstanceState) {
+    	super.onActivityCreated(savedInstanceState);
+    	
+    	String[] list = {"toto", "tat"};
+        setListAdapter(new ArrayAdapter<String>(act, android.R.layout.simple_list_item_1, list));
         
-        layout.addView(btn);
+        getListView().setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 
-        return layout;
+    }    
+    
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+    	//super.onViewCreated(view, savedInstanceState);
     }
+    
+    @Override
+    public void onListItemClick(ListView l, View v, int position, long id) {
+    	super.onListItemClick(l, v, position, id);
+    	Toast.makeText(act, l.getItemAtPosition(position).toString(), Toast.LENGTH_SHORT).show();
+    }
+
+    
+    
 }

@@ -2,15 +2,11 @@ package fr.istic.m2.fragment;
 
 import android.app.Activity;
 import android.app.Fragment;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 
@@ -18,7 +14,6 @@ import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapView;
 import com.google.android.maps.OverlayItem;
 
-import fr.istic.m2.sit.ihm.MainActivity;
 import fr.istic.m2.sit.ihm.R;
 import fr.istic.m2.sit.items.Source;
 import fr.istic.m2.sit.overlays.PrimaryOverlay;
@@ -29,15 +24,11 @@ public class MapFragment extends Fragment {
 	private Activity act;
 	public RelativeLayout layout;
 	public MapView mapView;
-	private boolean visible;
-	private int width;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         act = getActivity();
-        visible = true;
-        width = ((LinearLayout.LayoutParams) act.findViewById(MainActivity.ITEMS_ID).getLayoutParams()).width;
     }
 
     @Override
@@ -70,22 +61,6 @@ public class MapFragment extends Fragment {
 		lock.setText("LOCK");
 		layout.addView(lock);
 		((LayoutParams) lock.getLayoutParams()).addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-		
-		lock.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Log.w("LOCK", "click");
-				if (visible) {
-					((LinearLayout.LayoutParams) act.findViewById(MainActivity.ITEMS_ID).getLayoutParams()).width = 2;
-					visible = false;
-				}
-				else {
-					((LinearLayout.LayoutParams) act.findViewById(MainActivity.ITEMS_ID).getLayoutParams()).width = width;
-					visible = true;
-				}
-				act.setContentView(((MainActivity) act).layout);
-			}
-		});
 		
 		return layout;
     }

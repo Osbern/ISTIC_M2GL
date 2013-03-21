@@ -6,7 +6,6 @@ import java.util.List;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.google.android.maps.ItemizedOverlay;

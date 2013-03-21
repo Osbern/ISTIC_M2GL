@@ -1,13 +1,20 @@
 package fr.istic.m2.sit.ihm;
 
+import android.app.ActionBar;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.google.android.maps.MapActivity;
 
@@ -20,6 +27,8 @@ public class MainActivity extends MapActivity {
 	public static final int MAP_ID = 2;
 	
 	public static int height, width;
+	private boolean visible;
+	private int menuWidth;
 	
 	private FragmentManager fm;
 	public FrameLayout flItems, flMap;
@@ -30,6 +39,7 @@ public class MainActivity extends MapActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 		
 		Point size = new Point();
 		getWindowManager().getDefaultDisplay().getSize(size);
@@ -43,7 +53,7 @@ public class MainActivity extends MapActivity {
 		
 		flItems = new FrameLayout(this);
 		flItems.setId(ITEMS_ID);
-		flItems.setBackgroundColor(Color.CYAN);
+		flItems.setBackgroundColor(Color.LTGRAY);
 		flMap = new FrameLayout(this);
 		flMap.setId(MAP_ID);
 		
@@ -65,8 +75,36 @@ public class MainActivity extends MapActivity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
+		visible = true;
+		menuWidth = findViewById(MainActivity.ITEMS_ID).getLayoutParams().width;
+		
+		ActionBar acBar = getActionBar();
+		acBar.setDisplayShowCustomEnabled(true);
+		acBar.setDisplayShowHomeEnabled(false);
+		acBar.setDisplayShowTitleEnabled(false);
+		RelativeLayout menuLayout = new RelativeLayout(this);
+		Button btn = new Button(this);
+		btn.setText("+");
+		btn.setTextSize(30);
+		btn.setTextColor(Color.WHITE);
+		btn.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Log.w("LOCK", "click");
+				if (visible) {
+					((LinearLayout.LayoutParams) findViewById(MainActivity.ITEMS_ID).getLayoutParams()).width = 2;
+					visible = false;
+				}
+				else {
+					((LinearLayout.LayoutParams) findViewById(MainActivity.ITEMS_ID).getLayoutParams()).width = menuWidth;
+					visible = true;
+				}
+				setContentView(layout);
+			}
+		});
+		menuLayout.addView(btn);
+		acBar.setCustomView(menuLayout);
+		
 		return true;
 	}
 
