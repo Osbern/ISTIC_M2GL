@@ -34,7 +34,7 @@
 
 \newpage
 \section{Introduction}
-\input{intro}
+\include{intro}
 
 \section{Modèles de MediaWiki}
 Pour concevoir la structure de données permettant de stocker la base de données de \textbf{MediaWiki}, nous avons tout d'abord fait abstraction de la gestion des \textit{pagelinks}. Nous avons ainsi créé deux tables, l'une \textit{index} regroupant l'intégralité des \textit{id} des pages, avec en correspondance la dernière révision d'une page, et une deuxième table \textit{page}, qui pour un \textit{id} données peut avoir plusieurs révisions, chaque révision ayant un \textit{title} et un \textit{content}.
